@@ -19,7 +19,7 @@ categories:
 
 ### 下载原版工程
 
-先下载一个拥有原版音频guid对应的工程，可以下载ritsulib作者制作的音频示例工程（整个一起下载）： https://github.com/BAKAOLC/SwarmTheSpire-FModProject ，或者网盘： https://pan.baidu.com/s/1yuxPkDpCV8EVLkDubqiirg?pwd=apar 。
+先下载一个拥有原版音频guid对应的工程，可以下载ritsulib作者制作的音频示例工程（整个一起下载）： https://github.com/BAKAOLC/STS2_FModProject_Minimal ，或者网盘： https://pan.baidu.com/s/1yuxPkDpCV8EVLkDubqiirg?pwd=apar 。
 
 下载完毕后打开。
 
@@ -31,9 +31,9 @@ categories:
 
 ### 重命名bank
 
-点击中间的`Banks`栏，将两个bank重命名为你的项目的名字，最好也是`XXX`和`XXXMaster`。
+点击中间的`Banks`栏，将两个bank重命名为你的项目的名字，最好也是`XXX`和`Master`。
 
-* `XXX`最好删除重建一个，但是``XXXMaster`不能删除然后重建，不能叫`Master`。
+* `XXX`最好删除重建一个，但是`Master`不能删除然后重建。
 
 ![alt text](../../images/image37.png)
 
@@ -47,11 +47,19 @@ categories:
 
 ![alt text](../../images/image39.png)
 
+接着点击`Window - Mixer Routing`，需要创建和原版一致的routing，这里是`master/sfx`，然后把你的音频放在此处。
+
+例如原版游戏代码中的路径为`event:/sfx/heal`、`event:/music/act3_a1_v1`之类，那么你就需要分别放在`master/sfx`和`master/music`组下。
+
+这一步会让你的音频受到游戏的音量与效果影响，例如`sfx`受到音响音量影响`music`受到音乐音量影响。
+
+![alt text](../../images/image41.png)
+
 ### 新建sheet
 
 然后点击你刚才的event，中间会出现sheet界面。在其中右键新建一个任意类型的sheet。
 
-* 简单来说，timeline可以实现音频拼接或者延迟触发，action可以多个音频随机触发一个，parameter可以调整音频的参数等。
+* 简单来说，timeline可以实现音频拼接或者延迟触发，action可以多个音频随机触发一个（右键add multi instrument）等，parameter可以调整音频的参数等。
 
 ![alt text](../../images/image42.png)
 
