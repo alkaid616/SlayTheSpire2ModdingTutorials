@@ -176,7 +176,7 @@ public abstract class TestCardModel : ModCardTemplate
 
 ```
 Test (你的项目文件夹)
-├── Scripts (你的脚本文件夹，随意)
+├── Scripts (脚本文件夹随意组织)
 │   ├── TestCard.cs (或者套一层Cards文件夹)
 │   └── Entry.cs
 └── Test (不要忘了这一层文件夹，是你的modid)
