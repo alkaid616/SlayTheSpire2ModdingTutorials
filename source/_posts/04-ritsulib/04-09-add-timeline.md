@@ -1,3 +1,10 @@
+---
+title: 添加时间线
+date: 2026-04-25 00:00:00
+permalink: docs/04-ritsulib/04-09-add-timeline/
+categories:
+- Basics
+---
 时间线是2代用来兼顾解锁人物内容和故事讲述的功能。
 
 ## 解释

@@ -74,9 +74,9 @@ https://github.com/freude916/sts2-quickRestart/blob/main/README.md
 
 ## 创建{modid}.json
 
-用`VS Code`打开项目文件夹。创建一个新文件（双击资源管理器或者右键新建文件），名字为`{modid}.json`。`modid`建议和项目名以及其中内容相同。填写以下内容。
+用你的IDE（VSCode、Rider、VS等）打开项目文件夹。创建一个新文件（双击资源管理器或者右键新建文件），名字为`{modid}.json`。`modid`建议和项目名以及其中内容相同。填写以下内容。
 
-* <b>不是创建`{modid}.json`这么一个文件，而是把`{modid}`替换成你的项目名，例如`Test.json`。之后提到的`{}``[]`都是替换。</b>
+* <b>不是创建`{modid}.json`这么一个文件，而是把`{modid}`替换成你的项目名，例如`Test.json`。之后提到的`{}` `[]`都是替换。</b>
 
 ```json
 {
@@ -95,6 +95,12 @@ https://github.com/freude916/sts2-quickRestart/blob/main/README.md
 ## 修改.csproj
 
 打开你的`.csproj`文件，<b>*修改*</b>并换成以下内容：
+
+* `Rider`为右键你的项目，点击`Edit - Edit csproj`。
+
+* `VSCode`直接找你项目里的`.csproj`文件编辑。
+
+![alt text](../../images/image44.png)
 
 ```xml
 <Project Sdk="Godot.NET.Sdk/4.5.1">
@@ -168,7 +174,7 @@ public class Entry
 
 ## 构建DLL
 
-终端命令行输入`dotnet build`（或者vscode按下`ctrl+shift+b`选择`dotnet: build`，rider点击构建）创建dll文件。由于之前`.csproj`文件的配置，dll文件自动复制到游戏根目录的`mods`文件夹里了。
+终端命令行里（找到`Terminal`按钮，或者快捷键，`VSCode`为按下`ctrl+~`，`Rider`为按下`Alt+F12`）输入`dotnet build`（或者vscode按下`ctrl+shift+b`选择`dotnet: build`，rider点击菜单构建）创建dll文件。由于之前`.csproj`文件的配置，dll文件自动复制到游戏根目录的`mods`文件夹里了。
 
 ## 导出PCK
 
@@ -178,6 +184,10 @@ public class Entry
 * 文件夹选择你之前导出的dll同名目录。
 * <b>注意一定得是pck！！！</b>
 * 可选：由于现在不需要pck里包含`mod_manifest.json`了，在导出选项里点击`资源`，`从项目中排除文件或目录`，填写`{modid}.json`，`modid`填你自己的，不要写`{modid}`。
+
+* 建议之后通过之后的自动打包进行。如果要兼容mac平台见下：
+
+> 用文本编辑器打开`export_presets.cfg`，将`binary_format/architecture="x86_64"`改为`binary_format/architecture="msil"`。
 
 ![alt text](../../images/image5.png)
 
@@ -195,9 +205,61 @@ public class Entry
 
 运行游戏。第一次会提示是否开启mod，选择是，然后游戏会关闭，打开第二次即可，如果右下角显示“已加载模组”即加载成功。如果发现存档丢失，看下一章。
 
-## 不启动Godot打包（可选）
+## Rider不启动Godot打包（可选）
 
 Godot支持命令行导出pck（首先你需要添加一个导出配置），例如使用终端命令：`"{你的godot.exe的路径}" --headless --export-pack "{你的导出配置的名字，例如Windows Desktop}" "{杀戮尖塔根目录}/mods/{你的modid}/{你的modid}.pck"`，参考 https://docs.godotengine.org/zh-cn/4.x/tutorials/editor/command_line_tutorial.html#exporting 。你可以把这个命令保存成一个cmd或者csproj里的target。
+
+打开你的`csproj`并新增以下内容：
+
+```xml
+<Project Sdk="Godot.NET.Sdk/4.5.1">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>true</ImplicitUsings>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <Sts2Dir>D:/Files/Softwares/Steam/steamapps/common/Slay the Spire 2</Sts2Dir>
+      <!-- 新增 -->
+    <GodotExe>D:/Files/Projects/godot/Godot_v4.5.1-stable_mono_win64/Godot_v4.5.1-stable_mono_win64/Godot_v4.5.1-stable_mono_win64.exe</GodotExe>
+    <Sts2DataDir>$(Sts2Dir)/data_sts2_windows_x86_64</Sts2DataDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="sts2">
+      <HintPath>$(Sts2DataDir)/sts2.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="0Harmony">
+      <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
+    <Message Text="Copying mod to Slay the Spire 2 mods folder..." Importance="high" />
+    <MakeDir Directories="$(Sts2Dir)/mods/" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/" />
+    <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/" />
+  </Target>
+
+  <!-- 新增 -->
+  <Target Name="ExportPck" AfterTargets="Publish">
+    <Message Text="Copying PCK to Slay the Spire 2 mods folder..." Importance="high" />
+    <Exec Command="&quot;$(GodotExe)&quot; --headless --export-pack &quot;Windows Desktop&quot; &quot;$(Sts2Dir)/mods/$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;"
+      EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1"
+      ContinueOnError="WarnAndContinue" />
+  </Target>
+</Project>
+```
+
+然后右键你的项目点击`Publish`即可。一路点OK就行。
+
+![alt text](../../images/image45.png)
+
+## VSCode不启动Godot打包（可选）
 
 例如在你的`.csproj`文件里添加`GodoExe`和`ExportPck`的内容：
 
