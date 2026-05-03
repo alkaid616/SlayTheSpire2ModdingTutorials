@@ -175,6 +175,10 @@ public abstract class TestCardModel : ModCardTemplate
 
 按`~`打开控制台输入`card TEST_CARD_TEST_CARD`获得这张卡。
 
+* 只能在战斗中使用命令获得这张牌。
+
+* 如果你在图鉴中看到???是正常的，你只是没遇到这张牌。
+
 ![示例卡牌](../../images/image11.png)
 
 ## 最终项目参考
