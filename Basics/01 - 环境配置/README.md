@@ -4,8 +4,8 @@
 
 阅读本教程你至少需要：
 
-* C#语言基础（或者其他语言的基础）
-* json文本基础
+* C#语言基础（或者其他语言的基础） https://learn.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/
+* json文本基础 https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/JSON
 * 使用Godot编辑器的简单功能
 * 图片编辑处理能力
 * 懂得使用电脑
