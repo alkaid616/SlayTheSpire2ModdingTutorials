@@ -43,7 +43,7 @@ categories:
 
 ![alt text](../../images/image38.png)
 
-右键你的event，点击`Assgin To Bank`，选择`Test`或者你重命名的那个。（*不是Master那个*）
+右键你的 event，点击 `Assign To Bank`，选择 `Test` 或者你重命名的那个。（*不是 Master 那个*）
 
 ![alt text](../../images/image39.png)
 
@@ -77,6 +77,13 @@ categories:
 
 ![alt text](../../images/image43.png)
 
+### 导出预设（Export Preset）
+
+Godot 里通常不会直接导入`.bank`和`GUIDs.txt`，这可能会导致打包的 .pck 文件中缺失这些文件，导致游戏运行时无法加载这些音频。
+请确保你的导出设置里 “资源” 选项卡中 “筛选导出非资源文件或文件夹” 中包含了`.bank`和`GUIDs.txt`（或其他任何你需要的文件）。
+
+![alt text](../../images/fmod_export_hint.png)
+
 ### 代码加载
 
 在你的初始化函数中加载：
@@ -92,9 +99,8 @@ public class Entry
     public static void Init()
     {
         // 其余省略
-        FmodStudioServer.TryLoadBank("res://Test/audios/Test.bank");
-        FmodStudioServer.TryWaitForAllLoads();
-        FmodStudioServer.TryLoadStudioGuidMappings("res://Test/audios/GUIDs.txt");
+        FmodStudioDeferredBankRegistration.RegisterBank("res://Test/audios/Test.bank");
+        FmodStudioDeferredBankRegistration.RegisterStudioGuidMappings("res://Test/audios/GUIDs.txt");
     }
 }
 ```
