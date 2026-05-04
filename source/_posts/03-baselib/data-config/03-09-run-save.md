@@ -9,6 +9,8 @@ categories:
 
 在卡牌、遗物、附魔、Modifier（每日挑战效果）的`Model`的属性中中添加带`SavedProperty`的属性即可保存。
 
+* 一定要是[*属性*](https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/classes-and-structs/properties)。
+
 ```csharp
 [Pool(typeof(SharedRelicPool))]
 public class TestRelic : CustomRelicModel

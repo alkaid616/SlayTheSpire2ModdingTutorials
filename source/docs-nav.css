@@ -405,7 +405,6 @@
 }
 
 .kira-content .kira-main-content .kira-post-copyright,
-.kira-content .kira-main-content .kira-post-nav,
 .kira-content .kira-main-content .kira-post-footer,
 .kira-content .kira-main-content .kira-page-nav {
     background-color: rgba(255, 255, 255, 0.46) !important;
@@ -450,7 +449,6 @@
 
 .kira-tree-group,
 .kira-content .kira-main-content .kira-post-copyright,
-.kira-content .kira-main-content .kira-post-nav,
 .kira-content .kira-main-content .kira-post-footer,
 .kira-content .kira-main-content .kira-page-nav {
     background-color: rgba(32, 38, 46, 0.78) !important;
@@ -532,6 +530,39 @@
 }
 
 .kira-content .kira-main-content article>table::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.kira-content .kira-main-content figure.highlight {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: stable;
+    scrollbar-width: auto;
+    scrollbar-color: rgba(217, 117, 25, 0.75) rgba(255, 255, 255, 0.12);
+}
+
+.kira-content .kira-main-content figure.highlight table {
+    width: max-content !important;
+    min-width: 100% !important;
+}
+
+.kira-content .kira-main-content figure.highlight pre {
+    overflow: visible !important;
+    white-space: pre !important;
+}
+
+.kira-content .kira-main-content figure.highlight::-webkit-scrollbar {
+    height: 8px;
+}
+
+.kira-content .kira-main-content figure.highlight::-webkit-scrollbar-thumb {
+    background-color: rgba(217, 117, 25, 0.75);
+    border-radius: 999px;
+}
+
+.kira-content .kira-main-content figure.highlight::-webkit-scrollbar-track {
     background-color: rgba(255, 255, 255, 0.12);
 }
 

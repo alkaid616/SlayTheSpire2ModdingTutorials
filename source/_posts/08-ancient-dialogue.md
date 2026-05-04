@@ -32,7 +32,7 @@ categories:
 
 最后第二段`x-y`表示第`x`套对话的第`y`句。
 
-游戏按照遇见次数选取第几套对话：（第一次第0套，第二次第1套，第五次第2套）
+根据以下的游戏原版代码，游戏按照遇见次数选取第几套对话：（第一次第0套，第二次第1套，第五次第2套）
 
 ```csharp
     [AncientEventModel.CharKey<Ironclad>()] = new global::_003C_003Ez__ReadOnlyArray<AncientDialogue>(new AncientDialogue[3]

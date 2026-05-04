@@ -5,9 +5,11 @@ permalink: docs/04-ritsulib/04-10-add-audio/
 categories:
 - Basics
 ---
-## 方法一：使用Fmod加载
+https://github.com/BAKAOLC/STS2-RitsuLib/blob/main/Docs/zh/FmodAndAudio.md
 
-使用塔2使用的fmod工具进行加载。
+## 方法一：使用fmod加载bank
+
+使用塔2使用的fmod工具进行加载。一些通过event加载的音频（比如角色选择等）通过bank方式加载会方便一些不用修改代码。
 
 ### 下载fmod
 
@@ -77,7 +79,7 @@ categories:
 
 ![alt text](../../images/image43.png)
 
-### 导出预设（Export Preset）
+### 导出预设
 
 Godot 里通常不会直接导入`.bank`和`GUIDs.txt`，这可能会导致打包的 .pck 文件中缺失这些文件，导致游戏运行时无法加载这些音频。
 请确保你的导出设置里 “资源” 选项卡中 “筛选导出非资源文件或文件夹” 中包含了`.bank`和`GUIDs.txt`（或其他任何你需要的文件）。
@@ -131,4 +133,44 @@ await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
 和
 ```csharp
     SfxCmd.Play("event:/sfx/block_gain");
+```
+
+## 方法二：使用fmod加载音频文件（wav, ogg, mp3）
+
+如果你想自由播放音频，可以通过这种形式。
+
+### 准备工作
+
+* 由于fmod只能加载 *未经godot处理过的音频* ，有三种方式（选一种即可），推荐第方法1和2：
+
+1. 安装[fmod插件 6.1.0-4.5.0](https://github.com/utopia-rise/fmod-gdextension/releases/tag/6.1.0-4.5.0)，点击`addons.zip`下载（或者网盘 https://pan.baidu.com/s/1yuxPkDpCV8EVLkDubqiirg?pwd=apar ），把解压出来的`addons`复制到你的项目里，然后在编辑器菜单点击`项目 - 项目设置 - 插件`启用它。
+
+2. 禁用对你需要通过fmod加载的音频的导入，原样导出。如下操作。
+
+![alt text](../../images/image46.png)
+
+3. 把音频复制到和你mod同级目录内加载。
+
+### 导入资源
+
+如果你是方法1和2，把你的音频文件放到你喜欢的位置，例如`Test/audios/test.ogg`。
+
+如果你是方法3，把音频复制到和你mod同级目录内。
+
+### 加载并播放
+
+（可选）首先找个地方预载你的音频，例如你的初始化函数`Entry.Init`里：
+
+```csharp
+ public static void Init()
+    {
+        // 其余省略
+        FmodStudioStreamingFiles.TryPreloadAsSound("res://Test/audios/waveform.ogg");
+    }
+```
+
+在你需要播放音频的地方播放：
+
+```csharp
+FmodStudioStreamingFiles.TryPlaySoundFile("res://Test/audios/waveform.ogg");
 ```

@@ -25,3 +25,9 @@ permalink: /
 Godot: https://docs.godotengine.org/zh-cn/4.x/
 
 Harmony: https://harmony.pardeike.net/articles/intro.html
+
+C#教程： https://learn.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/
+
+RitsuLib: https://github.com/BAKAOLC/STS2-RitsuLib
+
+BaseLib: https://github.com/Alchyr/BaseLib-StS2
