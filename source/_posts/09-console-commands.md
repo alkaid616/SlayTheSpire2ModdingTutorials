@@ -72,7 +72,7 @@ categories:
 | **解锁内容** | `unlock <类型>` | 标记指定类型内容为已发现：`cards`、`potions`、`relics`、`monsters`、`events`、`epochs`、`ascensions`。`all` 解锁全部。 |
 | **成就** | `achievement <操作> [ID]` | 解锁（`unlock`）或撤销（`revoke`）成就。不提供 ID 则操作全部成就。 |
 | **排行榜** | `leaderboard [选项] [名称] <分数> [数量]` | 向排行榜提交分数。选项包括：`upload` 上传，`random` 生成随机分数测试。 |
-| **获取日志** | `getlogs [test-feedback] <名称>` | 收集日志并打包为zip，打开所在目录。<br>`test-feedback`打开后仅打包关键文件（适合给游戏开发团队而不是mod开发者） |
+| **获取日志** | `getlogs [test-feedback] <名称>` | 收集日志并打包为zip，打开所在目录。`test-feedback`打开后仅打包关键文件（适合给游戏开发团队而不是mod开发者） |
 | **打印ID** | `dump` | 将所有model的ID输出到控制台和日志文件。 |
 | **日志级别** | `log [类型] <级别>` | 设置日志输出级别。级别：`verydebug`、`debug`、`info`、`warn`、`error`。 |
 | **缺失美术** | `art <类型>` | 列出指定类型中缺少美术资源的内容。类型：`card`、`relic`、`potion`、`enchant` 等。 |
@@ -80,5 +80,5 @@ categories:
 | **图鉴** | `bestiary` | 打开怪物图鉴界面。 |
 | **sentry测试** | `sentry <test\|message\|exception\|crash\|status> [文本]` | 测试Sentry错误报告功能。 |
 | **预告模式** | `trailer` | 切换预告模式，启用后可用数字键0-9切换UI显示/隐藏，用于录制预告片和截图。 |
-| **云存档** | `cloud delete` | 删除Steam云上的所有存档文件。仅限Steam平台。。 |
+| **云存档** | `cloud delete` | 删除Steam云上的所有存档文件。仅限Steam平台。 |
 | **多人模式** | `multiplayer` | 打开多人游戏菜单。加参数`test`打开测试场景。 |

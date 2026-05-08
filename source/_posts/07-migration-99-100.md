@@ -31,12 +31,6 @@ categories:
 
 * `GetResultPileType`改名为`GetResultPileTypeForCardPlay`。新增`GetResultPileTypeForOnTurnEndInHandEffect`。
 
-### 接口变动
-
-* 一些参数的类型从`CombatState`改成了`ICombatState`
-
-### 函数名变动
-
 旧版 `AbstractModel` 里有：
 
 - `BeforePlayPhaseStart(PlayerChoiceContext choiceContext, Player player)`
@@ -48,6 +42,10 @@ categories:
 - `AfterAutoPrePlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)`
 - `AfterAutoPrePlayPhaseEnteredLate(PlayerChoiceContext choiceContext, Player player)`
 - `AfterAutoPostPlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)`
+
+### 接口变动
+
+* 一些参数的类型从`CombatState`改成了`ICombatState`。
 
 ## 0.99 至 0.103
 
