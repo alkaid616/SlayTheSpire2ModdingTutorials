@@ -23,3 +23,49 @@
 * `OnTurnEndInHand`从`public virtual`改为`protected virtual`。
 
 * `GetResultPileType`改名为`GetResultPileTypeForCardPlay`。新增`GetResultPileTypeForOnTurnEndInHandEffect`。
+
+旧版 `AbstractModel` 里有：
+
+- `BeforePlayPhaseStart(PlayerChoiceContext choiceContext, Player player)`
+- `BeforePlayPhaseStartLate(PlayerChoiceContext choiceContext, Player player)`
+
+0.104 版这两个点被移除了，换成了：
+
+- `AfterAutoPrePlayPhaseEnteredEarly(PlayerChoiceContext choiceContext, Player player)`
+- `AfterAutoPrePlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)`
+- `AfterAutoPrePlayPhaseEnteredLate(PlayerChoiceContext choiceContext, Player player)`
+- `AfterAutoPostPlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)`
+
+### 接口变动
+
+* 一些参数的类型从`CombatState`改成了`ICombatState`。
+
+## 0.99 至 0.103
+
+主要是能量表盘问题。
+
+结构从：
+
+```
+TestEnergyCounter (Control)
+├── BurstBack (CPUParticles2D) %
+├── Layers (Control) %
+│   ├── Layer1 (TextureRect，或任意)
+│   └── RotationLayers (Control) %
+├── BurstFront (CPUParticles2D) %
+└── Label (Label)
+```
+
+改成了：
+
+```
+TestEnergyCounter (Control)
+├── EnergyVfxBack (NParticlesContainer) %
+├── Layers (Control) %
+│   ├── Layer1 (TextureRect，或任意)
+│   └── RotationLayers (Control) %
+├── EnergyVfxFront (NParticlesContainer) %
+└── Label (Label)
+```
+
+所以如果你在正式版添加人物，需要添加`BurstBack (CPUParticles2D) %`和`BurstFront (CPUParticles2D) %`这两个节点。
