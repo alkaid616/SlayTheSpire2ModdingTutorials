@@ -62,6 +62,8 @@ docsTree:
                                 { title: 15 添加单例, path: /docs/04-ritsulib/04-15-add-singleton/ },
                                 { title: 16 血条覆盖, path: /docs/04-ritsulib/04-16-health-bar-overlay/ },
                                 { title: 17 数据保存, path: /docs/04-ritsulib/04-17-data-save/ },
+                                { title: 18 手牌上限, path: /docs/04-ritsulib/04-18-max-hand-size/ },
+                                { title: 19 手牌泛光, path: /docs/04-ritsulib/04-19-hand-outline/ },
                             ],
                     },
                     {
@@ -85,6 +87,7 @@ docsTree:
                                 { title: 13 添加新附魔, path: /docs/03-baselib/03-13-add-enchantment/ },
                                 { title: 14 添加新人物, path: /docs/04-add-new-character/ },
                                 { title: 15 添加单例, path: /docs/03-baselib/03-15-add-singleton/ },
+                                { title: 16 手牌上限, path: /docs/03-baselib/03-16-max-hand-size/ },
                             ],
                     },
                     {
@@ -97,6 +100,7 @@ docsTree:
                         path: /docs/07-quick-debug-and-hot-reload/,
                     },
                     { title: 09 启动项参数, path: /docs/08-launch-arguments/ },
+                    { title: 10 控制台指令, path: /docs/09-console-commands/ },
                 ],
         },
         {

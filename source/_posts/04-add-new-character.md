@@ -162,6 +162,8 @@ public class TestCharacter : PlaceholderCharacterModel
     // public override string CustomCharacterSelectTransitionPath => "res://materials/transitions/ironclad_transition_mat.tres";
     // 地图上的角色标记图标、表情轮盘上的角色头像
     // public override string CustomMapMarkerPath => null;
+
+    // 在baselib3.1.1之后，音效可以使用例如"res://test/audios/test.wav"这样的资源路径了
     // 攻击音效
     // public override string CustomAttackSfx => null;
     // 施法音效

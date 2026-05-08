@@ -84,13 +84,24 @@ https://github.com/freude916/sts2-quickRestart/blob/main/README.md
   "name": "我的 Mod",
   "author": "作者名",
   "description": "Mod 描述",
-  "version": "1.0",
+  "version": "0.1.0",
+  "min_game_version": "0.105.0", // 你的mod兼容的最小游戏版本（测试版新增）
   "has_pck": true,         // 是否有 .pck 资源包
   "has_dll": true,        // 是否有 .dll 代码
   "dependencies": [],     // 依赖的其他mod id
   "affects_gameplay": true // 多人模式时是否影响内容，如果是替换模型和优化等不影响内容的mod可填false，默认true
 }
 ```
+
+* `0.105.0`以后，所有版本的字符串必须符合[标准版本语义](https://semver.org/)。简单来说必须是`X.X.X`三段，而不能是两段了。
+
+* 添加依赖参考：
+
+> ```json
+>   "dependencies": [
+>     { "id": "STS2-RitsuLib", "min_version": "0.2.27" }
+>   ],
+> ```
 
 ## 修改.csproj
 
