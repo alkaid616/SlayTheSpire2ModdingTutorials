@@ -1,5 +1,11 @@
 ## 0.103 至 0.105测试版
 
+### manifest json变动
+
+* 添加了`min_game_version`字段，必填。
+
+* 依赖mod写法变动，查看`环境配置`或者两个基础库的第0章。
+
 ### 变量变动
 
 * `bool ShowsInfiniteHp`改成了`HpDisplay`枚举。
