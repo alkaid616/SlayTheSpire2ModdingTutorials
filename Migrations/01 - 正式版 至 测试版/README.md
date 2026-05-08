@@ -1,6 +1,12 @@
-## 0.103 至 0.104测试版
+## 0.103 至 0.105测试版
 
-### 函数签名变动
+### 变量变动
+
+* `bool ShowsInfiniteHp`改成了`HpDisplay`枚举。
+
+* `bool IsInstanced`改成了`PowerInstanceType`枚举。
+
+### 函数变动
 
 * 一些函数开始传入`PlayerChoiceContext`参数，与下面的进行配合。
 
@@ -8,3 +14,6 @@
 
 * `CardPileCmd.AddGeneratedCardToCombat`等，之前传入`addedByPlayer`的`bool`类型的参数的位置，改成了`Player? creator`。所以如果之前是`false`的现在填`null`，是`true`的话填`cardPlay.card.Owner`（卡牌里）或者`Owner`（能力里），根据语境。
 
+* `OnTurnEndInHand`从`public virtual`改为`protected virtual`。
+
+* `GetResultPileType`改名为`GetResultPileTypeForCardPlay`。新增`GetResultPileTypeForOnTurnEndInHandEffect`。

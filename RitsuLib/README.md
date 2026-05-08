@@ -8,7 +8,7 @@ https://github.com/BAKAOLC/STS2-RitsuLib
 
 ## 下载
 
-* 前往 https://github.com/BAKAOLC/STS2-RitsuLib/releases 下载`dll`，和`json`两个文件，把他们放在`mods`文件夹里。记住你下载的版本。
+* 前往 https://github.com/BAKAOLC/STS2-RitsuLib/releases 下载稳定版本（不是`Development build`，而是例如`STS2.RitsuLib.X.X.X.github.zip`这样的），解压出来放在`mods`文件夹里。记住你下载的版本。
 
 * 请根据你的游戏版本选择对应的`RitsuLib`版本。例如不带后缀的`STS2.RitsuLib.XXX.github.zip`一般跟随测试版，而例如`STS2.RitsuLib.Compat.0.103.2.XXX.github.zip`这种是兼容`0.103.2`正式版的版本。
 
@@ -41,10 +41,12 @@ https://github.com/BAKAOLC/STS2-RitsuLib
 * 不要忘了在你`{modid}.json`中填写`dependencies`。
 
 ```json
-  "dependencies": ["STS2-RitsuLib"],
+  "dependencies": [
+    { "id": "STS2-RitsuLib", "min_version": "0.2.27" }
+  ],
 ```
 
-下面展示`RitsuLib`的各种功能。如果你想马上做出一张卡牌，先看`初始化函数`就行。
+* 分发时，可以把自己的mod和`STS2-RitsuLib.XXX.variant-pack.zip`解压后的打包给玩家。该版本可以自己检测游戏版本并使用对应的库。
 
 ## 初始化函数
 

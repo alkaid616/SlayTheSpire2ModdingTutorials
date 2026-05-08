@@ -3,7 +3,7 @@
 https://github.com/Alchyr/BaseLib-StS2
 
 > 由于目前`BaseLib`尚处于开发阶段，如果只打patch不添加新内容可以不使用。
-> 以下内容使用baselib3.0.6。
+> 以下内容使用baselib3.1.2。
 
 先依赖baselib才能查看这里里面的文章。
 
@@ -38,5 +38,7 @@ https://github.com/Alchyr/BaseLib-StS2
 * 不要忘了在你`{modid}.json`中填写`dependencies`。
 
 ```json
-  "dependencies": ["BaseLib"],
+  "dependencies": [
+    { "id": "BaseLib", "min_version": "3.1.2" }
+  ],
 ```

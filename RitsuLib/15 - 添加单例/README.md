@@ -7,7 +7,6 @@
 ```csharp
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Logging;
-using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models;
 using STS2RitsuLib.Interop.AutoRegistration;
 
@@ -15,17 +14,10 @@ namespace Test.Scripts;
 
 // 注册单例
 [RegisterSingleton]
-public class TestSingleton : SingletonModel
+public class TestSingleton : HookedSingletonModel
 {
-    // 没有用但是要写
-    public override bool ShouldReceiveCombatHooks => true;
-
-    public TestSingleton()
+    public TestSingleton() : base(true, true)
     {
-        // 获得监听CombatState钩子的能力
-        ModHelper.SubscribeForCombatStateHooks(Id.Entry, state => [this]);
-        // 获得监听RunState钩子的能力
-        ModHelper.SubscribeForRunStateHooks(Id.Entry, state => [this]);
     }
 
     // public override Task AfterActEntered()
