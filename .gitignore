@@ -12,6 +12,7 @@ _multiconfig.yml
 .idea/
 *.tmp
 *.swp
+.claude/
 
 # Temporary caches and reports
 .cache/
