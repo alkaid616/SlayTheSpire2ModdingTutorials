@@ -37,6 +37,8 @@ public class TestCardPool : TypeListCardPoolModel
     public override Color EnergyOutlineColor => new(0.5f, 0.5f, 1f);
     // 如果你想用原版卡框换色，加这两行
     private static readonly Material? _poolFrameMaterial = MaterialUtils.CreateRgbShaderMaterial(0.5f, 0.5f, 1f);
+    // 如果你是自定义卡框，上面一行换成这个
+    // private static readonly Material? _poolFrameMaterial = MaterialUtils.CreateUnmodulatedHsvShaderMaterial();
     public override Material? PoolFrameMaterial => _poolFrameMaterial;
 
     // 卡池是否是无色。例如事件、状态等卡池就是无色的。
@@ -148,7 +150,7 @@ public class TestCharacter : ModCharacterTemplate<TestCardPool, TestRelicPool, T
                 // 商店人物场景。
                 MerchantAnimPath: "res://Test/scenes/test_character_merchant.tscn"
                 // 篝火休息场景。
-                // RestSiteAnimPath: "res://Test/scenes/test_character_rest_site.tscn"
+                RestSiteAnimPath: "res://Test/scenes/test_character_rest_site.tscn"
             ),
             Ui: new(
                 // 人物头像路径。
@@ -264,7 +266,7 @@ TestCharacter (Node2D)
 
 * 其中`Visuals`可以更改成任意继承了`Node2D`的类型，例如`SpineSprite`，`Sprite2D`，`AnimatedSprite2D`或是`AnimationPlayer`，或者在它之下新建节点都可。
 
-* 如果要自然支持Spine播放，需要把`Visuals`改成`SpineSprite`，且你的战斗人物模型需要有`idle_loop`（待机循环），`attack`（攻击动作），`cast`（能力卡动作），`hurt`（受伤），`die`（死亡）这些动画名。（如果你没有`SpineSprite`，参考`卡图&皮肤替换`一章先下载`Spine Godot Extension`。）
+* 如果要自然支持Spine播放，需要把`Visuals`改成`SpineSprite`类型（不需要改名），且你的战斗人物模型需要有`idle_loop`（待机循环），`attack`（攻击动作），`cast`（能力卡动作），`hurt`（受伤），`die`（死亡）这些动画名。（如果你没有`SpineSprite`，参考`卡图&皮肤替换`一章先下载`Spine Godot Extension`。）
 
 * 非Spine需要使用动画状态机，详见`动画状态机`一章。（TODO）
 
@@ -307,28 +309,15 @@ Scenes: new(
 )
 ```
 
-创建一个`Node2D`类型的新场景，设定以下结构：
+创建一个`Node2D`类型的新场景，只放一个节点即可：
 
 ```
-TestCharacterMerchant (Node2D)
+TestCharacterMerchant (任意)
 ```
 
-* 如果你使用Spine模型，第一个子节点放置`SpineSprite`，且动画名是`relaxed_loop`。
+* 如果你使用Spine模型，类型改为`SpineSprite`，默认播放动画名是`relaxed_loop`。
 
-* 如果你使用其他动画，创建一个继承了`NMerchantCharacter`的节点，并在`_Ready`函数里播放你自己的动画。静态图就不需要了。
-
-```csharp
-using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
-
-namespace Test.Scripts;
-
-public partial class NTestMerchantCharacter : NMerchantCharacter
-{
-    public override void _Ready()
-    {
-    }
-}
-```
+* 如果你是其他动画，改成你想要的类型即可。
 
 ## 自定义火堆模型
 

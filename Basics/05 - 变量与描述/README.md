@@ -2,7 +2,7 @@
 
 ## Godot原生
 
-由于是`RichTextLabel`，Godot原生的bbcode都可以使用，参考 https://docs.godotengine.org/zh-cn/4.x/tutorials/ui/bbcode_in_richtextlabel.html 。
+由于描述是`RichTextLabel`，Godot原生的bbcode都可以使用，参考 https://docs.godotengine.org/zh-cn/4.x/tutorials/ui/bbcode_in_richtextlabel.html 。
 
 速览：
 
@@ -100,10 +100,10 @@ https://github.com/axuno/SmartFormat/wiki
 
 | 名称 | 含义 | 典型写法 |
 | - | - | - |
-| `singleStarIcon` | 星星图标 | `每获得{singleStarIcon}时` |
+| `singleStarIcon` | 星星图标 | `每当你获得{singleStarIcon}时` |
 | `InCombat` | 是否处于战斗 | `{InCombat:\n（命中{CalculatedHits:diff()}次）\|}` |
-| `IsTargeting` | 当前是否有目标 | `{IsTargeting:\n（造成{CalculatedDamage:diff()}）\|}` |
-| `OnTable` | 牌是否在手牌或出牌区 | `{OnTable:cond:true?在场上\|不在场上}` |
+| `IsTargeting` | 当前是否有目标 | `{IsTargeting:\n（造成{CalculatedDamage:diff()}点伤害）\|}` |
+| `OnTable` | 牌是否在手牌或出牌区 | `{OnTable:在场上\|不在场上}` |
 | `IfUpgraded` | 是否升级 | `[gold]升级[/gold]你[gold]手牌[/gold]中的{IfUpgraded:show:所有牌\|一张牌}。` |
 
 
