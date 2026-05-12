@@ -49,7 +49,8 @@ public class TestMonster : ModMonsterTemplate
     // 战斗开始时，在这里给自己上buff之类
     public override async Task AfterAddedToRoom()
     {
-        await PowerCmd.Apply<StrengthPower>(Creature, 2m, Creature, null);
+        await PowerCmd.Apply<StrengthPower>(Creature, 2m, Creature, null); 
+        //await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Creature, 2m, Creature, null); // 测试版
     }
 
     protected override MonsterMoveStateMachine GenerateMoveStateMachine()
