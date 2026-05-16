@@ -27,10 +27,16 @@ public class MyKeywords
 }
 ```
 
-* 然后在你的卡牌类里添加这一行添加自定义keyword：
+* 然后在你的卡牌类里的这里添加自定义keyword：
 
 ```csharp
-    protected override IEnumerable<string> RegisteredKeywordIds => [MyKeywords.Unique];
+using STS2RitsuLib.Keywords; // 需要额外using这个
+
+// 写在你的卡牌类里
+public override IEnumerable<CardKeyword> CanonicalKeywords => [
+    MyKeywords.Unique.GetModKeywordCardKeyword(), // 添加自定义关键词
+    // CardKeyword.Exhaust, // 添加原版关键词
+];
 ```
 
 判断是否有：`card.HasModKeyword(MyKeywords.Unique)`
@@ -115,6 +121,8 @@ public class TestCard : ModCardTemplate
 
 tag是指`打击` `防御`这种。如果有打击tag会被打击木偶增伤。
 
+不要忘记给你的打击和防御加上strike和defend的tag。
+
 ```csharp
 [RegisterOwnedCardTag(nameof(Heavy))]
 // [RegisterOwnedCardTag(nameof(Heavy2))] // 添加更多就新加这个特性
@@ -129,13 +137,19 @@ public class MyTags
 然后在你的卡牌类里添加：
 
 ```csharp
-    protected override IEnumerable<string> RegisteredCardTagIds => [MyTags.Heavy];
+using STS2RitsuLib.CardTags; // 需要额外using这个
+
+// 在你的卡牌类里添加这个或在已有的里添加
+protected override HashSet<CardTag> CanonicalTags => [
+    MyTags.Heavy.GetModCardTag(), // 添加自定义tag
+    // CardTag.Strike, // 添加原版tag
+];
 ```
 
 需要使用时这么写。`Card`需要是个`CardModel`类型。
 
 ```csharp
-if (cardPlay.Card.HasModCardTag(MyTags.Heavy))
+if (Card.HasModCardTag(MyTags.Heavy))
 {
     // Do something
 }

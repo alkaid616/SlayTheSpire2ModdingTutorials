@@ -1,51 +1,66 @@
-`RitsuLib`提供了一套通知提示服务，用于向玩家显示非侵入式消息。
+`RitsuLib`提供了一套通知提示服务，用于向玩家显示非侵入式消息。框架会在 `GameReadyEvent` 之后把 Toast 挂到游戏根节点，建议在局内/UI 就绪后再调用。
 
-## 快速开始
+## 使用方式
 
 ```csharp
+using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Modding;
+using STS2RitsuLib;
 using STS2RitsuLib.Ui.Toast;
 
-RitsuToastService.ShowInfo("卡牌已加入牌组！");
-RitsuToastService.ShowWarning("生命值过低！", "警告");
-RitsuToastService.ShowError("保存失败。", onClick: () => RetrySave());
+namespace Test.Scripts;
+
+[ModInitializer(nameof(Init))]
+public class Entry
+{
+    public const string ModId = "Test";
+    public static readonly Logger Logger = RitsuLibFramework.CreateLogger(ModId);
+
+    public static void Init()
+    {
+        RitsuLibFramework.SubscribeLifecycle<GameReadyEvent>(_ =>
+        {
+            // 显示 Toast 信息。
+            // ShowInfo：普通提示，参数为正文, 标题（可选），点击动作（可选）
+            RitsuToastService.ShowInfo("Mod 已加载");
+
+            // ShowWarning：警告
+            RitsuToastService.ShowWarning("生命值过低", "警告");
+
+            // ShowError：错误
+            RitsuToastService.ShowError(
+                "保存失败。",
+                onClick: () => Logger.Info("用户点击了 Toast"));
+        });
+    }
+}
 ```
 
-## 完整请求
-
-如需完全控制，构造`RitsuToastRequest`：
+需要完全控制样式与动画时，构造 `RitsuToastRequest` 并交给 `Show`：
 
 ```csharp
+using Godot;
+using STS2RitsuLib.Ui.Toast;
+
 RitsuToastService.Show(new RitsuToastRequest(
+    // 正文，必填
     body: "新配方已解锁！",
+    // 标题，可空
     title: "配方",
+    // 左侧图片，可空
     image: myTexture,
+    // 级别。
+    // Info：普通提示
+    // Warning：警告
+    // Error：错误
     level: RitsuToastLevel.Info,
+    // 显示秒数，null 用默认 3.5 秒
     durationSeconds: 5.0,
-    onClick: () => OpenRecipeScreen(),
-    animationOverride: RitsuToastAnimationPreset.FadeScale
-));
-```
-
-## 请求属性
-
-* `Body`：正文文本（必需）。
-* `Title`：可选的标题。
-* `Image`：可选的前置图片。
-* `Level`：通知级别，`Info`、`Warning`、`Error`，每个级别有不同的默认样式。
-* `DurationSeconds`：持续时间（null=全局默认3.5秒）。
-* `OnClick`：可选的点击回调。
-* `AnimationOverride`：动画覆盖。
-
-## 动画预设
-
-* `Fade`：仅淡入淡出。
-* `FadeSlide`：淡入淡出+方向滑动（默认）。
-* `FadeScale`：淡入淡出+缩放。
-
-## 静态工厂方法
-
-```csharp
-var req = RitsuToastRequest.Info("正文", "标题");
-var req = RitsuToastRequest.Warning("正文");
-var req = RitsuToastRequest.Error("正文", "标题");
+    // 点击正文时触发，可空
+    onClick: () => Logger.Info("打开配方界面"),
+    // 动画。
+    // Fade：仅淡入淡出
+    // FadeSlide：淡入淡出并滑动，全局默认
+    // FadeScale：淡入淡出并缩放
+    animationOverride: RitsuToastAnimationPreset.FadeScale));
 ```
