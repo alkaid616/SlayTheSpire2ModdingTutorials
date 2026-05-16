@@ -2,7 +2,7 @@
 
 `RitsuLib`提供了一套结构化的数据持久化层，支持作用域存储、档位切换、备份回退以及数据迁移。
 
-`SavedAttachedState` 已经在「数据保存」一章介绍过，这里介绍更通用的 `ModDataStore` 持久化方案。
+`SavedAttachedState` 已经在 [数据保存](../01%20-%20数据保存/README.md) 介绍过，这里介绍更通用的 `ModDataStore` 持久化方案。
 
 ## 注册数据
 

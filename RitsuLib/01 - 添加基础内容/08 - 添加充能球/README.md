@@ -67,7 +67,7 @@ public class TestOrb : ModOrbTemplate
 
 使用`await OrbCmd.Channel<TestOrb>(choiceContext, cardPlay.Card.Owner)`以生成。
 
-![alt text](../../images/image28.png)
+![alt text](../../../images/image28.png)
 
 `test_orb.tscn`:
 
