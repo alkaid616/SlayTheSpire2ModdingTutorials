@@ -1,7 +1,9 @@
 ---
 title: 杀戮尖塔2mod制作教程
-date: 2026-03-07 00:00:00
+date: 2026-03-07 16:46:55
 permalink: /
+categories:
+- Basics
 ---
 # 《杀戮尖塔2》模组制作指南
 

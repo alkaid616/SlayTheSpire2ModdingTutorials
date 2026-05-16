@@ -1,6 +1,6 @@
 ---
 title: 添加先古之民
-date: 2026-04-21 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/04-ritsulib/04-07-add-ancient/
 categories:
 - Basics
@@ -128,7 +128,7 @@ public class TestAncient : ModAncientEventTemplate
 }
 ```
 
-![alt text](../../images/image27.png)
+![alt text](../../../images/image27.png)
 
 场景示例`test_ancient.tscn`：
 ```

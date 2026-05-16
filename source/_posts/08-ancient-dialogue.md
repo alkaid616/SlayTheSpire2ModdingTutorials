@@ -1,6 +1,6 @@
 ---
 title: 先古对话
-date: 2026-03-28 00:00:00
+date: 2026-03-28 16:27:14
 permalink: docs/08-ancient-dialogue/
 categories:
 - Basics

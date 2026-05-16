@@ -15,13 +15,23 @@
 			<%= site.categories.length %>
 		</div>
 	</div>
-	<div class="kira-search-panel">
-		<div class="kira-search-input-wrap">
-			<i class="kirafont icon-search"></i>
-			<input id="kira-search-input" type="search" placeholder="搜索全部文章内容..." autocomplete="off" />
+	<button type="button" class="kira-panel-reopen" id="kira-sidebar-reopen" hidden title="展开导航" aria-label="展开导航">
+		<i class="kirafont icon-caret-up kira-reopen-icon" aria-hidden="true"></i>
+	</button>
+	<div class="kira-sidebar-inner">
+		<div class="kira-sidebar-top">
+			<div class="kira-search-panel">
+				<div class="kira-search-input-wrap">
+					<i class="kirafont icon-search"></i>
+					<input id="kira-search-input" type="search" placeholder="搜索全部文章内容..." autocomplete="off" />
+				</div>
+				<div id="kira-search-results" class="kira-search-results" hidden></div>
+			</div>
+			<button type="button" class="kira-collapse-toggle" id="kira-sidebar-collapse" aria-expanded="true" aria-controls="kira-sidebar-scroll" title="折叠导航" aria-label="折叠导航">
+				<i class="kirafont icon-caret-up kira-collapse-icon" aria-hidden="true"></i>
+			</button>
 		</div>
-		<div id="kira-search-results" class="kira-search-results" hidden></div>
-	</div>
+		<div class="kira-sidebar-scroll kira-scrollbar" id="kira-sidebar-scroll">
 	<div class="kira-list kira-docs-tree kira-explorer">
 		<% if (theme.docsTree && theme.docsTree.length) { %>
 			<ul class="kira-explorer-list kira-explorer-root">
@@ -133,6 +143,8 @@
 							<% } %>
 								<%- theme.sidebar %>
 			</div>
+		</div>
+	</div>
 </div>
 <div class="kira-sidebar-modal" id="sidebar-modal" onclick="(function(self) {
 		self.classList.remove('show');
@@ -266,6 +278,20 @@
 			}
 		});
 
+		function toggleFolderFromRow(event, row) {
+			if (event.target.closest('.kira-explorer-toggle')) return;
+			var folder = row.closest('.kira-explorer-node.is-folder');
+			if (!folder) return;
+			var link = event.target.closest('a.kira-explorer-link');
+			if (link && (event.ctrlKey || event.metaKey || event.shiftKey || event.button === 1)) {
+				return;
+			}
+			if (link && !link.classList.contains('is-label')) {
+				event.preventDefault();
+			}
+			setFolderOpen(folder, !folder.classList.contains('is-open'), true);
+		}
+
 		tree.querySelectorAll('.kira-explorer-toggle').forEach(function (btn) {
 			btn.addEventListener('click', function (event) {
 				event.preventDefault();
@@ -273,6 +299,12 @@
 				var folder = btn.closest('.kira-explorer-node.is-folder');
 				if (!folder) return;
 				setFolderOpen(folder, !folder.classList.contains('is-open'), true);
+			});
+		});
+
+		tree.querySelectorAll('.kira-explorer-node.is-folder > .kira-explorer-row').forEach(function (row) {
+			row.addEventListener('click', function (event) {
+				toggleFolderFromRow(event, row);
 			});
 		});
 
@@ -339,6 +371,7 @@
 				if (box) resizeObserver.observe(box);
 			});
 		}
+
 	})();
 </script>
 <script>

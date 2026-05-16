@@ -1,6 +1,6 @@
 ---
 title: 环境配置
-date: 2026-03-15 00:00:00
+date: 2026-03-07 16:46:55
 permalink: docs/01-env-setup/
 categories:
 - Basics

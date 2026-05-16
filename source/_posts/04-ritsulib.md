@@ -1,6 +1,6 @@
 ---
 title: RitsuLib
-date: 2026-04-21 00:00:00
+date: 2026-04-21 19:17:14
 permalink: docs/04-ritsulib/
 categories:
 - Basics
@@ -9,7 +9,7 @@ categories:
 
 https://github.com/BAKAOLC/STS2-RitsuLib
 
-> 以下内容使用ritsulib0.2.15。
+> 以下内容使用ritsulib0.2.32。
 
 先依赖ritsulib才能查看这里里面的文章。
 
@@ -55,8 +55,6 @@ https://github.com/BAKAOLC/STS2-RitsuLib
 
 * 分发时，可以把自己的mod和`STS2-RitsuLib.XXX.variant-pack.zip`解压后的打包给玩家。该版本可以自己检测游戏版本并使用对应的库。
 
-下面展示`RitsuLib`的各种功能。如果你想马上做出一张卡牌，先看`初始化函数`就行。
-
 ## 初始化函数
 
 ```csharp
@@ -77,7 +75,7 @@ public class Entry
 
     public static void Init()
     {
-        // harmony可用，但是最好用ritsu的封装patch（TODO）
+        // harmony可用，但是最好用ritsu的封装patch，见补丁系统一章
         // var harmony = new Harmony("com.example.testmod");
         // harmony.PatchAll();
         var assembly = Assembly.GetExecutingAssembly();

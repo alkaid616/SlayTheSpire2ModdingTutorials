@@ -1,9 +1,9 @@
 ---
 title: BaseLib 至 RitsuLib
-date: 2026-04-21 00:00:00
+date: 2026-04-21 19:17:14
 permalink: docs/08-migration-baselib-to-ritsulib/
 categories:
-- Migration
+- Basics
 ---
 将你的`BaseLib`开发的mod与`RitsuLib`开发的mod相互迁移的指南。
 

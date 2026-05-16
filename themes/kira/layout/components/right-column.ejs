@@ -1,122 +1,27 @@
-<div class="kira-right-column">
-	<div class="kira-chapters-panel" id="kira-chapters-panel" style="display: none;">
-		<div class="kira-chapters-title">章节导航</div>
-		<nav class="kira-chapters-nav" aria-label="文章章节导航">
-			<ul id="kira-chapters-list"></ul>
-		</nav>
+<div class="kira-right-column" id="kira-toc-column">
+	<button type="button" class="kira-panel-reopen kira-panel-reopen--toc" id="kira-toc-reopen" hidden title="展开本页目录" aria-label="展开本页目录">
+		<i class="kirafont icon-caret-up kira-reopen-icon" aria-hidden="true"></i>
+	</button>
+	<div class="kira-chapters-panel" id="kira-chapters-panel">
+		<div class="kira-panel-header">
+			<div class="kira-chapters-title">本页目录</div>
+			<button type="button" class="kira-collapse-toggle" id="kira-toc-collapse" aria-expanded="true" aria-controls="kira-chapters-body" title="折叠本页目录" aria-label="折叠本页目录">
+				<i class="kirafont icon-caret-up kira-collapse-icon" aria-hidden="true"></i>
+			</button>
+		</div>
+		<div class="kira-chapters-body" id="kira-chapters-body">
+			<nav class="kira-chapters-nav kira-scrollbar" aria-label="文章目录">
+				<ul id="kira-chapters-list"></ul>
+			</nav>
+		</div>
 	</div>
-	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop"
-		aria-label="回到顶部" title="回到顶部">
-		<button class="mdui-fab mdui-ripple">
-			<i class="kirafont icon-caret-up"></i>
-		</button>
-	</a>
+	<div class="kira-floating-stack">
+		<%- include("community-dock") %>
+		<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop"
+			aria-label="回到顶部" title="回到顶部">
+			<button class="mdui-fab mdui-ripple">
+				<i class="kirafont icon-caret-up"></i>
+			</button>
+		</a>
+	</div>
 </div>
-
-<script>
-	(function () {
-		function setActiveItem(list, targetId) {
-			var items = list.querySelectorAll('.kira-chapter-item');
-			items.forEach(function (item) {
-				var link = item.querySelector('a');
-				if (!link) {
-					return;
-				}
-				var id = (link.getAttribute('href') || '').replace(/^#/, '');
-				item.classList.toggle('is-active', id === targetId);
-			});
-		}
-
-		function buildChapters() {
-			var panel = document.getElementById('kira-chapters-panel');
-			var list = document.getElementById('kira-chapters-list');
-			var article = document.querySelector('.kira-main-content .kira-post article');
-			var content = document.querySelector('.kira-content');
-
-			if (!panel || !list || !article || !content) {
-				return;
-			}
-
-			var headings = article.querySelectorAll('h2, h3');
-			if (!headings.length) {
-				panel.style.display = 'none';
-				return;
-			}
-
-			list.innerHTML = '';
-			var chapterTargets = [];
-			headings.forEach(function (heading, index) {
-				var level = heading.tagName.toLowerCase();
-				var spanWithId = heading.querySelector('span[id]');
-				var id = spanWithId ? spanWithId.id : heading.id;
-				var targetElement = spanWithId || heading;
-
-				if (!id) {
-					id = 'chapter-' + (index + 1);
-					heading.id = id;
-					targetElement = heading;
-				}
-
-				var text = heading.textContent ? heading.textContent.trim() : '';
-				if (!text) {
-					return;
-				}
-
-				var li = document.createElement('li');
-				li.className = 'kira-chapter-item ' + (level === 'h3' ? 'is-sub' : '');
-
-				var a = document.createElement('a');
-				a.href = '#' + id;
-				a.textContent = text;
-				a.addEventListener('click', function (event) {
-					event.preventDefault();
-					var contentRect = content.getBoundingClientRect();
-					var targetRect = targetElement.getBoundingClientRect();
-					var nextTop = content.scrollTop + (targetRect.top - contentRect.top) - 14;
-					content.scrollTo({ top: Math.max(0, nextTop), behavior: 'smooth' });
-					setActiveItem(list, id);
-				});
-
-				li.appendChild(a);
-				list.appendChild(li);
-				chapterTargets.push({ id: id, el: targetElement });
-			});
-
-			if (!list.children.length) {
-				panel.style.display = 'none';
-				return;
-			}
-
-			panel.style.display = 'block';
-
-			function syncActiveByScroll() {
-				if (!chapterTargets.length) {
-					return;
-				}
-
-				var containerRect = content.getBoundingClientRect();
-				var triggerTop = containerRect.top + 120;
-				var currentId = chapterTargets[0].id;
-
-				chapterTargets.forEach(function (item) {
-					var top = item.el.getBoundingClientRect().top;
-					if (top <= triggerTop) {
-						currentId = item.id;
-					}
-				});
-
-				setActiveItem(list, currentId);
-			}
-
-			content.addEventListener('scroll', syncActiveByScroll, { passive: true });
-			window.addEventListener('resize', syncActiveByScroll);
-			syncActiveByScroll();
-		}
-
-		if (document.readyState === 'loading') {
-			document.addEventListener('DOMContentLoaded', buildChapters);
-		} else {
-			buildChapters();
-		}
-	})();
-</script>

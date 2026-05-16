@@ -1,9 +1,9 @@
 ---
 title: 卡图&Spine
-date: 2026-03-13 00:00:00
+date: 2026-03-13 16:06:16
 permalink: docs/05-card-art-and-skin-replacement/
 categories:
-- Visuals
+- Basics
 ---
 ## 卡图替换
 

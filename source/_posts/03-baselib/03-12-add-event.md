@@ -1,6 +1,6 @@
 ---
 title: 添加新事件
-date: 2026-04-11 16:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/03-baselib/03-12-add-event/
 categories:
 - Basics
@@ -125,7 +125,7 @@ public sealed class TestEvent : CustomEventModel
 
 ```
 
-![alt text](../../images/image33.png)
+![alt text](../../../images/image33.png)
 
 ## 战斗事件
 

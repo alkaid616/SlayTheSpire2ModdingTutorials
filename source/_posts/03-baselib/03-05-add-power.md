@@ -1,6 +1,6 @@
 ---
 title: 添加新能力
-date: 2026-04-02 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/03-baselib/03-05-add-power/
 categories:
 - Basics
@@ -39,4 +39,4 @@ public class TestPower : CustomPowerModel
 
 然后使用`PowerCmd.Apply<TestPower>(...)`给予即可。或者使用控制台`power TEST-TEST_POWER 1 0`。
 
-![alt text](../../images/image25.png)
+![alt text](../../../images/image25.png)

@@ -1,6 +1,6 @@
 ---
 title: 变量与描述
-date: 2026-03-25 00:00:00
+date: 2026-03-25 22:22:47
 permalink: docs/05-variable-and-description/
 categories:
 - Basics
@@ -9,7 +9,7 @@ categories:
 
 ## Godot原生
 
-由于是`RichTextLabel`，Godot原生的bbcode都可以使用，参考 https://docs.godotengine.org/zh-cn/4.x/tutorials/ui/bbcode_in_richtextlabel.html 。
+由于描述是`RichTextLabel`，Godot原生的bbcode都可以使用，参考 https://docs.godotengine.org/zh-cn/4.x/tutorials/ui/bbcode_in_richtextlabel.html 。
 
 速览：
 
@@ -107,12 +107,31 @@ https://github.com/axuno/SmartFormat/wiki
 
 | 名称 | 含义 | 典型写法 |
 | - | - | - |
-| `singleStarIcon` | 星星图标 | `每获得{singleStarIcon}时` |
+| `singleStarIcon` | 星星图标 | `每当你获得{singleStarIcon}时` |
 | `InCombat` | 是否处于战斗 | `{InCombat:\n（命中{CalculatedHits:diff()}次）\|}` |
-| `IsTargeting` | 当前是否有目标 | `{IsTargeting:\n（造成{CalculatedDamage:diff()}）\|}` |
-| `OnTable` | 牌是否在手牌或出牌区 | `{OnTable:cond:true?在场上\|不在场上}` |
+| `IsTargeting` | 当前是否有目标 | `{IsTargeting:\n（造成{CalculatedDamage:diff()}点伤害）\|}` |
+| `OnTable` | 牌是否在手牌或出牌区 | `{OnTable:在场上\|不在场上}` |
 | `IfUpgraded` | 是否升级 | `[gold]升级[/gold]你[gold]手牌[/gold]中的{IfUpgraded:show:所有牌\|一张牌}。` |
 
+## 能力独有
+
+能力的提示本地化里通常写三条：`description`、`smartDescription`，联机时还可写 `remoteDescription`。
+
+- **`description`**：静态描述。能力非可变（例如从卡牌弹出的这个能力的提示显示非smart文本）使用，没有任何独有变量。
+- **`smartDescription`**：动态描述。能力可变（悬浮玩家角色弹出的提示）且配置了 `smartDescription` 时使用，会注入下文列出的运行时变量并叠加 `DynamicVars`。
+- **`remoteDescription`**：联机专用。当能力由他人施加（`Applier` 存在且不是本地玩家）且配置了该键时，用其替换 `smartDescription`。
+
+`smartDescription` / `remoteDescription` 可用的运行时变量：
+
+| 名称 | 含义 | 典型写法 |
+| - | - | - |
+| `Amount` | 当前层数/数值 | `获得[blue]{Amount}[/blue]点[gold]力量[/gold]。` |
+| `OnPlayer` | 持有者是否为玩家 | `{OnPlayer:你\|该敌人}获得{Amount}点力量。` |
+| `IsMultiplayer` | 本场战斗是否多人 | `{IsMultiplayer:（联机）\|}` |
+| `PlayerCount` | 本场战斗玩家数量 | `场上共有{PlayerCount}名玩家。` |
+| `OwnerName` | 持有者名称 | `{OwnerName}获得{Amount}点力量。` |
+| `ApplierName` | 施加者名称 | `由{ApplierName}施加。` |
+| `TargetName` | 目标名称 | `对{TargetName}生效。` |
 
 ## DynamicVar
 

@@ -1,6 +1,6 @@
 ---
 title: 添加新人物
-date: 2026-04-21 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/04-ritsulib/04-14-add-new-character/
 categories:
 - Basics
@@ -44,6 +44,8 @@ public class TestCardPool : TypeListCardPoolModel
     public override Color EnergyOutlineColor => new(0.5f, 0.5f, 1f);
     // 如果你想用原版卡框换色，加这两行
     private static readonly Material? _poolFrameMaterial = MaterialUtils.CreateRgbShaderMaterial(0.5f, 0.5f, 1f);
+    // 如果你是自定义卡框，上面一行换成这个
+    // private static readonly Material? _poolFrameMaterial = MaterialUtils.CreateUnmodulatedHsvShaderMaterial();
     public override Material? PoolFrameMaterial => _poolFrameMaterial;
 
     // 卡池是否是无色。例如事件、状态等卡池就是无色的。
@@ -155,7 +157,7 @@ public class TestCharacter : ModCharacterTemplate<TestCardPool, TestRelicPool, T
                 // 商店人物场景。
                 MerchantAnimPath: "res://Test/scenes/test_character_merchant.tscn"
                 // 篝火休息场景。
-                // RestSiteAnimPath: "res://Test/scenes/test_character_rest_site.tscn"
+                RestSiteAnimPath: "res://Test/scenes/test_character_rest_site.tscn"
             ),
             Ui: new(
                 // 人物头像路径。
@@ -233,7 +235,7 @@ public class TestCharacter : ModCharacterTemplate<TestCardPool, TestRelicPool, T
 
 没什么要求，Godot里创建一个新的场景，类型为`Control`，自己搭建场景即可。参考：（根节点大小建议为2560x1200，可从最下方复制tscn资源）
 
-![人物背景](../../images/image17.png)
+![人物背景](../../../images/image17.png)
 
 ## 自定义人物
 
@@ -263,7 +265,7 @@ TestCharacter (Node2D)
 * 人物显示在x轴上方。
 * 如果想使用3d模型，新建`visuals→subviewportcontainer→subviewport`的层级结构，然后在`subviewport`中添加`camera3d`和任意3d模型，在3d视图中调整视角至2d视图正常显示。最后设置`subviewport`的`transparent`为`true`。
 
-![alt text](../../images/image18.png)
+![alt text](../../../images/image18.png)
 
 * 附赠资源提供了一个单图尽可能覆盖全屏的场景，只要把图片换成你的人物背景图即可。
 
@@ -271,7 +273,7 @@ TestCharacter (Node2D)
 
 * 其中`Visuals`可以更改成任意继承了`Node2D`的类型，例如`SpineSprite`，`Sprite2D`，`AnimatedSprite2D`或是`AnimationPlayer`，或者在它之下新建节点都可。
 
-* 如果要自然支持Spine播放，需要把`Visuals`改成`SpineSprite`，且你的战斗人物模型需要有`idle_loop`（待机循环），`attack`（攻击动作），`cast`（能力卡动作），`hurt`（受伤），`die`（死亡）这些动画名。（如果你没有`SpineSprite`，参考`卡图&皮肤替换`一章先下载`Spine Godot Extension`。）
+* 如果要自然支持Spine播放，需要把`Visuals`改成`SpineSprite`类型（不需要改名），且你的战斗人物模型需要有`idle_loop`（待机循环），`attack`（攻击动作），`cast`（能力卡动作），`hurt`（受伤），`die`（死亡）这些动画名。（如果你没有`SpineSprite`，参考`卡图&皮肤替换`一章先下载`Spine Godot Extension`。）
 
 * 非Spine需要使用动画状态机，详见`动画状态机`一章。（TODO）
 
@@ -302,7 +304,7 @@ TestEnergyCounter (Control)
 * 后面标`%`的需要作为唯一名称访问。名字不要改，label也是。
 * RotationLayers里放需要旋转的图层。没有也行。
 
-![alt text](../../images/image19.png)
+![alt text](../../../images/image19.png)
 
 ## 自定义商店模型
 
@@ -314,28 +316,15 @@ Scenes: new(
 )
 ```
 
-创建一个`Node2D`类型的新场景，设定以下结构：
+创建一个`Node2D`类型的新场景，只放一个节点即可：
 
 ```
-TestCharacterMerchant (Node2D)
+TestCharacterMerchant (任意)
 ```
 
-* 如果你使用Spine模型，第一个子节点放置`SpineSprite`，且动画名是`relaxed_loop`。
+* 如果你使用Spine模型，类型改为`SpineSprite`，默认播放动画名是`relaxed_loop`。
 
-* 如果你使用其他动画，创建一个继承了`NMerchantCharacter`的节点，并在`_Ready`函数里播放你自己的动画。静态图就不需要了。
-
-```csharp
-using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
-
-namespace Test.Scripts;
-
-public partial class NTestMerchantCharacter : NMerchantCharacter
-{
-    public override void _Ready()
-    {
-    }
-}
-```
+* 如果你是其他动画，改成你想要的类型即可。
 
 ## 自定义火堆模型
 
@@ -509,15 +498,15 @@ TestCharacterRestSite (Node2D)
 }
 ```
 
-![alt text](../../images/image20.png)
+![alt text](../../../images/image20.png)
 
 ## 附赠资源
 
 <div style="display:flex; gap:8px; flex-wrap:nowrap;">
-    <img src="../../images/image21.png" alt="image21" style="width:24%;" />
-    <img src="../../images/image22.png" alt="image22" style="width:24%;" />
-    <img src="../../images/energy_test.png" alt="energy_test" style="width:24px; height:24px; object-fit:contain; max-width:none; flex:0 0 auto;" />
-    <img src="../../images/energy_test_big.png" alt="energy_test_big" style="width:74px; height:74px; object-fit:contain; max-width:none; flex:0 0 auto;" />
+    <img src="../../../images/image21.png" alt="image21" style="width:24%;" />
+    <img src="../../../images/image22.png" alt="image22" style="width:24%;" />
+    <img src="../../../images/energy_test.png" alt="energy_test" style="width:24px; height:24px; object-fit:contain; max-width:none; flex:0 0 auto;" />
+    <img src="../../../images/energy_test_big.png" alt="energy_test_big" style="width:74px; height:74px; object-fit:contain; max-width:none; flex:0 0 auto;" />
 </div>
 
 ### test_bg.tscn
@@ -615,13 +604,11 @@ color = Color(0.121879734, 0.15283081, 0.33476263, 1)
 ### test_character.tscn
 
 ```tscn
-[gd_scene load_steps=3 format=3 uid="uid://c4dnpxxd6ldei"]
+[gd_scene load_steps=2 format=3 uid="uid://c4dnpxxd6ldei"]
 
 [ext_resource type="Texture2D" uid="uid://hn2nofekpwrp" path="res://icon.svg" id="1_hxav6"]
-[ext_resource type="Script" uid="uid://6m0cydgurd52" path="res://Scripts/NTestCharacter.cs" id="1_iwskh"]
 
 [node name="TestCharacter" type="Node2D"]
-script = ExtResource("1_iwskh")
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true

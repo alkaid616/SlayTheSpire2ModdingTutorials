@@ -1,0 +1,160 @@
+<% if (theme.social && Object.keys(theme.social).length) { %>
+
+	<div class="kira-community-dock" aria-label="社区链接">
+
+		<% for (name in theme.social) { %>
+
+			<% var href = theme.social[name][0]; var isExternal = /^https?:\/\//.test(href); var isQQ = name.indexOf('QQ') !== -1; %>
+
+			<% if (isQQ) { %>
+
+				<button
+
+					type="button"
+
+					class="kira-community-dock-btn kira-community-dock-btn--icon kira-social-qq"
+
+					title="<%= name %>"
+
+					aria-label="<%= name %>"
+
+					style="color: <%= theme.social[name][2] %>; background-color: <%= theme.social[name][3] %>;"
+
+				>
+
+					<img class="kira-community-dock-icon" src="<%- url_for('/images/icon-qq.svg') %>" alt="" width="22" height="22" />
+
+					<span class="kira-community-dock-tip"><%= name %></span>
+
+				</button>
+
+			<% } else { %>
+
+				<a
+
+					class="kira-community-dock-btn kira-community-dock-btn--icon mdui-ripple"
+
+					href="<%= isExternal ? href : url_for(href) %>"
+
+					<% if (isExternal) { %>target="_blank" rel="noopener noreferrer"<% } %>
+
+					title="<%= name %>"
+
+					aria-label="<%= name %>"
+
+					style="color: <%= theme.social[name][2] %>; background-color: <%= theme.social[name][3] %>;"
+
+				>
+
+					<i class="kirafont <%= theme.social[name][1] || 'icon-github' %>"></i>
+
+					<span class="kira-community-dock-tip"><%= name %></span>
+
+				</a>
+
+			<% } %>
+
+		<% } %>
+
+	</div>
+
+	<div class="kira-qq-modal" id="kira-qq-modal" aria-hidden="true">
+
+		<div class="kira-qq-modal-backdrop" data-close="qq-modal" aria-hidden="true"></div>
+
+		<div class="kira-qq-panel" role="dialog" aria-modal="true" aria-label="QQ群二维码">
+
+			<button type="button" class="kira-qq-panel-close" data-close="qq-modal" aria-label="关闭">&times;</button>
+
+			<img class="kira-qq-panel-image" src="<%- url_for('/qq_group.jpg') %>" alt="" draggable="false" />
+
+			<div class="kira-qq-panel-caption">MOD交流群：542370192</div>
+
+		</div>
+
+	</div>
+
+	<script>
+
+		(function () {
+
+			var modal = document.getElementById('kira-qq-modal');
+
+			if (!modal) return;
+
+
+
+			var closingTimer = null;
+
+			var ANIM_MS = 360;
+
+
+
+			function openModal() {
+				if (closingTimer) {
+					clearTimeout(closingTimer);
+					closingTimer = null;
+				}
+				modal.classList.remove('is-closing');
+				modal.classList.remove('is-open');
+				modal.setAttribute('aria-hidden', 'false');
+				requestAnimationFrame(function () {
+					requestAnimationFrame(function () {
+						modal.classList.add('is-open');
+					});
+				});
+			}
+
+
+
+			function closeModal() {
+
+				if (!modal.classList.contains('is-open')) return;
+
+				modal.classList.add('is-closing');
+
+				modal.classList.remove('is-open');
+
+				modal.setAttribute('aria-hidden', 'true');
+
+				closingTimer = setTimeout(function () {
+
+					modal.classList.remove('is-closing');
+
+					closingTimer = null;
+
+				}, ANIM_MS);
+
+			}
+
+
+
+			document.querySelectorAll('.kira-social-qq').forEach(function (btn) {
+
+				btn.addEventListener('click', openModal);
+
+			});
+
+
+
+			modal.querySelectorAll('[data-close="qq-modal"]').forEach(function (el) {
+
+				el.addEventListener('click', closeModal);
+
+			});
+
+
+
+			document.addEventListener('keydown', function (event) {
+
+				if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+
+			});
+
+		})();
+
+	</script>
+
+<% } %>
+
+

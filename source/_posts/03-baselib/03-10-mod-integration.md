@@ -1,6 +1,6 @@
 ---
 title: mod联动
-date: 2026-04-02 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/03-baselib/03-10-mod-integration/
 categories:
 - Basics

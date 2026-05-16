@@ -1,6 +1,6 @@
 ---
-title: 常见问题
-date: 2026-03-15 00:00:00
+title: 安装、看源码、修改
+date: 2026-03-07 16:46:55
 permalink: docs/02-install-view-source-and-patch/
 categories:
 - Basics
