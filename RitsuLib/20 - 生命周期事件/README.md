@@ -1,8 +1,12 @@
+> 以下文章由AI编写，正在人工评阅，如有错误请提出。
+
 `RitsuLib`提供了一套生命周期事件系统，可以在游戏启动、跑局、战斗等各个阶段监听事件。
 
 ## 订阅方式
 
-推荐按类型订阅：
+可在初始化函数订阅。（`Entry.Init`）选择你喜欢的方式订阅。
+
+### lambda订阅
 
 ```csharp
 using STS2RitsuLib;
@@ -17,7 +21,7 @@ var sub = RitsuLibFramework.SubscribeLifecycle<GameReadyEvent>(evt =>
 sub.Dispose();
 ```
 
-* 可重放事件（`IReplayableFrameworkLifecycleEvent`）：若在事件已发生后才订阅，框架会立即以已存储的事件实例回调，无需关心订阅时机。
+### 接口订阅
 
 也可以通过`ILifecycleObserver`接口订阅多种事件：
 
@@ -32,7 +36,9 @@ public class MyObserver : ILifecycleObserver
             HandleRunEnd(run);
     }
 }
+```
 
+```csharp
 RitsuLibFramework.SubscribeLifecycle(new MyObserver());
 ```
 
@@ -50,13 +56,6 @@ RitsuLibFramework.SubscribeLifecycle(new MyObserver());
 * `ContentRegistrationClosedEvent` — 内容注册冻结，此后不能再注册新内容。
 * `ModelIdsInitializedEvent` — 模型ID初始化完成，可以安全获取`ModelDb.GetId<T>()`。
 * `GameReadyEvent` — 游戏就绪。
-
-```csharp
-RitsuLibFramework.SubscribeLifecycle<ModelIdsInitializedEvent>(_ =>
-{
-    var id = ModelDb.GetId<TestCard>();
-});
-```
 
 ### 跑局事件
 
@@ -77,14 +76,6 @@ RitsuLibFramework.SubscribeLifecycle<ModelIdsInitializedEvent>(_ =>
 * `CardDrawnEvent` — 抽牌，携带`Card`、`FromHandDraw`。
 * `CardDiscardedEvent` / `CardExhaustedEvent` — 弃牌/消耗。
 * `CreatureDyingEvent` / `CreatureDiedEvent` — 生物濒死/死亡。
-
-```csharp
-RitsuLibFramework.SubscribeLifecycle<CardDrawnEvent>(evt =>
-{
-    if (evt.Card is TestCard myCard)
-        myCard.OnDrawn(evt.CombatState);
-});
-```
 
 ### 奖励事件
 

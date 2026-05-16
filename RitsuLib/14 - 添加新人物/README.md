@@ -597,13 +597,11 @@ color = Color(0.121879734, 0.15283081, 0.33476263, 1)
 ### test_character.tscn
 
 ```tscn
-[gd_scene load_steps=3 format=3 uid="uid://c4dnpxxd6ldei"]
+[gd_scene load_steps=2 format=3 uid="uid://c4dnpxxd6ldei"]
 
 [ext_resource type="Texture2D" uid="uid://hn2nofekpwrp" path="res://icon.svg" id="1_hxav6"]
-[ext_resource type="Script" uid="uid://6m0cydgurd52" path="res://Scripts/NTestCharacter.cs" id="1_iwskh"]
 
 [node name="TestCharacter" type="Node2D"]
-script = ExtResource("1_iwskh")
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true
