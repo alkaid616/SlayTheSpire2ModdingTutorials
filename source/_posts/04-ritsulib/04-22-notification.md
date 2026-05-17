@@ -1,6 +1,6 @@
 ---
 title: 通知提示
-date: 2026-05-16 22:12:31
+date: 2026-05-16 23:27:19
 permalink: docs/04-ritsulib/04-22-notification/
 author: Reme、alkaid616
 categories:
@@ -32,10 +32,10 @@ public class Entry
             // ShowInfo：普通提示，参数为正文, 标题（可选），点击动作（可选）
             RitsuToastService.ShowInfo("Mod 已加载");
 
-            // ShowWarning：警告
+            // ShowWarning：警告，更改了标题
             RitsuToastService.ShowWarning("生命值过低", "警告");
 
-            // ShowError：错误
+            // ShowError：错误，包含一个点击回调
             RitsuToastService.ShowError(
                 "保存失败。",
                 onClick: () => Logger.Info("用户点击了 Toast"));

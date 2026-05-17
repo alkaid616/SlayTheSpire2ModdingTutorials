@@ -1,6 +1,6 @@
 ---
 title: 补丁系统
-date: 2026-05-16 22:12:31
+date: 2026-05-16 23:27:19
 permalink: docs/04-ritsulib/04-24-patch-system/
 author: Reme、alkaid616
 categories:
@@ -10,7 +10,7 @@ categories:
 
 原始的`Harmony`patch方式仍然可用，如果你要维护中大型项目建议使用该系统。
 
-仅讲解`RitsuLib`的Patch系统怎么用，其他请参考基础patch教程。（TODO）
+仅讲解`RitsuLib`的Patch系统怎么用，其他请参考基础patch教程。
 
 ## 基本流程
 

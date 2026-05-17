@@ -933,12 +933,24 @@
 
 .kira-content .kira-main-content figure.highlight table {
     width: max-content !important;
-    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+.kira-content .kira-main-content figure.highlight td.gutter {
+    width: auto !important;
+    white-space: nowrap !important;
+    vertical-align: top !important;
+}
+
+.kira-content .kira-main-content figure.highlight td.code {
+    width: auto !important;
 }
 
 .kira-content .kira-main-content figure.highlight pre {
     overflow: visible !important;
     white-space: pre !important;
+    width: max-content !important;
+    max-width: 100% !important;
 }
 
 @media (max-width: 1000px) {

@@ -14,7 +14,8 @@
     { "source": "Basics/06 - 先古对话/README.md", "post": "08-ancient-dialogue.md", "permalink": "docs/08-ancient-dialogue/", "title": "先古对话" },
     { "source": "Basics/07 - 快速调试&热重载/README.md", "post": "07-quick-debug-and-hot-reload.md", "permalink": "docs/07-quick-debug-and-hot-reload/", "title": "快速调试&热重载" },
     { "source": "Basics/08 - 启动参数/README.md", "post": "08-launch-arguments.md", "permalink": "docs/08-launch-arguments/", "title": "启动项参数" },
-    { "source": "Basics/09 - 控制台指令/README.md", "post": "09-console-commands.md", "permalink": "docs/09-console-commands/", "title": "控制台指令" }
+    { "source": "Basics/09 - 控制台指令/README.md", "post": "09-console-commands.md", "permalink": "docs/09-console-commands/", "title": "控制台指令" },
+    { "source": "Basics/10 - Patch/README.md", "post": "10-patch.md", "permalink": "docs/10-patch/", "title": "Patch" }
   ],
   "baselib": {
     "overview": {
