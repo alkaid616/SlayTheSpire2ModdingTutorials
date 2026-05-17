@@ -2,7 +2,7 @@
 
 原始的`Harmony`patch方式仍然可用，如果你要维护中大型项目建议使用该系统。
 
-仅讲解`RitsuLib`的Patch系统怎么用，其他请参考基础patch教程。（TODO）
+仅讲解`RitsuLib`的Patch系统怎么用，其他请参考基础patch教程。
 
 ## 基本流程
 

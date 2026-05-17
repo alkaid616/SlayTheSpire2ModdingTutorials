@@ -1,12 +1,10 @@
 `RitsuLib`提供了一套生命周期事件系统，可以在游戏启动、一局游戏、战斗等各个阶段监听事件。
 
-> 下列完整示例假设你已在项目中按 [RitsuLib README](../../README.md#初始化函数) 配置好 `Entry` 与 `ModId`。生命周期事件类型均在命名空间 `STS2RitsuLib` 下；`ProfileDataReadyEvent` 在 `STS2RitsuLib.Utils.Persistence`。
-
 ## 订阅方式
 
 在 `Entry.Init` 中订阅。选择你喜欢的方式订阅。
 
-### lambda订阅
+### 方式一：lambda订阅
 
 ```csharp
 using MegaCrit.Sts2.Core.Logging;
@@ -34,7 +32,7 @@ public class Entry
 }
 ```
 
-### 接口订阅
+### 方式二：接口订阅
 
 实现 `ILifecycleObserver` 以在一个类型里处理多种事件：
 
