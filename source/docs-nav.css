@@ -1056,6 +1056,7 @@
     max-height: 100% !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
+    scrollbar-gutter: stable;
 }
 
 /* Desktop: sidebar + content should fill the full available width. */
@@ -1101,12 +1102,19 @@
         flex: 1 1 auto !important;
         width: auto !important;
         max-width: none !important;
+        min-width: 0 !important;
         height: 100% !important;
         max-height: 100% !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+        scrollbar-gutter: stable;
+    }
+
+    .kira-content::-webkit-scrollbar {
+        width: var(--kira-scrollbar-size) !important;
+        display: block !important;
     }
 
     .kira-right-column {
@@ -1420,53 +1428,9 @@
     opacity: 1;
 }
 
+#kira-inline-toc,
 .kira-inline-toc {
-    margin: 12px 0 18px;
-    padding: 12px 14px;
-    border-radius: 10px;
-    background: rgba(32, 38, 46, 0.78);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.kira-inline-toc-title {
-    color: #d97519;
-    font-weight: 700;
-    margin-bottom: 8px;
-    font-size: 0.95rem;
-}
-
-.kira-inline-toc ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 6px;
-}
-
-.kira-inline-toc .kira-chapter-item a {
-    display: block;
-    color: #e8edf2;
-    text-decoration: none;
-    border-radius: 8px;
-    background: rgba(12, 16, 22, 0.45);
-    padding: 7px 10px;
-    line-height: 1.35;
-    font-size: 0.88rem;
-}
-
-.kira-inline-toc .kira-chapter-item.is-sub a {
-    margin-left: 10px;
-    font-size: 0.84rem;
-}
-
-.kira-inline-toc .kira-chapter-item.is-sub-2 a {
-    margin-left: 18px;
-    font-size: 0.8rem;
-}
-
-.kira-inline-toc .kira-chapter-item.is-active a {
-    background: #bb6516 !important;
-    color: #fff4e8 !important;
+    display: none !important;
 }
 
 /* Mobile header: reduce text clutter and keep dark nav bar. */
@@ -1476,6 +1440,34 @@
     body {
         height: auto !important;
         overflow: auto !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: var(--kira-scrollbar-thumb) var(--kira-scrollbar-track) !important;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        width: var(--kira-scrollbar-size) !important;
+        height: var(--kira-scrollbar-size) !important;
+        display: block !important;
+    }
+
+    html::-webkit-scrollbar-track,
+    body::-webkit-scrollbar-track {
+        background: var(--kira-scrollbar-track);
+        border-radius: 8px;
+    }
+
+    html::-webkit-scrollbar-thumb,
+    body::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, var(--kira-scrollbar-thumb), rgba(153, 82, 19, 0.95));
+        border-radius: 8px;
+        border: 1px solid var(--kira-scrollbar-thumb-border);
+    }
+
+    .kira-content {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
     }
 
     .kira-header {
@@ -1486,18 +1478,9 @@
         content: none !important;
     }
 
-    .kira-header>a.kira-header-home::after {
-        content: "教程" !important;
-        font-size: 0.92rem;
-        letter-spacing: 0.02em;
-    }
-
+    .kira-header-home,
     .kira-header-link {
-        display: inline-flex !important;
-    }
-
-    .kira-header-link::after {
-        content: none !important;
+        display: none !important;
     }
 
     .kira-header>a:first-child {
@@ -1510,8 +1493,30 @@
         color: #fff !important;
     }
 
-    .kira-header-link {
-        margin-right: 8px;
+    #kira-sidebar-collapse,
+    #kira-sidebar-reopen {
+        display: none !important;
+    }
+
+    #sidebar.is-collapsed {
+        width: 88vw !important;
+        min-width: 0 !important;
+        max-width: 88vw !important;
+    }
+
+    #sidebar.is-collapsed .kira-sidebar-inner {
+        opacity: 1 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+    }
+
+    .kira-sidebar-top {
+        padding-right: 20px;
+    }
+
+    .kira-sidebar-top .kira-search-panel {
+        flex: 1 1 100%;
+        width: 100%;
     }
 
     .kira-floating-stack {

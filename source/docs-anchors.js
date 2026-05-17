@@ -1,5 +1,9 @@
 (function () {
-  var SCROLL_OFFSET = 28;
+  var DESKTOP_MQ = "(min-width: 1001px)";
+  var SCROLL_OFFSET_DESKTOP = 28;
+
+  /** @type {{ article: HTMLElement, tocIdSet: Set<string>, scrollLocked: boolean, onScroll: () => void, scrollTarget: EventTarget | null } | null} */
+  var state = null;
 
   function getHeadingText(heading) {
     var clone = heading.cloneNode(true);
@@ -8,7 +12,7 @@
     return (clone.textContent || "").trim();
   }
 
-  function slugifyHeading(text, index) {
+  function slugifyHeading(text) {
     var slug = (text || "")
       .trim()
       .toLowerCase()
@@ -16,25 +20,78 @@
       .replace(/[^\w\u4e00-\u9fff\-]+/g, "")
       .replace(/-+/g, "-")
       .replace(/^-|-$/g, "");
-    return slug || "section-" + (index + 1);
+    if (!slug) return "section";
+    if (/^__/.test(slug)) slug = "param-" + slug.replace(/^__+/, "");
+    return slug;
   }
 
-  function ensureHeadingId(heading, index, usedIds) {
-    var spanWithId = heading.querySelector("span[id]");
-    var id = spanWithId ? spanWithId.id : heading.id;
-    if (!id) {
-      id = slugifyHeading(getHeadingText(heading), index);
-      var base = id;
-      var suffix = 2;
-      while (usedIds[id]) {
-        id = base + "-" + suffix;
-        suffix += 1;
-      }
+  function assignHeadingId(heading, usedIds) {
+    var text = getHeadingText(heading);
+    if (!text) return null;
+    var id = slugifyHeading(text);
+    var base = id;
+    var suffix = 2;
+    while (usedIds.has(id)) {
+      id = base + "-" + suffix;
+      suffix += 1;
     }
+    usedIds.add(id);
     heading.id = id;
-    if (spanWithId) spanWithId.id = id;
-    usedIds[id] = true;
+    heading.querySelectorAll("span[id]").forEach(function (span) {
+      span.removeAttribute("id");
+    });
     return { id: id, target: heading };
+  }
+
+  function shouldIncludeInToc(heading) {
+    var level = heading.tagName.toLowerCase();
+    if (level !== "h2" && level !== "h3" && level !== "h4") return false;
+    return !!getHeadingText(heading);
+  }
+
+  /**
+   * 桌面：仅 .kira-content 滚动（body overflow:hidden）
+   * 移动：整页 window 滚动
+   * 不用 scrollHeight 启发式——布局未完成时会误判为 window，导致间歇失效
+   */
+  function getScrollRoot() {
+    var content = document.querySelector(".kira-content");
+    if (window.matchMedia(DESKTOP_MQ).matches && content) {
+      return { type: "element", el: content };
+    }
+    return { type: "window" };
+  }
+
+  function getScrollOffset() {
+    if (window.matchMedia(DESKTOP_MQ).matches) return SCROLL_OFFSET_DESKTOP;
+    var header = document.querySelector(".kira-header");
+    if (header) {
+      var h = header.getBoundingClientRect().height;
+      if (h > 0) return Math.ceil(h) + 12;
+    }
+    return 64;
+  }
+
+  function getHeadingTop(heading, root) {
+    if (root.type === "element") {
+      var container = root.el;
+      var elRect = heading.getBoundingClientRect();
+      var boxRect = container.getBoundingClientRect();
+      return container.scrollTop + (elRect.top - boxRect.top);
+    }
+    return heading.getBoundingClientRect().top + window.scrollY;
+  }
+
+  function getScrollTop(root) {
+    return root.type === "element" ? root.el.scrollTop : window.scrollY;
+  }
+
+  function setScrollTop(root, top) {
+    if (root.type === "element") {
+      root.el.scrollTop = top;
+    } else {
+      window.scrollTo(0, top);
+    }
   }
 
   function setLocationHash(id) {
@@ -44,67 +101,114 @@
     history.replaceState(null, "", location.pathname + location.search + hash);
   }
 
-  function getScrollRoot() {
-    var content = document.querySelector(".kira-content");
-    if (!content) return { type: "window" };
-    var style = window.getComputedStyle(content);
-    var canScroll =
-      (style.overflowY === "auto" || style.overflowY === "scroll") &&
-      content.scrollHeight > content.clientHeight + 1;
-    if (canScroll) return { type: "element", el: content };
-    return { type: "window" };
-  }
-
-  function getScrollOffset() {
-    if (window.matchMedia("(max-width: 1000px)").matches) {
-      var header = document.querySelector(".kira-header");
-      if (header) {
-        var rect = header.getBoundingClientRect();
-        if (rect.height > 0) return Math.ceil(rect.height) + 12;
-      }
-      return 64;
-    }
-    return SCROLL_OFFSET;
-  }
-
-  function getHeadingTop(heading, root) {
-    if (root.type === "element") {
-      var contentRect = root.el.getBoundingClientRect();
-      var headingRect = heading.getBoundingClientRect();
-      return root.el.scrollTop + (headingRect.top - contentRect.top);
-    }
-    return window.scrollY + heading.getBoundingClientRect().top;
-  }
-
-  function getScrollTop(root) {
-    return root.type === "element" ? root.el.scrollTop : window.scrollY;
-  }
-
-  function scrollToTarget(target, id, updateHash) {
-    if (!target) return;
+  function scrollToHeading(heading, updateHash) {
+    if (!heading || !heading.id) return;
     var root = getScrollRoot();
     var offset = getScrollOffset();
-    var nextTop = Math.max(0, getHeadingTop(target, root) - offset);
-
-    if (root.type === "element") {
-      root.el.scrollTo({ top: nextTop, behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: nextTop, behavior: "smooth" });
+    var top = Math.max(0, getHeadingTop(heading, root) - offset);
+    setScrollTop(root, top);
+    if (updateHash !== false) setLocationHash(heading.id);
+    if (state) {
+      lockScrollSync(80);
+      setActiveToc(heading.id);
     }
+  }
 
-    if (updateHash !== false && id) {
-      setLocationHash(id);
+  function scrollTocItemIntoView(nav, item) {
+    if (!nav || !item) return;
+    var navRect = nav.getBoundingClientRect();
+    var itemRect = item.getBoundingClientRect();
+    if (itemRect.top < navRect.top) {
+      nav.scrollTop -= navRect.top - itemRect.top + 4;
+    } else if (itemRect.bottom > navRect.bottom) {
+      nav.scrollTop += itemRect.bottom - navRect.bottom + 4;
     }
-    document.dispatchEvent(
-      new CustomEvent("kira:heading-active", { detail: { id: id } })
-    );
+  }
+
+  function setActiveToc(targetId) {
+    if (!state || !targetId) return;
+    var tocId = resolveTocId(targetId);
+    var list = document.getElementById("kira-chapters-list");
+    var chaptersNav = document.querySelector(".kira-chapters-nav");
+    if (!list) return;
+
+    var activeItem = null;
+    list.querySelectorAll(".kira-chapter-item").forEach(function (item) {
+      var link = item.querySelector("a");
+      if (!link) return;
+      var id = decodeURIComponent((link.getAttribute("href") || "").replace(/^#/, ""));
+      var isActive = id === tocId;
+      item.classList.toggle("is-active", isActive);
+      if (isActive) activeItem = item;
+    });
+    if (activeItem && chaptersNav) scrollTocItemIntoView(chaptersNav, activeItem);
+  }
+
+  function getPreviousHeading(heading, article) {
+    var all = article.querySelectorAll("h2, h3, h4");
+    for (var i = all.length - 1; i >= 0; i--) {
+      if (all[i] === heading) return i > 0 ? all[i - 1] : null;
+    }
+    return null;
+  }
+
+  function resolveTocId(headingId) {
+    if (!state) return headingId;
+    if (state.tocIdSet.has(headingId)) return headingId;
+    var el = document.getElementById(headingId);
+    if (!el || !state.article.contains(el)) return headingId;
+    var prev = getPreviousHeading(el, state.article);
+    while (prev) {
+      if (state.tocIdSet.has(prev.id)) return prev.id;
+      prev = getPreviousHeading(prev, state.article);
+    }
+    return headingId;
+  }
+
+  function lockScrollSync(ms) {
+    if (!state) return;
+    state.scrollLocked = true;
+    if (state.scrollUnlockTimer) clearTimeout(state.scrollUnlockTimer);
+    state.scrollUnlockTimer = setTimeout(function () {
+      state.scrollLocked = false;
+      syncActiveByScroll();
+    }, ms || 80);
+  }
+
+  function syncActiveByScroll() {
+    if (!state || state.scrollLocked || !state.spyHeadings.length) return;
+    var root = getScrollRoot();
+    var offset = getScrollOffset();
+    var scrollPos = getScrollTop(root);
+    var active = state.spyHeadings[0];
+
+    state.spyHeadings.forEach(function (heading) {
+      if (getHeadingTop(heading, root) - offset <= scrollPos + 1) {
+        active = heading;
+      }
+    });
+
+    setActiveToc(active.id);
+  }
+
+  function bindScrollListener() {
+    if (!state) return;
+    if (state.scrollTarget && state.onScroll) {
+      state.scrollTarget.removeEventListener("scroll", state.onScroll);
+    }
+    var root = getScrollRoot();
+    state.onScroll = function () {
+      if (!state.scrollLocked) syncActiveByScroll();
+    };
+    state.scrollTarget = root.type === "element" ? root.el : window;
+    state.scrollTarget.addEventListener("scroll", state.onScroll, { passive: true });
   }
 
   function addHeadingAnchors(article, usedIds) {
     var headings = article.querySelectorAll("h2, h3, h4");
-    headings.forEach(function (heading, index) {
-      var info = ensureHeadingId(heading, index, usedIds);
-      if (heading.querySelector(".kira-heading-anchor")) return;
+    headings.forEach(function (heading) {
+      var info = assignHeadingId(heading, usedIds);
+      if (!info || heading.querySelector(".kira-heading-anchor")) return;
 
       var anchor = document.createElement("a");
       anchor.className = "kira-heading-anchor";
@@ -113,83 +217,60 @@
       anchor.textContent = "#";
       anchor.addEventListener("click", function (event) {
         event.preventDefault();
-        scrollToTarget(info.target, info.id, true);
+        scrollToHeading(info.target, true);
       });
 
       heading.classList.add("kira-heading-with-anchor");
-
       var label = document.createElement("span");
       label.className = "kira-heading-text";
-      while (heading.firstChild) {
-        label.appendChild(heading.firstChild);
-      }
+      while (heading.firstChild) label.appendChild(heading.firstChild);
       heading.appendChild(label);
       heading.appendChild(anchor);
 
       heading.addEventListener("click", function (event) {
         if (event.target.closest(".kira-heading-anchor")) return;
-        scrollToTarget(info.target, info.id, true);
+        scrollToHeading(info.target, true);
       });
     });
     return headings;
   }
 
-  function setActiveItem(list, targetId) {
-    if (!list || !targetId) return;
-    var activeItem = null;
-    list.querySelectorAll(".kira-chapter-item").forEach(function (item) {
-      var link = item.querySelector("a");
-      if (!link) return;
-      var id = (link.getAttribute("href") || "").replace(/^#/, "");
-      var isActive = decodeURIComponent(id) === targetId;
-      item.classList.toggle("is-active", isActive);
-      if (isActive) activeItem = item;
-    });
-    if (activeItem) {
-      activeItem.scrollIntoView({ block: "nearest", behavior: "smooth" });
-    }
-  }
-
-  function createChapterLink(heading, index, list, chapterTargets, usedIds) {
-    var level = heading.tagName.toLowerCase();
-    var info = ensureHeadingId(heading, index, usedIds);
+  function createChapterLink(heading, list, tocIdSet) {
+    if (!shouldIncludeInToc(heading)) return;
+    var id = heading.id;
+    if (!id) return;
     var text = getHeadingText(heading);
-    if (!text) return null;
+    if (!text) return;
 
+    tocIdSet.add(id);
+
+    var level = heading.tagName.toLowerCase();
     var li = document.createElement("li");
-    var levelClass = level === "h4" ? "is-sub-2" : level === "h3" ? "is-sub" : "";
-    li.className = "kira-chapter-item " + levelClass;
+    li.className =
+      "kira-chapter-item " +
+      (level === "h4" ? "is-sub-2" : level === "h3" ? "is-sub" : "");
 
     var a = document.createElement("a");
-    a.href = "#" + info.id;
+    a.href = "#" + id;
     a.textContent = text;
     a.addEventListener("click", function (event) {
       event.preventDefault();
-      scrollToTarget(info.target, info.id, true);
-      setActiveItem(list, info.id);
+      lockScrollSync(120);
+      scrollToHeading(heading, true);
     });
 
     li.appendChild(a);
     list.appendChild(li);
-    if (!chapterTargets.some(function (item) {
-      return item.id === info.id;
-    })) {
-      chapterTargets.push({ id: info.id, el: info.target });
-    }
-    return li;
   }
 
   function scrollFromHash() {
     var raw = location.hash.replace(/^#/, "");
     if (!raw) return;
     var id = decodeURIComponent(raw);
-    var target = document.getElementById(id);
-    if (!target) return;
-    var heading = target.closest("h2, h3, h4") || target;
-    scrollToTarget(heading, id, false);
-    document.dispatchEvent(
-      new CustomEvent("kira:heading-active", { detail: { id: id } })
-    );
+    var el = document.getElementById(id);
+    if (!el) return;
+    var heading = el.closest("h2, h3, h4") || el;
+    scrollToHeading(heading, false);
   }
 
   function buildToc() {
@@ -198,85 +279,94 @@
     var article = document.querySelector(".kira-main-content .kira-post article");
     if (!panel || !list || !article) return;
 
-    var usedIds = {};
+    var usedIds = new Set();
     addHeadingAnchors(article, usedIds);
+
     var headings = article.querySelectorAll("h2, h3, h4");
     if (!headings.length) {
       panel.classList.remove("is-visible");
+      state = null;
       return;
     }
 
     list.innerHTML = "";
-    var chapterTargets = [];
-    headings.forEach(function (heading, index) {
-      createChapterLink(heading, index, list, chapterTargets, usedIds);
+    var tocIdSet = new Set();
+    var spyHeadings = [];
+
+    headings.forEach(function (heading) {
+      if (heading.id) spyHeadings.push(heading);
+      createChapterLink(heading, list, tocIdSet);
     });
 
     var inlineToc = document.getElementById("kira-inline-toc");
     if (inlineToc) inlineToc.remove();
 
-    if (window.matchMedia("(max-width: 1000px)").matches) {
-      var inline = document.createElement("nav");
-      inline.id = "kira-inline-toc";
-      inline.className = "kira-inline-toc";
-      inline.setAttribute("aria-label", "本页目录");
-      inline.innerHTML = '<div class="kira-inline-toc-title">本页目录</div><ul></ul>';
-      var inlineList = inline.querySelector("ul");
-      headings.forEach(function (heading, index) {
-        createChapterLink(heading, index, inlineList, chapterTargets, usedIds);
-      });
-      var titleBlock = article.querySelector(".kira-post-title");
-      if (titleBlock && titleBlock.nextSibling) {
-        article.insertBefore(inline, titleBlock.nextSibling);
-      } else {
-        article.insertBefore(inline, article.firstChild);
-      }
-    }
-
     if (!list.children.length) {
       panel.classList.remove("is-visible");
+      state = null;
       return;
     }
 
-    panel.classList.add("is-visible");
-
-    function syncActiveByScroll() {
-      if (!chapterTargets.length) return;
-      var root = getScrollRoot();
-      var offset = getScrollOffset();
-      var scrollPos = getScrollTop(root);
-      var currentId = chapterTargets[0].id;
-
-      chapterTargets.forEach(function (item) {
-        if (getHeadingTop(item.el, root) - offset <= scrollPos + 1) {
-          currentId = item.id;
-        }
-      });
-
-      setActiveItem(list, currentId);
-      setActiveItem(document.querySelector("#kira-inline-toc ul"), currentId);
-    }
-
-    var scrollRoot = getScrollRoot();
-    if (scrollRoot.type === "element") {
-      scrollRoot.el.addEventListener("scroll", syncActiveByScroll, { passive: true });
+    if (window.matchMedia("(min-width: 1001px)").matches) {
+      panel.classList.add("is-visible");
     } else {
-      window.addEventListener("scroll", syncActiveByScroll, { passive: true });
+      panel.classList.remove("is-visible");
     }
-    window.addEventListener("resize", syncActiveByScroll);
-    document.addEventListener("kira:heading-active", function (event) {
-      setActiveItem(list, event.detail.id);
-      setActiveItem(document.querySelector("#kira-inline-toc ul"), event.detail.id);
-    });
+
+    state = {
+      article: article,
+      tocIdSet: tocIdSet,
+      spyHeadings: spyHeadings,
+      scrollLocked: false,
+      scrollUnlockTimer: null,
+      onScroll: null,
+      scrollTarget: null,
+    };
+
+    bindScrollListener();
     syncActiveByScroll();
+  }
+
+  function refreshAfterLayout() {
+    if (!state) return;
+    bindScrollListener();
+    syncActiveByScroll();
+    scrollFromHash();
   }
 
   function init() {
     buildToc();
+
     requestAnimationFrame(function () {
-      scrollFromHash();
+      requestAnimationFrame(refreshAfterLayout);
     });
+
+    window.addEventListener("load", refreshAfterLayout);
     window.addEventListener("hashchange", scrollFromHash);
+
+    window.matchMedia(DESKTOP_MQ).addEventListener("change", function () {
+      buildToc();
+      refreshAfterLayout();
+    });
+
+    var content = document.querySelector(".kira-content");
+    if (content && window.ResizeObserver) {
+      var ro = new ResizeObserver(function () {
+        refreshAfterLayout();
+      });
+      ro.observe(content);
+    }
+
+    var article = document.querySelector(".kira-main-content .kira-post article");
+    if (article) {
+      article.addEventListener(
+        "load",
+        function (event) {
+          if (event.target && event.target.tagName === "IMG") refreshAfterLayout();
+        },
+        true
+      );
+    }
   }
 
   if (document.readyState === "loading") {
