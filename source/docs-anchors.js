@@ -1,4 +1,6 @@
 (function () {
+  var SCROLL_OFFSET = 28;
+
   function getHeadingText(heading) {
     var clone = heading.cloneNode(true);
     var anchor = clone.querySelector(".kira-heading-anchor");
@@ -28,10 +30,11 @@
         id = base + "-" + suffix;
         suffix += 1;
       }
-      heading.id = id;
     }
+    heading.id = id;
+    if (spanWithId) spanWithId.id = id;
     usedIds[id] = true;
-    return { id: id, target: spanWithId || heading };
+    return { id: id, target: heading };
   }
 
   function setLocationHash(id) {
@@ -41,17 +44,54 @@
     history.replaceState(null, "", location.pathname + location.search + hash);
   }
 
-  function getScrollContainer() {
-    return document.querySelector(".kira-content");
+  function getScrollRoot() {
+    var content = document.querySelector(".kira-content");
+    if (!content) return { type: "window" };
+    var style = window.getComputedStyle(content);
+    var canScroll =
+      (style.overflowY === "auto" || style.overflowY === "scroll") &&
+      content.scrollHeight > content.clientHeight + 1;
+    if (canScroll) return { type: "element", el: content };
+    return { type: "window" };
+  }
+
+  function getScrollOffset() {
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      var header = document.querySelector(".kira-header");
+      if (header) {
+        var rect = header.getBoundingClientRect();
+        if (rect.height > 0) return Math.ceil(rect.height) + 12;
+      }
+      return 64;
+    }
+    return SCROLL_OFFSET;
+  }
+
+  function getHeadingTop(heading, root) {
+    if (root.type === "element") {
+      var contentRect = root.el.getBoundingClientRect();
+      var headingRect = heading.getBoundingClientRect();
+      return root.el.scrollTop + (headingRect.top - contentRect.top);
+    }
+    return window.scrollY + heading.getBoundingClientRect().top;
+  }
+
+  function getScrollTop(root) {
+    return root.type === "element" ? root.el.scrollTop : window.scrollY;
   }
 
   function scrollToTarget(target, id, updateHash) {
-    var content = getScrollContainer();
-    if (!content || !target) return;
-    var contentRect = content.getBoundingClientRect();
-    var targetRect = target.getBoundingClientRect();
-    var nextTop = content.scrollTop + (targetRect.top - contentRect.top) - 14;
-    content.scrollTo({ top: Math.max(0, nextTop), behavior: "smooth" });
+    if (!target) return;
+    var root = getScrollRoot();
+    var offset = getScrollOffset();
+    var nextTop = Math.max(0, getHeadingTop(target, root) - offset);
+
+    if (root.type === "element") {
+      root.el.scrollTo({ top: nextTop, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: nextTop, behavior: "smooth" });
+    }
+
     if (updateHash !== false && id) {
       setLocationHash(id);
     }
@@ -95,13 +135,19 @@
   }
 
   function setActiveItem(list, targetId) {
-    if (!list) return;
+    if (!list || !targetId) return;
+    var activeItem = null;
     list.querySelectorAll(".kira-chapter-item").forEach(function (item) {
       var link = item.querySelector("a");
       if (!link) return;
       var id = (link.getAttribute("href") || "").replace(/^#/, "");
-      item.classList.toggle("is-active", decodeURIComponent(id) === targetId);
+      var isActive = decodeURIComponent(id) === targetId;
+      item.classList.toggle("is-active", isActive);
+      if (isActive) activeItem = item;
     });
+    if (activeItem) {
+      activeItem.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
   }
 
   function createChapterLink(heading, index, list, chapterTargets, usedIds) {
@@ -125,7 +171,11 @@
 
     li.appendChild(a);
     list.appendChild(li);
-    chapterTargets.push({ id: info.id, el: info.target });
+    if (!chapterTargets.some(function (item) {
+      return item.id === info.id;
+    })) {
+      chapterTargets.push({ id: info.id, el: info.target });
+    }
     return li;
   }
 
@@ -135,7 +185,8 @@
     var id = decodeURIComponent(raw);
     var target = document.getElementById(id);
     if (!target) return;
-    scrollToTarget(target, id, false);
+    var heading = target.closest("h2, h3, h4") || target;
+    scrollToTarget(heading, id, false);
     document.dispatchEvent(
       new CustomEvent("kira:heading-active", { detail: { id: id } })
     );
@@ -145,8 +196,7 @@
     var panel = document.getElementById("kira-chapters-panel");
     var list = document.getElementById("kira-chapters-list");
     var article = document.querySelector(".kira-main-content .kira-post article");
-    var content = getScrollContainer();
-    if (!panel || !list || !article || !content) return;
+    if (!panel || !list || !article) return;
 
     var usedIds = {};
     addHeadingAnchors(article, usedIds);
@@ -192,20 +242,27 @@
 
     function syncActiveByScroll() {
       if (!chapterTargets.length) return;
-      var containerRect = content.getBoundingClientRect();
-      var triggerTop = containerRect.top + 120;
+      var root = getScrollRoot();
+      var offset = getScrollOffset();
+      var scrollPos = getScrollTop(root);
       var currentId = chapterTargets[0].id;
+
       chapterTargets.forEach(function (item) {
-        if (item.el.getBoundingClientRect().top <= triggerTop) {
+        if (getHeadingTop(item.el, root) - offset <= scrollPos + 1) {
           currentId = item.id;
         }
       });
+
       setActiveItem(list, currentId);
-      var inlineList = document.querySelector("#kira-inline-toc ul");
-      setActiveItem(inlineList, currentId);
+      setActiveItem(document.querySelector("#kira-inline-toc ul"), currentId);
     }
 
-    content.addEventListener("scroll", syncActiveByScroll, { passive: true });
+    var scrollRoot = getScrollRoot();
+    if (scrollRoot.type === "element") {
+      scrollRoot.el.addEventListener("scroll", syncActiveByScroll, { passive: true });
+    } else {
+      window.addEventListener("scroll", syncActiveByScroll, { passive: true });
+    }
     window.addEventListener("resize", syncActiveByScroll);
     document.addEventListener("kira:heading-active", function (event) {
       setActiveItem(list, event.detail.id);
