@@ -1,4 +1,4 @@
-# 安装模组
+## 安装模组
 
 在尖塔2游戏根目录下的`mods`文件夹里（`xxx\Steam\steamapps\common\Slay the Spire 2\mods`），放置模组提供的`dll`，`pck`和`json`文件各一个。可以套一个文件夹方便管理。
 
@@ -6,11 +6,11 @@
 
 前往`C:\Users\[用户名]\AppData\Roaming\SlayTheSpire2\steam\[你的steamid]`，如果看不到`AppData`在哪问搜索引擎。把`profile1`等复制到`modded`里即可。
 
-# 查看源码
+## 查看源码
 
-只看源码推荐用ilspy。任选其一：
+任选其一：
 
-## gdsdecomp，反编译整个游戏
+### gdsdecomp，反编译整个游戏
 
 https://github.com/GDRETools/gdsdecomp
 
@@ -24,7 +24,7 @@ https://github.com/GDRETools/gdsdecomp
 
 4. 等项目导出完，使用godot导入`project.godot`即可。做mod并不需要能在godot里运行这个项目。
 
-## ilspy或dnspy，仅反编译游戏代码
+### ilspy或dnspy，仅反编译游戏代码
 
 按说明安装[ilspy](https://github.com/icsharpcode/ILSpy)或[dnspy](https://github.com/dnSpy/dnSpy)，然后打开游戏根目录的`data_sts2_windows_x86_64\sts2.dll`即可查看代码。
 
@@ -40,12 +40,15 @@ https://github.com/GDRETools/gdsdecomp
 相当于对源码：
 ![alt text](../../images/image9.png)
 
+具体参考Patch一节。
 
 ## 控制台
 
 开启了模组，按下`~`（tab上方那个键）即可打开控制台。输入`help`即可查看命令。例如`card SURVIVOR`是把一张生存者加入手中。
 
 你可以查询一个命令的帮助，使用`help card`等。
+
+具体参考控制台一节。
 
 ## 查看log
 
@@ -72,6 +75,6 @@ https://github.com/GDRETools/gdsdecomp
 
 * 把`{modid}.json`的名字修改成你想要的。以及里面的`id`部分。
 
-* 把`{modid}.sln`的名字修改成你想要的。
+* 把`{modid}.sln`的名字修改成你想要的，以及里面关于你的`csproj`的那部分。
 
 * 然后重新打包。不要忘记把你之前名字的mod删了。
