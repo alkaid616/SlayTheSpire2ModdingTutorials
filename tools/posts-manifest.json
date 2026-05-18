@@ -297,21 +297,21 @@
             "post": "04-ritsulib/04-20-custom-card-pile.md",
             "permalink": "docs/04-ritsulib/04-20-custom-card-pile/",
             "title": "自定义卡牌堆",
-            "author": "Reme、alkaid616"
+            "author": "alkaid616"
           },
           {
             "source": "RitsuLib/02 - 玩法基底/05 - 顶栏按钮/README.md",
             "post": "04-ritsulib/04-21-top-bar-button.md",
             "permalink": "docs/04-ritsulib/04-21-top-bar-button/",
             "title": "顶栏按钮",
-            "author": "Reme、alkaid616"
+            "author": "alkaid616"
           },
           {
             "source": "RitsuLib/02 - 玩法基底/06 - 通知提示/README.md",
             "post": "04-ritsulib/04-22-notification.md",
             "permalink": "docs/04-ritsulib/04-22-notification/",
             "title": "通知提示",
-            "author": "Reme、alkaid616"
+            "author": "alkaid616"
           }
         ]
       },
@@ -329,28 +329,28 @@
             "post": "04-ritsulib/04-23-lifecycle-events.md",
             "permalink": "docs/04-ritsulib/04-23-lifecycle-events/",
             "title": "生命周期事件",
-            "author": "Reme、alkaid616"
+            "author": "alkaid616"
           },
           {
             "source": "RitsuLib/03 - 模组工具/03 - 补丁系统/README.md",
             "post": "04-ritsulib/04-24-patch-system.md",
             "permalink": "docs/04-ritsulib/04-24-patch-system/",
             "title": "补丁系统",
-            "author": "Reme、alkaid616"
+            "author": "alkaid616"
           },
           {
             "source": "RitsuLib/03 - 模组工具/04 - 数据持久化/README.md",
             "post": "04-ritsulib/04-25-data-persistence.md",
             "permalink": "docs/04-ritsulib/04-25-data-persistence/",
             "title": "数据持久化",
-            "author": "Reme、alkaid616"
+            "author": "alkaid616"
           },
           {
             "source": "RitsuLib/03 - 模组工具/05 - 运行时热键/README.md",
             "post": "04-ritsulib/04-26-runtime-hotkey.md",
             "permalink": "docs/04-ritsulib/04-26-runtime-hotkey/",
             "title": "运行时热键",
-            "author": "Reme、alkaid616"
+            "author": "alkaid616"
           }
         ]
       }
