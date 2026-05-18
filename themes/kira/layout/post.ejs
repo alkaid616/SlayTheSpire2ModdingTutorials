@@ -17,6 +17,10 @@
 								</a>
 								<a><i class="kirafont icon-time-circle-fill"></i>大概 <%= min2read(page.content, {cn: 250,
 										en: 160}) %> 分钟</a>
+								<% var postAuthor = page.author || config.author; %>
+								<% if (postAuthor) { %>
+								<a class="kira-post-meta-author"><i class="kirafont icon-user"></i><%= postAuthor %></a>
+								<% } %>
 							</div>
 							<%- image_auto_lazyload(page.content) %>
 						</article>

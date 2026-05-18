@@ -1,6 +1,6 @@
 ---
 title: Patch
-date: 2026-05-17 18:32:55
+date: 2026-05-17 18:40:53
 permalink: docs/10-patch/
 categories:
 - Basics

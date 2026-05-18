@@ -67,21 +67,66 @@ docsTree:
                         open: true,
                         children:
                             [
-                                { title: 01 添加卡牌, path: /docs/04-ritsulib/04-01-add-card/ },
-                                { title: 02 自定义配置, path: /docs/04-ritsulib/04-02-custom-config/ },
-                                { title: 03 添加新遗物, path: /docs/04-ritsulib/04-03-add-relic/ },
-                                { title: 04 添加卡牌属性, path: /docs/04-ritsulib/04-04-card-properties/ },
-                                { title: 05 添加新能力, path: /docs/04-ritsulib/04-05-add-power/ },
-                                { title: 06 添加新药水, path: /docs/04-ritsulib/04-06-add-potion/ },
-                                { title: 07 添加先古之民, path: /docs/04-ritsulib/04-07-add-ancient/ },
-                                { title: 08 添加充能球, path: /docs/04-ritsulib/04-08-add-orb/ },
-                                { title: 09 添加时间线, path: /docs/04-ritsulib/04-09-add-timeline/ },
-                                { title: 10 添加音频, path: /docs/04-ritsulib/04-10-add-audio/ },
-                                { title: 11 添加新怪物, path: /docs/04-ritsulib/04-11-add-monster/ },
-                                { title: 12 添加新事件, path: /docs/04-ritsulib/04-12-add-event/ },
-                                { title: 13 添加新附魔, path: /docs/04-ritsulib/04-13-add-enchantment/ },
-                                { title: 14 添加新人物, path: /docs/04-ritsulib/04-14-add-new-character/ },
-                                { title: 15 添加单例, path: /docs/04-ritsulib/04-15-add-singleton/ },
+                                {
+                                    title: 01 添加卡牌,
+                                    path: /docs/04-ritsulib/04-01-add-card/,
+                                },
+                                {
+                                    title: 02 自定义配置,
+                                    path: /docs/04-ritsulib/04-02-custom-config/,
+                                },
+                                {
+                                    title: 03 添加新遗物,
+                                    path: /docs/04-ritsulib/04-03-add-relic/,
+                                },
+                                {
+                                    title: 04 添加卡牌属性,
+                                    path: /docs/04-ritsulib/04-04-card-properties/,
+                                },
+                                {
+                                    title: 05 添加新能力,
+                                    path: /docs/04-ritsulib/04-05-add-power/,
+                                },
+                                {
+                                    title: 06 添加新药水,
+                                    path: /docs/04-ritsulib/04-06-add-potion/,
+                                },
+                                {
+                                    title: 07 添加先古之民,
+                                    path: /docs/04-ritsulib/04-07-add-ancient/,
+                                },
+                                {
+                                    title: 08 添加充能球,
+                                    path: /docs/04-ritsulib/04-08-add-orb/,
+                                },
+                                {
+                                    title: 09 添加时间线,
+                                    path: /docs/04-ritsulib/04-09-add-timeline/,
+                                },
+                                {
+                                    title: 10 添加音频,
+                                    path: /docs/04-ritsulib/04-10-add-audio/,
+                                },
+                                {
+                                    title: 11 添加新怪物,
+                                    path: /docs/04-ritsulib/04-11-add-monster/,
+                                },
+                                {
+                                    title: 12 添加新事件,
+                                    path: /docs/04-ritsulib/04-12-add-event/,
+                                },
+                                {
+                                    title: 13 添加新附魔,
+                                    path: /docs/04-ritsulib/04-13-add-enchantment/,
+                                },
+                                {
+                                    title: 14 添加新人物,
+                                    path: /docs/04-ritsulib/04-14-add-new-character/,
+                                },
+                                {
+                                    title: 15 添加单例,
+                                    path: /docs/04-ritsulib/04-15-add-singleton/,
+                                },
                             ],
                     },
                     {
@@ -89,12 +134,30 @@ docsTree:
                         open: false,
                         children:
                             [
-                                { title: 01 血条覆盖, path: /docs/04-ritsulib/04-16-health-bar-overlay/ },
-                                { title: 02 手牌上限, path: /docs/04-ritsulib/04-18-max-hand-size/ },
-                                { title: 03 手牌泛光, path: /docs/04-ritsulib/04-19-hand-outline/ },
-                                { title: 04 自定义卡牌堆, path: /docs/04-ritsulib/04-20-custom-card-pile/ },
-                                { title: 05 顶栏按钮, path: /docs/04-ritsulib/04-21-top-bar-button/ },
-                                { title: 06 通知提示, path: /docs/04-ritsulib/04-22-notification/ },
+                                {
+                                    title: 01 血条覆盖,
+                                    path: /docs/04-ritsulib/04-16-health-bar-overlay/,
+                                },
+                                {
+                                    title: 02 手牌上限,
+                                    path: /docs/04-ritsulib/04-18-max-hand-size/,
+                                },
+                                {
+                                    title: 03 手牌泛光,
+                                    path: /docs/04-ritsulib/04-19-hand-outline/,
+                                },
+                                {
+                                    title: 04 自定义卡牌堆,
+                                    path: /docs/04-ritsulib/04-20-custom-card-pile/,
+                                },
+                                {
+                                    title: 05 顶栏按钮,
+                                    path: /docs/04-ritsulib/04-21-top-bar-button/,
+                                },
+                                {
+                                    title: 06 通知提示,
+                                    path: /docs/04-ritsulib/04-22-notification/,
+                                },
                             ],
                     },
                     {
@@ -102,11 +165,26 @@ docsTree:
                         open: false,
                         children:
                             [
-                                { title: 01 数据保存, path: /docs/04-ritsulib/04-17-data-save/ },
-                                { title: 02 生命周期事件, path: /docs/04-ritsulib/04-23-lifecycle-events/ },
-                                { title: 03 补丁系统, path: /docs/04-ritsulib/04-24-patch-system/ },
-                                { title: 04 数据持久化, path: /docs/04-ritsulib/04-25-data-persistence/ },
-                                { title: 05 运行时热键, path: /docs/04-ritsulib/04-26-runtime-hotkey/ },
+                                {
+                                    title: 01 数据保存,
+                                    path: /docs/04-ritsulib/04-17-data-save/,
+                                },
+                                {
+                                    title: 02 生命周期事件,
+                                    path: /docs/04-ritsulib/04-23-lifecycle-events/,
+                                },
+                                {
+                                    title: 03 补丁系统,
+                                    path: /docs/04-ritsulib/04-24-patch-system/,
+                                },
+                                {
+                                    title: 04 数据持久化,
+                                    path: /docs/04-ritsulib/04-25-data-persistence/,
+                                },
+                                {
+                                    title: 05 运行时热键,
+                                    path: /docs/04-ritsulib/04-26-runtime-hotkey/,
+                                },
                             ],
                     },
                 ],
@@ -117,22 +195,67 @@ docsTree:
             children:
                 [
                     { title: 00 总览, path: /docs/03-baselib/ },
-                    { title: 01 添加卡牌, path: /docs/03-baselib/03-01-add-card/ },
-                    { title: 02 自定义模组配置, path: /docs/03-baselib/03-02-mod-config/ },
-                    { title: 03 添加新遗物, path: /docs/03-baselib/03-03-add-relic/ },
-                    { title: 04 添加卡牌属性, path: /docs/03-baselib/03-04-card-properties/ },
-                    { title: 05 添加新能力, path: /docs/03-baselib/03-05-add-power/ },
-                    { title: 06 添加新药水, path: /docs/03-baselib/03-06-add-potion/ },
-                    { title: 07 添加先古之民, path: /docs/03-baselib/03-07-add-ancient/ },
-                    { title: 08 添加充能球, path: /docs/03-baselib/03-08-add-orb/ },
-                    { title: 09 局内保存, path: /docs/03-baselib/03-09-run-save/ },
-                    { title: 10 mod联动, path: /docs/03-baselib/03-10-mod-integration/ },
-                    { title: 11 添加新怪物, path: /docs/03-baselib/03-11-add-monster/ },
-                    { title: 12 添加新事件, path: /docs/03-baselib/03-12-add-event/ },
-                    { title: 13 添加新附魔, path: /docs/03-baselib/03-13-add-enchantment/ },
+                    {
+                        title: 01 添加卡牌,
+                        path: /docs/03-baselib/03-01-add-card/,
+                    },
+                    {
+                        title: 02 自定义模组配置,
+                        path: /docs/03-baselib/03-02-mod-config/,
+                    },
+                    {
+                        title: 03 添加新遗物,
+                        path: /docs/03-baselib/03-03-add-relic/,
+                    },
+                    {
+                        title: 04 添加卡牌属性,
+                        path: /docs/03-baselib/03-04-card-properties/,
+                    },
+                    {
+                        title: 05 添加新能力,
+                        path: /docs/03-baselib/03-05-add-power/,
+                    },
+                    {
+                        title: 06 添加新药水,
+                        path: /docs/03-baselib/03-06-add-potion/,
+                    },
+                    {
+                        title: 07 添加先古之民,
+                        path: /docs/03-baselib/03-07-add-ancient/,
+                    },
+                    {
+                        title: 08 添加充能球,
+                        path: /docs/03-baselib/03-08-add-orb/,
+                    },
+                    {
+                        title: 09 局内保存,
+                        path: /docs/03-baselib/03-09-run-save/,
+                    },
+                    {
+                        title: 10 mod联动,
+                        path: /docs/03-baselib/03-10-mod-integration/,
+                    },
+                    {
+                        title: 11 添加新怪物,
+                        path: /docs/03-baselib/03-11-add-monster/,
+                    },
+                    {
+                        title: 12 添加新事件,
+                        path: /docs/03-baselib/03-12-add-event/,
+                    },
+                    {
+                        title: 13 添加新附魔,
+                        path: /docs/03-baselib/03-13-add-enchantment/,
+                    },
                     { title: 14 添加新人物, path: /docs/04-add-new-character/ },
-                    { title: 15 添加单例, path: /docs/03-baselib/03-15-add-singleton/ },
-                    { title: 16 手牌上限, path: /docs/03-baselib/03-16-max-hand-size/ },
+                    {
+                        title: 15 添加单例,
+                        path: /docs/03-baselib/03-15-add-singleton/,
+                    },
+                    {
+                        title: 16 手牌上限,
+                        path: /docs/03-baselib/03-16-max-hand-size/,
+                    },
                 ],
         },
         {
@@ -140,7 +263,10 @@ docsTree:
             open: true,
             children:
                 [
-                    { title: 01 测试版 至 正式版, path: /docs/07-migration-99-100/ },
+                    {
+                        title: 01 测试版 至 正式版,
+                        path: /docs/07-migration-99-100/,
+                    },
                     {
                         title: 02 BaseLib 至 RitsuLib,
                         path: /docs/08-migration-baselib-to-ritsulib/,
@@ -160,6 +286,41 @@ docsTree:
                         title: 02 风格原画绘制,
                         path: /docs/06-style-art-drawing/,
                     },
+                    {
+                        title: 03 特效与动画,
+                        open: false,
+                        children:
+                            [
+                                {
+                                    title: 01 帧动画的处理,
+                                    path: /docs/09-01-frame-animation/,
+                                },
+                                {
+                                    title: 02 材质图集,
+                                    path: /docs/09-02-texture-atlas/,
+                                },
+                                {
+                                    title: 03 特效的播放(实例化)与缓存,
+                                    path: /docs/09-03-vfx-instantiation/,
+                                },
+                                {
+                                    title: 04 粒子特效,
+                                    path: /docs/09-04-particle-vfx/,
+                                },
+                                {
+                                    title: 05 全局环境光照,
+                                    path: /docs/09-05-world-environment/,
+                                },
+                                {
+                                    title: 06 Shader,
+                                    path: /docs/09-06-shader/,
+                                },
+                                {
+                                    title: 07 游戏本体特效,
+                                    path: /docs/09-07-game-builtin-vfx/,
+                                },
+                            ],
+                    },
                 ],
         },
     ]
@@ -176,7 +337,7 @@ social:
         - "#24292e"
     QQ群:
         - "#qq-group"
-        - icon-comment
+        - icon-QQ
         - "#ffffff"
         - "#12b7f5"
 

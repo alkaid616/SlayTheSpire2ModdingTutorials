@@ -47,6 +47,7 @@ function getGitCreationDate(repoRelativePath) {
 }
 
 function parseFrontMatter(text) {
+  text = text.replace(/\r\n/g, "\n");
   if (!text.startsWith("---\n")) return { meta: null, body: text };
   const end = text.indexOf("\n---\n", 4);
   if (end === -1) return { meta: null, body: text };
@@ -102,7 +103,7 @@ function formatFrontMatter(entry, existingMeta, postRelative) {
     for (const c of categories) lines.push(`- ${c}`);
   }
   lines.push("---", "");
-  return lines.join("\n");
+  return lines.join("\r\n");
 }
 
 function imagePrefixForPermalink(permalink) {
@@ -124,7 +125,7 @@ function transformBody(body, entry, permalinkMap) {
     out = out.replace(new RegExp(`\\]\\(${escaped}#([^)]+)\\)`, "g"), `](${to}#$1)`);
   }
 
-  return out.replace(/\r\n/g, "\n").trimEnd() + "\n";
+  return out.replace(/\r\n/g, "\n").replace(/\n/g, "\r\n").trimEnd() + "\r\n";
 }
 
 function buildPermalinkMap(entries) {

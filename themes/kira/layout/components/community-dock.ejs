@@ -22,7 +22,7 @@
 
 				>
 
-					<img class="kira-community-dock-icon" src="<%- url_for('/images/icon-qq.svg') %>" alt="" width="22" height="22" />
+					<i class="kirafont icon-QQ" aria-hidden="true"></i>
 
 					<span class="kira-community-dock-tip"><%= name %></span>
 
@@ -66,7 +66,7 @@
 
 			<button type="button" class="kira-qq-panel-close" data-close="qq-modal" aria-label="关闭">&times;</button>
 
-			<img class="kira-qq-panel-image" src="<%- url_for('/qq_group.jpg') %>" alt="" draggable="false" />
+			<img class="kira-qq-panel-image" src="<%- url_for('qq_group.jpg') %>" alt="QQ群二维码" draggable="false" />
 
 			<div class="kira-qq-panel-caption">MOD交流群：542370192</div>
 
@@ -90,18 +90,22 @@
 
 
 
+			function ensureModalInBody() {
+				if (modal.parentElement !== document.body) {
+					document.body.appendChild(modal);
+				}
+			}
+
 			function openModal() {
 				if (closingTimer) {
 					clearTimeout(closingTimer);
 					closingTimer = null;
 				}
+				ensureModalInBody();
 				modal.classList.remove('is-closing');
-				modal.classList.remove('is-open');
 				modal.setAttribute('aria-hidden', 'false');
 				requestAnimationFrame(function () {
-					requestAnimationFrame(function () {
-						modal.classList.add('is-open');
-					});
+					modal.classList.add('is-open');
 				});
 			}
 

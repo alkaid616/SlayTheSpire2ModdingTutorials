@@ -7,15 +7,60 @@
     "categories": []
   },
   "basics": [
-    { "source": "Basics/01 - 环境配置/README.md", "post": "01-env-setup.md", "permalink": "docs/01-env-setup/", "title": "环境配置" },
-    { "source": "Basics/02 - 安装、看源码、修改/README.md", "post": "02-install-view-source-and-patch.md", "permalink": "docs/02-install-view-source-and-patch/", "title": "安装、看源码、修改" },
-    { "source": "Basics/03 - 选择基础库/README.md", "post": "03-choose-base-library.md", "permalink": "docs/03-choose-base-library/", "title": "选择基础库" },
-    { "source": "Basics/05 - 变量与描述/README.md", "post": "05-variable-and-description.md", "permalink": "docs/05-variable-and-description/", "title": "变量与描述" },
-    { "source": "Basics/06 - 先古对话/README.md", "post": "08-ancient-dialogue.md", "permalink": "docs/08-ancient-dialogue/", "title": "先古对话" },
-    { "source": "Basics/07 - 快速调试&热重载/README.md", "post": "07-quick-debug-and-hot-reload.md", "permalink": "docs/07-quick-debug-and-hot-reload/", "title": "快速调试&热重载" },
-    { "source": "Basics/08 - 启动参数/README.md", "post": "08-launch-arguments.md", "permalink": "docs/08-launch-arguments/", "title": "启动项参数" },
-    { "source": "Basics/09 - 控制台指令/README.md", "post": "09-console-commands.md", "permalink": "docs/09-console-commands/", "title": "控制台指令" },
-    { "source": "Basics/10 - Patch/README.md", "post": "10-patch.md", "permalink": "docs/10-patch/", "title": "Patch" }
+    {
+      "source": "Basics/01 - 环境配置/README.md",
+      "post": "01-env-setup.md",
+      "permalink": "docs/01-env-setup/",
+      "title": "环境配置"
+    },
+    {
+      "source": "Basics/02 - 安装、看源码、修改/README.md",
+      "post": "02-install-view-source-and-patch.md",
+      "permalink": "docs/02-install-view-source-and-patch/",
+      "title": "安装、看源码、修改"
+    },
+    {
+      "source": "Basics/03 - 选择基础库/README.md",
+      "post": "03-choose-base-library.md",
+      "permalink": "docs/03-choose-base-library/",
+      "title": "选择基础库"
+    },
+    {
+      "source": "Basics/05 - 变量与描述/README.md",
+      "post": "05-variable-and-description.md",
+      "permalink": "docs/05-variable-and-description/",
+      "title": "变量与描述"
+    },
+    {
+      "source": "Basics/06 - 先古对话/README.md",
+      "post": "08-ancient-dialogue.md",
+      "permalink": "docs/08-ancient-dialogue/",
+      "title": "先古对话"
+    },
+    {
+      "source": "Basics/07 - 快速调试&热重载/README.md",
+      "post": "07-quick-debug-and-hot-reload.md",
+      "permalink": "docs/07-quick-debug-and-hot-reload/",
+      "title": "快速调试&热重载"
+    },
+    {
+      "source": "Basics/08 - 启动参数/README.md",
+      "post": "08-launch-arguments.md",
+      "permalink": "docs/08-launch-arguments/",
+      "title": "启动项参数"
+    },
+    {
+      "source": "Basics/09 - 控制台指令/README.md",
+      "post": "09-console-commands.md",
+      "permalink": "docs/09-console-commands/",
+      "title": "控制台指令"
+    },
+    {
+      "source": "Basics/10 - Patch/README.md",
+      "post": "10-patch.md",
+      "permalink": "docs/10-patch/",
+      "title": "Patch"
+    }
   ],
   "baselib": {
     "overview": {
@@ -25,22 +70,102 @@
       "title": "BaseLib"
     },
     "articles": [
-      { "source": "BaseLib/01 - 添加卡牌/README.md", "post": "03-baselib/03-01-add-card.md", "permalink": "docs/03-baselib/03-01-add-card/", "title": "添加卡牌" },
-      { "source": "BaseLib/02 - 自定义模组配置/README.md", "post": "03-baselib/03-02-mod-config.md", "permalink": "docs/03-baselib/03-02-mod-config/", "title": "自定义模组配置" },
-      { "source": "BaseLib/03 - 添加新遗物/README.md", "post": "03-baselib/03-03-add-relic.md", "permalink": "docs/03-baselib/03-03-add-relic/", "title": "添加新遗物" },
-      { "source": "BaseLib/04 - 添加卡牌属性/README.md", "post": "03-baselib/03-04-card-properties.md", "permalink": "docs/03-baselib/03-04-card-properties/", "title": "添加卡牌属性" },
-      { "source": "BaseLib/05 - 添加新能力/README.md", "post": "03-baselib/03-05-add-power.md", "permalink": "docs/03-baselib/03-05-add-power/", "title": "添加新能力" },
-      { "source": "BaseLib/06 - 添加新药水/README.md", "post": "03-baselib/03-06-add-potion.md", "permalink": "docs/03-baselib/03-06-add-potion/", "title": "添加新药水" },
-      { "source": "BaseLib/07 - 添加先古之民/README.md", "post": "03-baselib/03-07-add-ancient.md", "permalink": "docs/03-baselib/03-07-add-ancient/", "title": "添加先古之民" },
-      { "source": "BaseLib/08 - 添加充能球/README.md", "post": "03-baselib/03-08-add-orb.md", "permalink": "docs/03-baselib/03-08-add-orb/", "title": "添加充能球" },
-      { "source": "BaseLib/09 - 局内保存/README.md", "post": "03-baselib/03-09-run-save.md", "permalink": "docs/03-baselib/03-09-run-save/", "title": "局内保存" },
-      { "source": "BaseLib/10 - mod联动/README.md", "post": "03-baselib/03-10-mod-integration.md", "permalink": "docs/03-baselib/03-10-mod-integration/", "title": "mod联动" },
-      { "source": "BaseLib/11 - 添加新怪物/README.md", "post": "03-baselib/03-11-add-monster.md", "permalink": "docs/03-baselib/03-11-add-monster/", "title": "添加新怪物" },
-      { "source": "BaseLib/12 - 添加新事件/README.md", "post": "03-baselib/03-12-add-event.md", "permalink": "docs/03-baselib/03-12-add-event/", "title": "添加新事件" },
-      { "source": "BaseLib/13 - 添加新附魔/README.md", "post": "03-baselib/03-13-add-enchantment.md", "permalink": "docs/03-baselib/03-13-add-enchantment/", "title": "添加新附魔" },
-      { "source": "BaseLib/14 - 添加新人物/README.md", "post": "04-add-new-character.md", "permalink": "docs/04-add-new-character/", "title": "添加新人物" },
-      { "source": "BaseLib/15 - 添加单例/README.md", "post": "03-baselib/03-15-add-singleton.md", "permalink": "docs/03-baselib/03-15-add-singleton/", "title": "添加单例" },
-      { "source": "BaseLib/16 - 手牌上限/README.md", "post": "03-baselib/03-16-max-hand-size.md", "permalink": "docs/03-baselib/03-16-max-hand-size/", "title": "手牌上限" }
+      {
+        "source": "BaseLib/01 - 添加卡牌/README.md",
+        "post": "03-baselib/03-01-add-card.md",
+        "permalink": "docs/03-baselib/03-01-add-card/",
+        "title": "添加卡牌"
+      },
+      {
+        "source": "BaseLib/02 - 自定义模组配置/README.md",
+        "post": "03-baselib/03-02-mod-config.md",
+        "permalink": "docs/03-baselib/03-02-mod-config/",
+        "title": "自定义模组配置"
+      },
+      {
+        "source": "BaseLib/03 - 添加新遗物/README.md",
+        "post": "03-baselib/03-03-add-relic.md",
+        "permalink": "docs/03-baselib/03-03-add-relic/",
+        "title": "添加新遗物"
+      },
+      {
+        "source": "BaseLib/04 - 添加卡牌属性/README.md",
+        "post": "03-baselib/03-04-card-properties.md",
+        "permalink": "docs/03-baselib/03-04-card-properties/",
+        "title": "添加卡牌属性"
+      },
+      {
+        "source": "BaseLib/05 - 添加新能力/README.md",
+        "post": "03-baselib/03-05-add-power.md",
+        "permalink": "docs/03-baselib/03-05-add-power/",
+        "title": "添加新能力"
+      },
+      {
+        "source": "BaseLib/06 - 添加新药水/README.md",
+        "post": "03-baselib/03-06-add-potion.md",
+        "permalink": "docs/03-baselib/03-06-add-potion/",
+        "title": "添加新药水"
+      },
+      {
+        "source": "BaseLib/07 - 添加先古之民/README.md",
+        "post": "03-baselib/03-07-add-ancient.md",
+        "permalink": "docs/03-baselib/03-07-add-ancient/",
+        "title": "添加先古之民"
+      },
+      {
+        "source": "BaseLib/08 - 添加充能球/README.md",
+        "post": "03-baselib/03-08-add-orb.md",
+        "permalink": "docs/03-baselib/03-08-add-orb/",
+        "title": "添加充能球"
+      },
+      {
+        "source": "BaseLib/09 - 局内保存/README.md",
+        "post": "03-baselib/03-09-run-save.md",
+        "permalink": "docs/03-baselib/03-09-run-save/",
+        "title": "局内保存"
+      },
+      {
+        "source": "BaseLib/10 - mod联动/README.md",
+        "post": "03-baselib/03-10-mod-integration.md",
+        "permalink": "docs/03-baselib/03-10-mod-integration/",
+        "title": "mod联动"
+      },
+      {
+        "source": "BaseLib/11 - 添加新怪物/README.md",
+        "post": "03-baselib/03-11-add-monster.md",
+        "permalink": "docs/03-baselib/03-11-add-monster/",
+        "title": "添加新怪物"
+      },
+      {
+        "source": "BaseLib/12 - 添加新事件/README.md",
+        "post": "03-baselib/03-12-add-event.md",
+        "permalink": "docs/03-baselib/03-12-add-event/",
+        "title": "添加新事件"
+      },
+      {
+        "source": "BaseLib/13 - 添加新附魔/README.md",
+        "post": "03-baselib/03-13-add-enchantment.md",
+        "permalink": "docs/03-baselib/03-13-add-enchantment/",
+        "title": "添加新附魔"
+      },
+      {
+        "source": "BaseLib/14 - 添加新人物/README.md",
+        "post": "04-add-new-character.md",
+        "permalink": "docs/04-add-new-character/",
+        "title": "添加新人物"
+      },
+      {
+        "source": "BaseLib/15 - 添加单例/README.md",
+        "post": "03-baselib/03-15-add-singleton.md",
+        "permalink": "docs/03-baselib/03-15-add-singleton/",
+        "title": "添加单例"
+      },
+      {
+        "source": "BaseLib/16 - 手牌上限/README.md",
+        "post": "03-baselib/03-16-max-hand-size.md",
+        "permalink": "docs/03-baselib/03-16-max-hand-size/",
+        "title": "手牌上限"
+      }
     ]
   },
   "ritsulib": {
@@ -54,52 +179,259 @@
       {
         "id": "basic-content",
         "articles": [
-          { "source": "RitsuLib/01 - 添加基础内容/01 - 添加卡牌/README.md", "post": "04-ritsulib/04-01-add-card.md", "permalink": "docs/04-ritsulib/04-01-add-card/", "title": "添加卡牌" },
-          { "source": "RitsuLib/01 - 添加基础内容/02 - 自定义配置/README.md", "post": "04-ritsulib/04-02-custom-config.md", "permalink": "docs/04-ritsulib/04-02-custom-config/", "title": "自定义配置" },
-          { "source": "RitsuLib/01 - 添加基础内容/03 - 添加新遗物/README.md", "post": "04-ritsulib/04-03-add-relic.md", "permalink": "docs/04-ritsulib/04-03-add-relic/", "title": "添加新遗物" },
-          { "source": "RitsuLib/01 - 添加基础内容/04 - 添加卡牌属性/README.md", "post": "04-ritsulib/04-04-card-properties.md", "permalink": "docs/04-ritsulib/04-04-card-properties/", "title": "添加卡牌属性" },
-          { "source": "RitsuLib/01 - 添加基础内容/05 - 添加新能力/README.md", "post": "04-ritsulib/04-05-add-power.md", "permalink": "docs/04-ritsulib/04-05-add-power/", "title": "添加新能力" },
-          { "source": "RitsuLib/01 - 添加基础内容/06 - 添加新药水/README.md", "post": "04-ritsulib/04-06-add-potion.md", "permalink": "docs/04-ritsulib/04-06-add-potion/", "title": "添加新药水" },
-          { "source": "RitsuLib/01 - 添加基础内容/07 - 添加先古之民/README.md", "post": "04-ritsulib/04-07-add-ancient.md", "permalink": "docs/04-ritsulib/04-07-add-ancient/", "title": "添加先古之民" },
-          { "source": "RitsuLib/01 - 添加基础内容/08 - 添加充能球/README.md", "post": "04-ritsulib/04-08-add-orb.md", "permalink": "docs/04-ritsulib/04-08-add-orb/", "title": "添加充能球" },
-          { "source": "RitsuLib/01 - 添加基础内容/09 - 添加时间线/README.md", "post": "04-ritsulib/04-09-add-timeline.md", "permalink": "docs/04-ritsulib/04-09-add-timeline/", "title": "添加时间线" },
-          { "source": "RitsuLib/01 - 添加基础内容/10 - 添加音频/README.md", "post": "04-ritsulib/04-10-add-audio.md", "permalink": "docs/04-ritsulib/04-10-add-audio/", "title": "添加音频" },
-          { "source": "RitsuLib/01 - 添加基础内容/11 - 添加新怪物/README.md", "post": "04-ritsulib/04-11-add-monster.md", "permalink": "docs/04-ritsulib/04-11-add-monster/", "title": "添加新怪物" },
-          { "source": "RitsuLib/01 - 添加基础内容/12 - 添加新事件/README.md", "post": "04-ritsulib/04-12-add-event.md", "permalink": "docs/04-ritsulib/04-12-add-event/", "title": "添加新事件" },
-          { "source": "RitsuLib/01 - 添加基础内容/13 - 添加新附魔/README.md", "post": "04-ritsulib/04-13-add-enchantment.md", "permalink": "docs/04-ritsulib/04-13-add-enchantment/", "title": "添加新附魔" },
-          { "source": "RitsuLib/01 - 添加基础内容/14 - 添加新人物/README.md", "post": "04-ritsulib/04-14-add-new-character.md", "permalink": "docs/04-ritsulib/04-14-add-new-character/", "title": "添加新人物" },
-          { "source": "RitsuLib/01 - 添加基础内容/15 - 添加单例/README.md", "post": "04-ritsulib/04-15-add-singleton.md", "permalink": "docs/04-ritsulib/04-15-add-singleton/", "title": "添加单例" }
+          {
+            "source": "RitsuLib/01 - 添加基础内容/01 - 添加卡牌/README.md",
+            "post": "04-ritsulib/04-01-add-card.md",
+            "permalink": "docs/04-ritsulib/04-01-add-card/",
+            "title": "添加卡牌"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/02 - 自定义配置/README.md",
+            "post": "04-ritsulib/04-02-custom-config.md",
+            "permalink": "docs/04-ritsulib/04-02-custom-config/",
+            "title": "自定义配置"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/03 - 添加新遗物/README.md",
+            "post": "04-ritsulib/04-03-add-relic.md",
+            "permalink": "docs/04-ritsulib/04-03-add-relic/",
+            "title": "添加新遗物"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/04 - 添加卡牌属性/README.md",
+            "post": "04-ritsulib/04-04-card-properties.md",
+            "permalink": "docs/04-ritsulib/04-04-card-properties/",
+            "title": "添加卡牌属性"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/05 - 添加新能力/README.md",
+            "post": "04-ritsulib/04-05-add-power.md",
+            "permalink": "docs/04-ritsulib/04-05-add-power/",
+            "title": "添加新能力"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/06 - 添加新药水/README.md",
+            "post": "04-ritsulib/04-06-add-potion.md",
+            "permalink": "docs/04-ritsulib/04-06-add-potion/",
+            "title": "添加新药水"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/07 - 添加先古之民/README.md",
+            "post": "04-ritsulib/04-07-add-ancient.md",
+            "permalink": "docs/04-ritsulib/04-07-add-ancient/",
+            "title": "添加先古之民"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/08 - 添加充能球/README.md",
+            "post": "04-ritsulib/04-08-add-orb.md",
+            "permalink": "docs/04-ritsulib/04-08-add-orb/",
+            "title": "添加充能球"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/09 - 添加时间线/README.md",
+            "post": "04-ritsulib/04-09-add-timeline.md",
+            "permalink": "docs/04-ritsulib/04-09-add-timeline/",
+            "title": "添加时间线"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/10 - 添加音频/README.md",
+            "post": "04-ritsulib/04-10-add-audio.md",
+            "permalink": "docs/04-ritsulib/04-10-add-audio/",
+            "title": "添加音频"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/11 - 添加新怪物/README.md",
+            "post": "04-ritsulib/04-11-add-monster.md",
+            "permalink": "docs/04-ritsulib/04-11-add-monster/",
+            "title": "添加新怪物"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/12 - 添加新事件/README.md",
+            "post": "04-ritsulib/04-12-add-event.md",
+            "permalink": "docs/04-ritsulib/04-12-add-event/",
+            "title": "添加新事件"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/13 - 添加新附魔/README.md",
+            "post": "04-ritsulib/04-13-add-enchantment.md",
+            "permalink": "docs/04-ritsulib/04-13-add-enchantment/",
+            "title": "添加新附魔"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/14 - 添加新人物/README.md",
+            "post": "04-ritsulib/04-14-add-new-character.md",
+            "permalink": "docs/04-ritsulib/04-14-add-new-character/",
+            "title": "添加新人物"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/15 - 添加单例/README.md",
+            "post": "04-ritsulib/04-15-add-singleton.md",
+            "permalink": "docs/04-ritsulib/04-15-add-singleton/",
+            "title": "添加单例"
+          }
         ]
       },
       {
         "id": "gameplay",
         "articles": [
-          { "source": "RitsuLib/02 - 玩法基底/01 - 血条覆盖/README.md", "post": "04-ritsulib/04-16-health-bar-overlay.md", "permalink": "docs/04-ritsulib/04-16-health-bar-overlay/", "title": "血条覆盖" },
-          { "source": "RitsuLib/02 - 玩法基底/02 - 手牌上限/README.md", "post": "04-ritsulib/04-18-max-hand-size.md", "permalink": "docs/04-ritsulib/04-18-max-hand-size/", "title": "手牌上限" },
-          { "source": "RitsuLib/02 - 玩法基底/03 - 手牌泛光/README.md", "post": "04-ritsulib/04-19-hand-outline.md", "permalink": "docs/04-ritsulib/04-19-hand-outline/", "title": "手牌泛光" },
-          { "source": "RitsuLib/02 - 玩法基底/04 - 自定义卡牌堆/README.md", "post": "04-ritsulib/04-20-custom-card-pile.md", "permalink": "docs/04-ritsulib/04-20-custom-card-pile/", "title": "自定义卡牌堆", "author": "Reme、alkaid616" },
-          { "source": "RitsuLib/02 - 玩法基底/05 - 顶栏按钮/README.md", "post": "04-ritsulib/04-21-top-bar-button.md", "permalink": "docs/04-ritsulib/04-21-top-bar-button/", "title": "顶栏按钮", "author": "Reme、alkaid616" },
-          { "source": "RitsuLib/02 - 玩法基底/06 - 通知提示/README.md", "post": "04-ritsulib/04-22-notification.md", "permalink": "docs/04-ritsulib/04-22-notification/", "title": "通知提示", "author": "Reme、alkaid616" }
+          {
+            "source": "RitsuLib/02 - 玩法基底/01 - 血条覆盖/README.md",
+            "post": "04-ritsulib/04-16-health-bar-overlay.md",
+            "permalink": "docs/04-ritsulib/04-16-health-bar-overlay/",
+            "title": "血条覆盖"
+          },
+          {
+            "source": "RitsuLib/02 - 玩法基底/02 - 手牌上限/README.md",
+            "post": "04-ritsulib/04-18-max-hand-size.md",
+            "permalink": "docs/04-ritsulib/04-18-max-hand-size/",
+            "title": "手牌上限"
+          },
+          {
+            "source": "RitsuLib/02 - 玩法基底/03 - 手牌泛光/README.md",
+            "post": "04-ritsulib/04-19-hand-outline.md",
+            "permalink": "docs/04-ritsulib/04-19-hand-outline/",
+            "title": "手牌泛光"
+          },
+          {
+            "source": "RitsuLib/02 - 玩法基底/04 - 自定义卡牌堆/README.md",
+            "post": "04-ritsulib/04-20-custom-card-pile.md",
+            "permalink": "docs/04-ritsulib/04-20-custom-card-pile/",
+            "title": "自定义卡牌堆",
+            "author": "Reme、alkaid616"
+          },
+          {
+            "source": "RitsuLib/02 - 玩法基底/05 - 顶栏按钮/README.md",
+            "post": "04-ritsulib/04-21-top-bar-button.md",
+            "permalink": "docs/04-ritsulib/04-21-top-bar-button/",
+            "title": "顶栏按钮",
+            "author": "Reme、alkaid616"
+          },
+          {
+            "source": "RitsuLib/02 - 玩法基底/06 - 通知提示/README.md",
+            "post": "04-ritsulib/04-22-notification.md",
+            "permalink": "docs/04-ritsulib/04-22-notification/",
+            "title": "通知提示",
+            "author": "Reme、alkaid616"
+          }
         ]
       },
       {
         "id": "mod-tools",
         "articles": [
-          { "source": "RitsuLib/03 - 模组工具/01 - 数据保存/README.md", "post": "04-ritsulib/04-17-data-save.md", "permalink": "docs/04-ritsulib/04-17-data-save/", "title": "数据保存" },
-          { "source": "RitsuLib/03 - 模组工具/02 - 生命周期事件/README.md", "post": "04-ritsulib/04-23-lifecycle-events.md", "permalink": "docs/04-ritsulib/04-23-lifecycle-events/", "title": "生命周期事件", "author": "Reme、alkaid616" },
-          { "source": "RitsuLib/03 - 模组工具/03 - 补丁系统/README.md", "post": "04-ritsulib/04-24-patch-system.md", "permalink": "docs/04-ritsulib/04-24-patch-system/", "title": "补丁系统", "author": "Reme、alkaid616" },
-          { "source": "RitsuLib/03 - 模组工具/04 - 数据持久化/README.md", "post": "04-ritsulib/04-25-data-persistence.md", "permalink": "docs/04-ritsulib/04-25-data-persistence/", "title": "数据持久化", "author": "Reme、alkaid616" },
-          { "source": "RitsuLib/03 - 模组工具/05 - 运行时热键/README.md", "post": "04-ritsulib/04-26-runtime-hotkey.md", "permalink": "docs/04-ritsulib/04-26-runtime-hotkey/", "title": "运行时热键", "author": "Reme、alkaid616" }
+          {
+            "source": "RitsuLib/03 - 模组工具/01 - 数据保存/README.md",
+            "post": "04-ritsulib/04-17-data-save.md",
+            "permalink": "docs/04-ritsulib/04-17-data-save/",
+            "title": "数据保存"
+          },
+          {
+            "source": "RitsuLib/03 - 模组工具/02 - 生命周期事件/README.md",
+            "post": "04-ritsulib/04-23-lifecycle-events.md",
+            "permalink": "docs/04-ritsulib/04-23-lifecycle-events/",
+            "title": "生命周期事件",
+            "author": "Reme、alkaid616"
+          },
+          {
+            "source": "RitsuLib/03 - 模组工具/03 - 补丁系统/README.md",
+            "post": "04-ritsulib/04-24-patch-system.md",
+            "permalink": "docs/04-ritsulib/04-24-patch-system/",
+            "title": "补丁系统",
+            "author": "Reme、alkaid616"
+          },
+          {
+            "source": "RitsuLib/03 - 模组工具/04 - 数据持久化/README.md",
+            "post": "04-ritsulib/04-25-data-persistence.md",
+            "permalink": "docs/04-ritsulib/04-25-data-persistence/",
+            "title": "数据持久化",
+            "author": "Reme、alkaid616"
+          },
+          {
+            "source": "RitsuLib/03 - 模组工具/05 - 运行时热键/README.md",
+            "post": "04-ritsulib/04-26-runtime-hotkey.md",
+            "permalink": "docs/04-ritsulib/04-26-runtime-hotkey/",
+            "title": "运行时热键",
+            "author": "Reme、alkaid616"
+          }
         ]
       }
     ]
   },
   "migrations": [
-    { "source": "Migrations/01 - 正式版 至 测试版/README.md", "post": "07-migration-99-100.md", "permalink": "docs/07-migration-99-100/", "title": "正式版 至 测试版" },
-    { "source": "Migrations/02 - BaseLib 至 RitsuLib/README.md", "post": "08-migration-baselib-to-ritsulib.md", "permalink": "docs/08-migration-baselib-to-ritsulib/", "title": "BaseLib 至 RitsuLib" }
+    {
+      "source": "Migrations/01 - 正式版 至 测试版/README.md",
+      "post": "07-migration-99-100.md",
+      "permalink": "docs/07-migration-99-100/",
+      "title": "正式版 至 测试版"
+    },
+    {
+      "source": "Migrations/02 - BaseLib 至 RitsuLib/README.md",
+      "post": "08-migration-baselib-to-ritsulib.md",
+      "permalink": "docs/08-migration-baselib-to-ritsulib/",
+      "title": "BaseLib 至 RitsuLib"
+    }
   ],
   "visuals": [
-    { "source": "Visuals/01 - 卡图&Spine/README.md", "post": "05-card-art-and-skin-replacement.md", "permalink": "docs/05-card-art-and-skin-replacement/", "title": "卡图&Spine" },
-    { "source": "Visuals/02 - 风格原画绘制/README.md", "post": "06-style-art-drawing.md", "permalink": "docs/06-style-art-drawing/", "title": "风格原画绘制", "author": "未设置" }
+    {
+      "source": "Visuals/01 - 卡图&Spine/README.md",
+      "post": "05-card-art-and-skin-replacement.md",
+      "permalink": "docs/05-card-art-and-skin-replacement/",
+      "title": "卡图&Spine"
+    },
+    {
+      "source": "Visuals/02 - 风格原画绘制/README.md",
+      "post": "06-style-art-drawing.md",
+      "permalink": "docs/06-style-art-drawing/",
+      "title": "风格原画绘制",
+      "author": "未设置"
+    },
+    {
+      "source": "Visuals/03 - 特效与动画/3-1 帧动画的处理/README.md",
+      "post": "09-01-frame-animation.md",
+      "permalink": "docs/09-01-frame-animation/",
+      "title": "帧动画的处理",
+      "author": "vitechliu"
+    },
+    {
+      "source": "Visuals/03 - 特效与动画/3-2 材质图集(Texture Atlas)/README.md",
+      "post": "09-02-texture-atlas.md",
+      "permalink": "docs/09-02-texture-atlas/",
+      "title": "材质图集",
+      "author": "vitechliu"
+    },
+    {
+      "source": "Visuals/03 - 特效与动画/3-3 特效的播放(实例化)与缓存/README.md",
+      "post": "09-03-vfx-instantiation.md",
+      "permalink": "docs/09-03-vfx-instantiation/",
+      "title": "特效的播放(实例化)与缓存",
+      "author": "vitechliu"
+    },
+    {
+      "source": "Visuals/03 - 特效与动画/3-4 粒子特效/README.md",
+      "post": "09-04-particle-vfx.md",
+      "permalink": "docs/09-04-particle-vfx/",
+      "title": "粒子特效",
+      "author": "vitechliu"
+    },
+    {
+      "source": "Visuals/03 - 特效与动画/3-5 WorldEnvironment 全局环境光照/README.md",
+      "post": "09-05-world-environment.md",
+      "permalink": "docs/09-05-world-environment/",
+      "title": "全局环境光照",
+      "author": "vitechliu"
+    },
+    {
+      "source": "Visuals/03 - 特效与动画/3-6 Shader/README.md",
+      "post": "09-06-shader.md",
+      "permalink": "docs/09-06-shader/",
+      "title": "Shader",
+      "author": "vitechliu"
+    },
+    {
+      "source": "Visuals/03 - 特效与动画/3-7 游戏本体特效/README.md",
+      "post": "09-07-game-builtin-vfx.md",
+      "permalink": "docs/09-07-game-builtin-vfx/",
+      "title": "游戏本体特效",
+      "author": "vitechliu"
+    }
   ]
 }

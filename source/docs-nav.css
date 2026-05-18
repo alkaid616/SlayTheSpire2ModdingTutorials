@@ -531,52 +531,71 @@
 .kira-qq-modal {
     position: fixed;
     inset: 0;
-    z-index: 3000;
+    z-index: 12000;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
     visibility: hidden;
-    opacity: 0;
     pointer-events: none;
-    transition: visibility 0s linear 0.36s, opacity 0.28s ease;
 }
 
 .kira-qq-modal.is-open,
 .kira-qq-modal.is-closing {
     visibility: visible;
-    opacity: 1;
     pointer-events: auto;
-    transition: visibility 0s, opacity 0.28s ease;
 }
 
 .kira-qq-modal-backdrop {
     position: absolute;
     inset: 0;
-    background: transparent;
+    background: rgba(8, 10, 14, 0.78);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.28s ease;
+}
+
+.kira-qq-modal.is-open .kira-qq-modal-backdrop,
+.kira-qq-modal.is-closing .kira-qq-modal-backdrop {
+    opacity: 1;
 }
 
 .kira-qq-panel {
     position: relative;
     z-index: 1;
+    width: min(92vw, 400px);
     max-width: min(92vw, 400px);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
-    transform: scale(0.86) translateY(20px);
+    background: rgba(28, 34, 43, 0.98);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+    transform: scale(0.92) translateY(16px);
     opacity: 0;
-    transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.32s ease;
+    visibility: hidden;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.28s ease,
+        visibility 0s linear 0.32s;
 }
 
 .kira-qq-modal.is-open .kira-qq-panel {
     transform: scale(1) translateY(0);
     opacity: 1;
+    visibility: visible;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.28s ease,
+        visibility 0s;
 }
 
 .kira-qq-modal.is-closing .kira-qq-panel {
-    transform: scale(0.92) translateY(14px);
+    transform: scale(0.96) translateY(10px);
     opacity: 0;
+    visibility: hidden;
+}
+
+.kira-community-dock-btn.kira-social-qq .kirafont {
+    font-size: 22px;
+    line-height: 1;
+    color: inherit;
 }
 
 .kira-qq-panel-image {
@@ -860,19 +879,24 @@
     color: #e8edf2 !important;
 }
 
-.kira-content .kira-main-content .kira-post-meta.kira-rainbow a:nth-child(3n+1) {
+.kira-content .kira-main-content .kira-post-meta.kira-rainbow a:nth-child(4n+1) {
     background-color: rgba(28, 44, 72, 0.82) !important;
     color: #d8e7ff !important;
 }
 
-.kira-content .kira-main-content .kira-post-meta.kira-rainbow a:nth-child(3n+2) {
+.kira-content .kira-main-content .kira-post-meta.kira-rainbow a:nth-child(4n+2) {
     background-color: rgba(58, 33, 66, 0.82) !important;
     color: #ecd7ff !important;
 }
 
-.kira-content .kira-main-content .kira-post-meta.kira-rainbow a:nth-child(3n+3) {
+.kira-content .kira-main-content .kira-post-meta.kira-rainbow a:nth-child(4n+3) {
     background-color: rgba(86, 44, 20, 0.85) !important;
     color: #ffe2c4 !important;
+}
+
+.kira-content .kira-main-content .kira-post-meta.kira-rainbow a:nth-child(4n+4) {
+    background-color: rgba(32, 72, 52, 0.82) !important;
+    color: #d4f5e4 !important;
 }
 
 .kira-list-item,
@@ -1528,7 +1552,7 @@
     }
 
     .kira-qq-modal {
-        z-index: 3000;
+        z-index: 12000;
     }
 
     #kira-toc-column .kira-chapters-panel {
