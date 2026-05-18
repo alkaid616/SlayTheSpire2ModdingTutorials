@@ -1,10 +1,10 @@
 avatar: "" # 头像已隐藏
 background: # 既是博客的背景，又是文章默认头图
-    path: /images/qq20260307.png
+    path: https://glitchedreme.github.io/SlayTheSpire2ModdingTutorials/images/qq20260307.png
     width: 1600
     height: 900
 favicon:
-    href: /icon.ico # 网站图标
+    href: /SlayTheSpire2ModdingTutorials/icon.ico # 网站图标
     type: image/x-icon # 图标类型，可能的值有(image/png, image/vnd.microsoft.icon, image/x-icon, image/gif)
 
 # 附加图标库 使用说明：https://kira.host/hexo/config/icon.html
