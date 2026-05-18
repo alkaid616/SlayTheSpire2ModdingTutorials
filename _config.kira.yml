@@ -335,11 +335,6 @@ social:
         - icon-github
         - "#ffffff"
         - "#24292e"
-    QQ群:
-        - "#qq-group"
-        - icon-QQ
-        - "#ffffff"
-        - "#12b7f5"
 
 color: # 配色方案，从first到seventh为优先级为1-7的颜色，默认为彩虹配色
     first: # 同时作为主题色

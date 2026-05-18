@@ -368,11 +368,6 @@
     pointer-events: auto;
 }
 
-.kira-floating-stack > .kira-qq-modal {
-    position: fixed;
-    margin: 0;
-}
-
 .kira-floating-stack .kira-backtotop {
     margin-top: 0;
 }
@@ -526,134 +521,6 @@
     opacity: 0;
     transform: translateX(-16px);
     pointer-events: none;
-}
-
-.kira-qq-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 12000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.kira-qq-modal.is-open,
-.kira-qq-modal.is-closing {
-    visibility: visible;
-    pointer-events: auto;
-}
-
-.kira-qq-modal-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(8, 10, 14, 0.78);
-    backdrop-filter: blur(4px);
-    opacity: 0;
-    transition: opacity 0.28s ease;
-}
-
-.kira-qq-modal.is-open .kira-qq-modal-backdrop,
-.kira-qq-modal.is-closing .kira-qq-modal-backdrop {
-    opacity: 1;
-}
-
-.kira-qq-panel {
-    position: relative;
-    z-index: 1;
-    width: min(92vw, 400px);
-    max-width: min(92vw, 400px);
-    border-radius: 12px;
-    overflow: hidden;
-    background: rgba(28, 34, 43, 0.98);
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
-    transform: scale(0.92) translateY(16px);
-    opacity: 0;
-    visibility: hidden;
-    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.28s ease,
-        visibility 0s linear 0.32s;
-}
-
-.kira-qq-modal.is-open .kira-qq-panel {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-    visibility: visible;
-    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.28s ease,
-        visibility 0s;
-}
-
-.kira-qq-modal.is-closing .kira-qq-panel {
-    transform: scale(0.96) translateY(10px);
-    opacity: 0;
-    visibility: hidden;
-}
-
-.kira-community-dock-btn.kira-social-qq .kirafont {
-    font-size: 22px;
-    line-height: 1;
-    color: inherit;
-}
-
-.kira-qq-panel-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    pointer-events: none;
-    user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-}
-
-.kira-qq-panel-caption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 28px 12px 12px;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #fff4e8;
-    letter-spacing: 0.04em;
-    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.72));
-    pointer-events: auto;
-    user-select: text;
-    -webkit-user-select: text;
-    cursor: text;
-}
-
-.kira-qq-panel-close {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 2;
-    width: 30px;
-    height: 30px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.45);
-    color: #fff;
-    font-size: 20px;
-    line-height: 1;
-    cursor: pointer;
-    outline: none;
-    box-shadow: none;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.kira-qq-panel-close:focus,
-.kira-qq-panel-close:focus-visible {
-    outline: none;
-    box-shadow: none;
-}
-
-.kira-qq-panel-close:hover {
-    background: rgba(187, 101, 22, 0.85);
-    transform: scale(1.06);
 }
 
 #kira-sidebar .kira-widget-wrap:has(.kira-social) {
@@ -1551,10 +1418,6 @@
         margin-top: 0;
     }
 
-    .kira-qq-modal {
-        z-index: 12000;
-    }
-
     #kira-toc-column .kira-chapters-panel {
         display: none !important;
     }
@@ -1565,7 +1428,7 @@
 }
 
 /* Shrink in-article images to 50% of their container width. */
-.kira-content .kira-main-content article img:not(.kira-post-cover-image):not(.kira-qq-panel-image) {
+.kira-content .kira-main-content article img:not(.kira-post-cover-image) {
     width: 50% !important;
     max-width: 50% !important;
     height: auto !important;
@@ -1576,8 +1439,4 @@
     max-width: 22px !important;
     height: 22px !important;
     filter: brightness(0) invert(1) !important;
-}
-
-.kira-qq-panel-image {
-    max-width: min(92vw, 400px) !important;
 }
