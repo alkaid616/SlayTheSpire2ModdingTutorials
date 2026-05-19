@@ -1,6 +1,6 @@
 ---
 title: 添加新遗物
-date: 2026-04-02 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/03-baselib/03-03-add-relic/
 categories:
 - Basics
@@ -38,7 +38,7 @@ public class TestRelic : CustomRelicModel
 
 然后放一张图片`test/images/relics/test_relic.png`。路径不一定是`test`，组织风格自定义，参考上面卡图部分。这里偷懒三张图片用了一样的，可以自己修改。
 
-![示例遗物](../../images/image13.png)
+![示例遗物](../../../images/image13.png)
 
 然后写一个本地化文件，`{modId}/localization/{Language}/relics.json`。
 

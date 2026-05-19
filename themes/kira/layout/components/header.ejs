@@ -6,10 +6,19 @@
     >
         <i class="kirafont icon-menu"></i>
     </a>
-    <a href="<%- url_for('/') %>" title="<%= config.title %>">
+    <a class="kira-header-home" href="<%- url_for('/') %>" title="<%= config.title %>">
         <img
 			src="<%= theme.avatar %>"
 			alt="<%= config.author || config.title %>"
 		/>
+    </a>
+    <a
+        class="kira-header-link mdui-ripple"
+        href="https://github.com/GlitchedReme/SlayTheSpire2ModdingTutorials"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="GitHub 仓库"
+    >
+        <i class="kirafont icon-github"></i>
     </a>
 </div>

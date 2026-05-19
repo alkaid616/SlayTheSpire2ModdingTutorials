@@ -1,6 +1,6 @@
 ---
 title: 添加卡牌属性
-date: 2026-04-02 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/03-baselib/03-04-card-properties/
 categories:
 - Basics
@@ -37,7 +37,7 @@ public class MyKeywords
     public override IEnumerable<CardKeyword> CanonicalKeywords => [MyKeywords.Unique];
 ```
 
-![alt text](../../images/image23.png)
+![alt text](../../../images/image23.png)
 
 ## 添加新动态变量
 
@@ -84,7 +84,7 @@ public class MyKeywords
     await CreatureCmd.Heal(cardPlay.Card.Owner.Creature, DynamicVars["Leech"].BaseValue);
 ```
 
-![alt text](../../images/image26.png)
+![alt text](../../../images/image26.png)
 
 ## 添加卡牌提示文本
 

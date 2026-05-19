@@ -39,7 +39,9 @@ jobs:
         run: pnpm run build
 
       - name: Disable Jekyll processing
-        run: touch public/.nojekyll
+        run: |
+          touch public/.nojekyll
+          echo "tutorials.sts2modding.com" > public/CNAME
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

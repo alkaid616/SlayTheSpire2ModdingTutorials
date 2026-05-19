@@ -1,6 +1,6 @@
 ---
 title: 添加卡牌
-date: 2026-04-21 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/04-ritsulib/04-01-add-card/
 categories:
 - Basics
@@ -54,7 +54,7 @@ public class TestCard : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"res://Test/images/cards/{GetType().Name}.png"
         // 卡框等，有需求自己添加。需要自行判断卡牌类型（攻击、技能、能力等）设置，建议写在基类里。
-        // 如果使用自定义卡池，需要改下material（TODO）
+        // 如果使用自定义卡池，需要改下material，看添加人物章节的添加卡池部分
         // FramePath: "", // 卡牌背景
         // PortraitBorderPath: "", // 边框（状态牌感染使用的）
         // BannerTexturePath: "" // 横幅（不同类型）
@@ -118,7 +118,7 @@ public override CardAssetProfile AssetProfile => new(
 
 卡图任意尺寸都可，且不需要裁剪，官方使用的尺寸是普通卡250x190，先古卡250x351。
 
-![示例卡图](../../images/image10.png)
+![示例卡图](../../../images/image10.png)
 
 如果你想统一管理卡图路径，也可以额外写一个抽象基类，例如`TestCardModel.cs`，然后其他卡牌类继承这个类即可。
 
@@ -179,7 +179,7 @@ public abstract class TestCardModel : ModCardTemplate
 
 * 如果你在图鉴中看到???是正常的，你只是没遇到这张牌。
 
-![示例卡牌](../../images/image11.png)
+![示例卡牌](../../../images/image11.png)
 
 ## 最终项目参考
 

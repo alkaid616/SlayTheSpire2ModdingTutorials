@@ -1,6 +1,6 @@
 ---
 title: 添加单例
-date: 2026-04-27 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/03-baselib/03-15-add-singleton/
 categories:
 - Basics

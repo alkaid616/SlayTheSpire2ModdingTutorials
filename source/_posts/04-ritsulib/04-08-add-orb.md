@@ -1,6 +1,6 @@
 ---
 title: 添加充能球
-date: 2026-04-21 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/04-ritsulib/04-08-add-orb/
 categories:
 - Basics
@@ -74,7 +74,7 @@ public class TestOrb : ModOrbTemplate
 
 使用`await OrbCmd.Channel<TestOrb>(choiceContext, cardPlay.Card.Owner)`以生成。
 
-![alt text](../../images/image28.png)
+![alt text](../../../images/image28.png)
 
 `test_orb.tscn`:
 

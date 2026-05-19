@@ -1,6 +1,6 @@
 ---
 title: 添加先古之民
-date: 2026-04-02 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/03-baselib/03-07-add-ancient/
 categories:
 - Basics
@@ -102,7 +102,7 @@ public class TestAncient : CustomAncientModel
 }
 ```
 
-![alt text](../../images/image27.png)
+![alt text](../../../images/image27.png)
 
 场景示例`test_ancient.tscn`：
 ```

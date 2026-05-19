@@ -5,6 +5,22 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<% if (config.description) { %>
+			<meta name="description" content="<%= config.description %>" />
+			<meta property="og:description" content="<%= config.description %>" />
+		<% } %>
+		<% if (page.description) { %>
+			<meta name="description" content="<%= page.description %>" />
+			<meta property="og:description" content="<%= page.description %>" />
+		<% } %>
+		<% if (config.keywords) { %>
+			<meta name="keywords" content="<%= config.keywords %>" />
+		<% } %>
+		<meta property="og:locale" content="zh_CN" />
+		<meta property="og:site_name" content="<%= config.title %>" />
+		<% if (page.title) { %>
+			<meta property="og:title" content="<%= page.title %>" />
+		<% } %>
 		<%- css("css/layout") %>
 		<% var title=page.title; if (is_archive()){ title=__('archive'); if
 		(is_month()){ title +='：' + page.year + '/' + page.month; } else if (is_year()){ title
@@ -36,6 +52,11 @@
 		<% if (theme.customStyles) { %>
 			<% theme.customStyles.forEach(function(customCss){ %>
 				<%- css(customCss) %>
+			<% }) %>
+		<% } %>
+		<% if (theme.customScripts) { %>
+			<% theme.customScripts.forEach(function(customJs){ %>
+				<%- js(customJs) %>
 			<% }) %>
 		<% } %>
 		<%- js(["deps/js/APlayer.min", "deps/js/Meting.min"]) %>

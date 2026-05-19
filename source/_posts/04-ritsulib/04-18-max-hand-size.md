@@ -1,6 +1,6 @@
 ---
-title: 修改手牌上限
-date: 2026-05-08 00:00:00
+title: 手牌上限
+date: 2026-05-08 12:58:19
 permalink: docs/04-ritsulib/04-18-max-hand-size/
 categories:
 - Basics
@@ -10,6 +10,8 @@ categories:
 基础库提供了一个修改手牌上限的接口，只要接上`IMaxHandSizeModifier`并实现就行。
 
 在你有修改手牌上限能力的`AbstractModel`类中添加接口并实现，例如给`PowerModel`：
+
+（对于卡牌，如果抽牌导致有更改手牌上限的卡牌入手，那次抽牌的结果不会变化。请自行实现。）
 
 ```csharp
 [RegisterPower]

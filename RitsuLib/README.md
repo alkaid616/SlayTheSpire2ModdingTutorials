@@ -2,7 +2,7 @@
 
 https://github.com/BAKAOLC/STS2-RitsuLib
 
-> 以下内容使用ritsulib0.2.15。
+> 以下内容使用ritsulib0.2.32。
 
 先依赖ritsulib才能查看这里里面的文章。
 
@@ -68,7 +68,7 @@ public class Entry
 
     public static void Init()
     {
-        // harmony可用，但是最好用ritsu的封装patch（TODO）
+        // harmony可用，但是最好用ritsu的封装patch，见补丁系统一章
         // var harmony = new Harmony("com.example.testmod");
         // harmony.PatchAll();
         var assembly = Assembly.GetExecutingAssembly();

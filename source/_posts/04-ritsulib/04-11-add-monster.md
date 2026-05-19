@@ -1,6 +1,6 @@
 ---
 title: 添加新怪物
-date: 2026-04-21 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/04-ritsulib/04-11-add-monster/
 categories:
 - Basics
@@ -56,7 +56,8 @@ public class TestMonster : ModMonsterTemplate
     // 战斗开始时，在这里给自己上buff之类
     public override async Task AfterAddedToRoom()
     {
-        await PowerCmd.Apply<StrengthPower>(Creature, 2m, Creature, null);
+        await PowerCmd.Apply<StrengthPower>(Creature, 2m, Creature, null); 
+        //await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Creature, 2m, Creature, null); // 测试版
     }
 
     protected override MonsterMoveStateMachine GenerateMoveStateMachine()
@@ -170,7 +171,7 @@ public class TestEncounter : ModEncounterTemplate
 }
 ```
 
-![alt text](../../images/image29.png)
+![alt text](../../../images/image29.png)
 
 ### 多怪物遭遇
 
@@ -241,7 +242,7 @@ TestMultiEncounter (Node2D)
 └── fourth2 (Marker2D)
 ```
 
-![alt text](../../images/image30.png)
+![alt text](../../../images/image30.png)
 
 ### 自定义场景遭遇
 

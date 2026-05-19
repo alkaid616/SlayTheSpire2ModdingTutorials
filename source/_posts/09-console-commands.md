@@ -1,6 +1,6 @@
 ---
 title: 控制台指令
-date: 2026-05-08 00:00:00
+date: 2026-05-08 12:58:19
 permalink: docs/09-console-commands/
 categories:
 - Basics

@@ -1,6 +1,6 @@
 ---
 title: 添加新附魔
-date: 2026-04-11 16:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/03-baselib/03-13-add-enchantment/
 categories:
 - Basics
@@ -93,4 +93,4 @@ public class TestEnchantment : CustomEnchantmentModel
 * 控制台里输入`enchant TEST-TEST_ENCHANTMENT [数量] [给予手牌的编号]`。
 * 在效果里，使用`CardCmd.Enchant<TestEhchantment>(card, 2m)`。第二个参数用于修改Amount。
 
-![alt text](../../images/image32.png)
+![alt text](../../../images/image32.png)

@@ -1,6 +1,6 @@
 ---
 title: 添加新事件
-date: 2026-04-21 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/04-ritsulib/04-12-add-event/
 categories:
 - Basics
@@ -131,7 +131,7 @@ public sealed class TestEvent : ModEventTemplate
 
 ```
 
-![alt text](../../images/image33.png)
+![alt text](../../../images/image33.png)
 
 ## 战斗事件
 

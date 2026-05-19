@@ -1,6 +1,6 @@
 ---
 title: BaseLib
-date: 2026-03-15 00:00:00
+date: 2026-03-20 15:01:48
 permalink: docs/03-baselib/
 categories:
 - Basics

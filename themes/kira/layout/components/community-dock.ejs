@@ -1,0 +1,18 @@
+<% if (theme.social && Object.keys(theme.social).length) { %>
+	<div class="kira-community-dock" aria-label="社区链接">
+		<% for (name in theme.social) { %>
+			<% var href = theme.social[name][0]; var isExternal = /^https?:\/\//.test(href); %>
+			<a
+				class="kira-community-dock-btn kira-community-dock-btn--icon mdui-ripple"
+				href="<%= isExternal ? href : url_for(href) %>"
+				<% if (isExternal) { %>target="_blank" rel="noopener noreferrer"<% } %>
+				title="<%= name %>"
+				aria-label="<%= name %>"
+				style="color: <%= theme.social[name][2] %>; background-color: <%= theme.social[name][3] %>;"
+			>
+				<i class="kirafont <%= theme.social[name][1] || 'icon-github' %>"></i>
+				<span class="kira-community-dock-tip"><%= name %></span>
+			</a>
+		<% } %>
+	</div>
+<% } %>

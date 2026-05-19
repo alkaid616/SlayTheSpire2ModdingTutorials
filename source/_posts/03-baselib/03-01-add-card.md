@@ -1,6 +1,6 @@
 ---
 title: 添加卡牌
-date: 2026-04-02 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/03-baselib/03-01-add-card/
 categories:
 - Basics
@@ -104,7 +104,7 @@ public class TestCard : TestCardModel
 }
 ```
 
-![示例卡图](../../images/image10.png)
+![示例卡图](../../../images/image10.png)
 
 你也可以通过新增一个`abstract`类，避免每张卡都写一遍卡图路径，并且方便管理一些自定义功能。
 
@@ -144,7 +144,7 @@ public class TestCard : TestCardModel {}
 
 * 如果你在图鉴中看到???是正常的，你只是没遇到这张牌。
 
-![示例卡牌](../../images/image11.png)
+![示例卡牌](../../../images/image11.png)
 
 ## 最终项目参考
 

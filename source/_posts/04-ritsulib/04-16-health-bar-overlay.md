@@ -1,13 +1,13 @@
 ---
 title: 血条覆盖
-date: 2026-04-28 00:00:00
+date: 2026-05-04 13:57:41
 permalink: docs/04-ritsulib/04-16-health-bar-overlay/
 categories:
 - Basics
 ---
 你可以使用该功能制作类似`中毒` `灾厄`的血条覆盖层。
 
-![alt text](../../images/image34.png)
+![alt text](../../../images/image34.png)
 
 ## 代码
 

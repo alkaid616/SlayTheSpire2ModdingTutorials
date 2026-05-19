@@ -1,6 +1,6 @@
 ---
 title: 环境配置
-date: 2026-03-15 00:00:00
+date: 2026-03-07 16:46:55
 permalink: docs/01-env-setup/
 categories:
 - Basics
@@ -19,11 +19,11 @@ categories:
 
 ## 其他教程和mod模板
 
-https://github.com/Alchyr/ModTemplate-StS2
-
 https://github.com/freude916/sts2-quickRestart/blob/main/README.md
 
-可以通过`dotnet new install Alchyr.Sts2.Templates`直接安装项目模板，具体查看`ModTemplate-StS2`。
+`ritsulib`模板：https://github.com/alkaid616/RitsuLibModTemplate
+
+`baselib`模板：https://github.com/Alchyr/ModTemplate-StS2
 
 ## 安装Godot 4.5.1 Mono
 
@@ -95,7 +95,9 @@ https://github.com/freude916/sts2-quickRestart/blob/main/README.md
 
 * `0.105.0`以后，所有版本的字符串必须符合[标准版本语义](https://semver.org/)。简单来说必须是`X.X.X`三段，而不能是两段了。
 
-* 添加依赖参考：
+正式版添加依赖（填入其他mod在这个json的id）：`"dependencies": ["AnotherMod"]`
+
+* 测试版添加依赖参考：
 
 > ```json
 >   "dependencies": [
@@ -119,7 +121,7 @@ https://github.com/freude916/sts2-quickRestart/blob/main/README.md
     <!-- 如果你安装了10.0并遇到问题，改下这里 -->
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>true</ImplicitUsings>
-    <LangVersion>12.0</LangVersion>
+    <LangVersion>13.0</LangVersion>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
@@ -227,7 +229,7 @@ Godot支持命令行导出pck（首先你需要添加一个导出配置），例
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>true</ImplicitUsings>
-    <LangVersion>12.0</LangVersion>
+    <LangVersion>13.0</LangVersion>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
@@ -279,7 +281,7 @@ Godot支持命令行导出pck（首先你需要添加一个导出配置），例
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>true</ImplicitUsings>
-    <LangVersion>12.0</LangVersion>
+    <LangVersion>13.0</LangVersion>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
