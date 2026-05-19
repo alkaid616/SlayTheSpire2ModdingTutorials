@@ -122,10 +122,6 @@
     margin: 0 20px 10px;
 }
 
-.kira-sidebar-scroll .kira-widget-busuanzi {
-    margin: 10px 20px !important;
-}
-
 .kira-sidebar-scroll .kira-copyright {
     margin: 0 20px 16px;
 }
@@ -905,40 +901,6 @@
 .kira-content .kira-main-content blockquote a,
 .kira-content .kira-main-content blockquote code {
     color: #ffd8b2 !important;
-}
-
-/* Busuanzi panel above acknowledgements */
-.kira-widget-busuanzi {
-    margin: 14px 20px 10px !important;
-    background-color: rgba(32, 38, 46, 0.78) !important;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.kira-busuanzi-stats {
-    padding: 8px 14px 16px;
-    display: grid;
-    gap: 8px;
-}
-
-.kira-busuanzi-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 8px;
-    padding: 8px 10px;
-    background: rgba(12, 16, 22, 0.45);
-    color: #e8edf2;
-}
-
-.kira-busuanzi-label {
-    color: #bac6d8;
-    font-size: 12px;
-}
-
-.kira-busuanzi-value {
-    color: #ffd8b2;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
 }
 
 /* Scrollable regions share .kira-scrollbar styling */

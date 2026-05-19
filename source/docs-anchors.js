@@ -1,4 +1,16 @@
 (function () {
+  if (location.hostname === "glitchedreme.github.io") {
+    var prefix = "/SlayTheSpire2ModdingTutorials";
+    var path = location.pathname;
+    if (path === prefix || path.indexOf(prefix + "/") === 0) {
+      var rest = path.slice(prefix.length) || "/";
+      location.replace(
+        "https://tutorials.sts2modding.com" + rest + location.search + location.hash
+      );
+      return;
+    }
+  }
+
   var DESKTOP_MQ = "(min-width: 1001px)";
   var SCROLL_OFFSET_DESKTOP = 28;
 
