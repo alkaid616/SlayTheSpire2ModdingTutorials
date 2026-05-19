@@ -13,7 +13,7 @@ categories:
 
 | 类型 | 解锁条件 | 解锁内容 | 需要代码 |
 |---|---|---|---|
-| 解锁角色 | 指定角色打一把后解锁角色 | 角色 | `[RegisterEpoch]`、`[RegisterStoryEpoch]`、角色上 `[RequireEpoch]` |
+| 拥有角色 | - | 角色 | `[RegisterEpoch]`、`[RegisterStoryEpoch]`、角色上 `[RequireEpoch]` |
 | 打一局 | 用角色完成一局 | 卡牌/遗物/药水 | 角色上`[UnlockEpochAfterRunAs]` |
 | 赢一局 | 用角色赢一局 | 卡牌/遗物/药水 | 角色上`[UnlockEpochAfterWinAs]` |
 | 打败第一幕 | 用角色打败第一幕Boss | 卡牌 | 指定ID |
@@ -224,7 +224,20 @@ public sealed class TestAscensionOneEpoch : PackDeclaredCardUnlockEpochTemplate
 [UnlockEpochAfterBossVictories(typeof(TestBossEpoch))]
 [UnlockEpochAfterAscensionOneWin(typeof(TestAscensionOneEpoch))]
 [RevealAscensionAfterEpoch(typeof(TestVictoryEpoch))]
-public class TestCharacter : ModCharacterTemplate<TestCardPool, TestRelicPool, TestPotionPool> {}
+public class TestCharacter : ModCharacterTemplate<TestCardPool, TestRelicPool, TestPotionPool> {
+    // 其余省略
+
+    // 显示通过哪个角色解锁，仅显示无实际效果
+    protected override Type? UnlocksAfterRunAsType => typeof(Ironclad);
+
+    // 如果你不需要时间线
+    // public override bool RequiresEpochAndTimeline => false;
+}
+```
+
+如果你要通过原版角色解锁，在初始化函数中添加：
+```csharp
+    ModUnlockRegistry.For(ModId).UnlockEpochAfterRunAs<Silent, TestEpoch>(); // 在静默猎手打完一把后，解锁你的人物的时期。
 ```
 
 ## 文本
@@ -237,7 +250,7 @@ public class TestCharacter : ModCharacterTemplate<TestCardPool, TestRelicPool, T
   "TEST_CHARACTER_EPOCH.description": "路旁只有一棵[green]树[/green]、一块石头，以及一只被反复擦亮的[gold]怀表[/gold]。\n\n人们说，[blue]戈多[/blue]总会到来。也有人说，他已经来过了，只是没人认出他的影子。\n\n于是等待本身开始有了形状。它穿上外套，整理帽檐，慢慢走向[gold]高塔[/gold]。",
   "TEST_CHARACTER_EPOCH.title": "等待者",
   "TEST_CHARACTER_EPOCH.unlock": "[blue]戈多[/blue]终于出现在路尽头。\n他也许已经准备好进入[gold]高塔[/gold]了。",
-  "TEST_CHARACTER_EPOCH.unlockInfo": "{IsRevealed:已经用|用}[pink]{Prerequisite}[/pink]进行一局游戏{IsRevealed:|来揭示这个历史节点}。",
+  "TEST_CHARACTER_EPOCH.unlockInfo": "{IsRevealed:已经用|用}[green]静默猎手[/green]进行一局游戏{IsRevealed:|来揭示这个历史节点}。",
   "TEST_CHARACTER_EPOCH.unlockText": "解锁[blue]戈多[/blue]成为一名可玩角色。",
   "TEST_CARD_EPOCH.description": "[blue]戈多[/blue]把卡牌一张张摊在膝上，像是在清点迟到的信件。\n\n有些牌写着[gold]承诺[/gold]，有些牌写着[sine]明天[/sine]。剩下的那些没有字，只在被打出时发出轻轻的叹息。\n\n“还不够。”他说。“但可以先这样等下去。”",
   "TEST_CARD_EPOCH.title": "第一副牌",
