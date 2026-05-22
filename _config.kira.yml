@@ -323,6 +323,18 @@ docsTree:
                     },
                 ],
         },
+        {
+            title: 工具,
+            open: true,
+            children:
+                [
+                    {
+                        title: ID 生成器,
+                        path: /tools/id-generator/,
+                        icon: icon-container,
+                    },
+                ],
+        },
     ]
 
 widgets: []

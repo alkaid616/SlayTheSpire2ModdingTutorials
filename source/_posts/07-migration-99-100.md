@@ -5,6 +5,57 @@ permalink: docs/07-migration-99-100/
 categories:
 - Basics
 ---
+## 0.105测试版 至 0.106测试版
+
+## 变量变动
+
+* 新增枚举`HpLossHookPhase`，用于`ModifyHpLost`。
+
+* `ModifyDamageHookType`新增`ModifyDamageHookType.Cap`，用于`ModifyDamageCap`接口。
+
+## 函数变动
+
+### AbstractModel
+
+涉及一些函数改名和参数新增。
+
+| 0.105 | 0.106 |
+|---|---|
+| `BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)` | `BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)` |
+| `AfterSideTurnStart(CombatSide side, ICombatState combatState)` | `AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)` |
+| `BeforeTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side)` | `BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)` |
+| `BeforeTurnEndEarly(PlayerChoiceContext choiceContext, CombatSide side)` | `BeforeSideTurnEndEarly(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)` |
+| `BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)` | `BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)` |
+| `AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)` | `AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)` |
+| `AfterTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side)` | `AfterSideTurnEndLate(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)` |
+| `AfterCardChangedPiles(..., AbstractModel? source)` | `AfterCardChangedPiles(..., AbstractModel? clonedBy)` |
+| `AfterCardChangedPilesLate(..., AbstractModel? source)` | `AfterCardChangedPilesLate(..., AbstractModel? clonedBy)` |
+
+此外`ModifyHpLost`一些函数进行了合并，新增枚举`HpLossHookPhase`。
+
+之前的`ModifyHpLostBeforeOsty`相当于传入参数`HpLossHookPhase.BeforeOsty`，afterosty以此类推。
+
+| 0.105 | 0.106 |
+|---|---|
+| `ModifyHpLostBeforeOsty(..., out IEnumerable<AbstractModel> modifiers)` | `ModifyHpLost(..., HpLossHookPhase phases, out IEnumerable<AbstractModel> modifiers)` |
+| `ModifyHpLostAfterOsty(..., out IEnumerable<AbstractModel> modifiers)` | `ModifyHpLost(..., HpLossHookPhase phases, out IEnumerable<AbstractModel> modifiers)` |
+
+### CardPileCmd
+
+| 0.105 | 0.106 |
+|---|---|
+| `Task AddCurseToDeck<T>(Player owner)` | `Task<CardModel?> AddCurseToDeck<T>(Player owner)` |
+| `Task AddCursesToDeck(IEnumerable<CardModel> curses, Player owner)` | `Task<IEnumerable<CardPileAddResult>> AddCursesToDeck(...)` |
+| `Add(..., AbstractModel? source = null, ...)` | `Add(..., AbstractModel? clonedBy = null, ...)` |
+
+### CardSelectCmd
+
+新增函数`FromCombatPile`。
+
+### OrbCmd
+
+`IncreaseBaseOrbCount`改名为`AddSlots`。
+
 ## 0.103 至 0.105测试版
 
 ### manifest json变动
