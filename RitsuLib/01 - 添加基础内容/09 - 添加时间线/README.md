@@ -228,7 +228,7 @@ public class TestCharacter : ModCharacterTemplate<TestCardPool, TestRelicPool, T
 }
 ```
 
-如果你要通过原版角色解锁，在初始化函数中添加：
+如果你要通过某个角色解锁，在初始化函数中添加：
 ```csharp
     ModUnlockRegistry.For(ModId).UnlockEpochAfterRunAs<Silent, TestEpoch>(); // 在静默猎手打完一把后，解锁你的人物的时期。
 ```
