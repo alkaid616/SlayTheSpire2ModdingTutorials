@@ -69,6 +69,12 @@ public class TestEnchantment : ModEnchantmentTemplate
         return Amount;
     }
 
+    // 0.106的写法
+    // public override decimal EnchantBlockAdditive(decimal originalBlock)
+    // {
+    //     return Amount;
+    // }
+
     // 当附魔的卡牌被打出时调用。
     public override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay? cardPlay)
     {
