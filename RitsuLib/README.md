@@ -8,6 +8,35 @@ https://github.com/BAKAOLC/STS2-RitsuLib
 
 ## 下载
 
+## nuget获取（推荐）
+
+```xml
+  <!-- 在上方PropertyGroup里添加 -->
+  <PropertyGroup>
+    <!-- 其余省略，添加以下这行，可以自动部署到你的mods文件夹 -->
+    <RitsuLibDeployDir>$(Sts2Dir)/mods/STS2-RitsuLib/</RitsuLibDeployDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="sts2">
+      <HintPath>$(Sts2DataDir)/sts2.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="0Harmony">
+      <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- NuGet获取 -->
+    <PackageReference Include="STS2.RitsuLib" Version="*" />
+    <!-- 如果你在正式版开发用这个 -->
+    <!-- <PackageReference Include=" STS2.RitsuLib.Compat.0.103.2 " Version="*" /> -->
+  </ItemGroup>
+```
+
+### 本地
+
 * 前往 https://github.com/BAKAOLC/STS2-RitsuLib/releases 下载稳定版本（不是`Development build`，而是例如`STS2.RitsuLib.X.X.X.github.zip`这样的），解压出来放在`mods`文件夹里。记住你下载的版本。
 
 * 请根据你的游戏版本选择对应的`RitsuLib`版本。例如不带后缀的`STS2.RitsuLib.XXX.github.zip`一般跟随测试版，而例如`STS2.RitsuLib.Compat.0.103.2.XXX.github.zip`这种是兼容`0.103.2`正式版的版本。
@@ -27,14 +56,10 @@ https://github.com/BAKAOLC/STS2-RitsuLib
     </Reference>
 
     <!-- 本地引用，注意路径是否正确 -->
-    <!-- <Reference Include="STS2-RitsuLib">
+    <Reference Include="STS2-RitsuLib">
       <HintPath>$(Sts2Dir)/mods/RitsuLib/STS2-RitsuLib.dll</HintPath>
       <Private>false</Private>
-    </Reference> -->
-    <!-- NuGet获取，注意版本是否一致，不一致手动更改Version -->
-    <PackageReference Include="STS2.RitsuLib" Version="*" />
-    <!-- 如果你在正式版开发用这个 -->
-    <!-- <PackageReference Include=" STS2.RitsuLib.Compat.0.103.2 " Version="*" /> -->
+    </Reference>
   </ItemGroup>
 ```
 
