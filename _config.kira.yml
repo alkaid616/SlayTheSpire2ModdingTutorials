@@ -333,6 +333,11 @@ docsTree:
                         path: /tools/id-generator/,
                         icon: icon-container,
                     },
+                    {
+                        title: 文本与卡框预览器,
+                        path: /tools/text-frame-preview/,
+                        icon: icon-container,
+                    },
                 ],
         },
     ]
