@@ -268,6 +268,12 @@
             "post": "04-ritsulib/04-15-add-singleton.md",
             "permalink": "docs/04-ritsulib/04-15-add-singleton/",
             "title": "添加单例"
+          },
+          {
+            "source": "RitsuLib/01 - 添加基础内容/16 - 添加卡池/README.md",
+            "post": "04-ritsulib/04-16-add-card-pool.md",
+            "permalink": "docs/04-ritsulib/04-16-add-card-pool/",
+            "title": "添加卡池"
           }
         ]
       },
