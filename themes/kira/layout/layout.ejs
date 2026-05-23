@@ -62,7 +62,11 @@
 		<%- js(["deps/js/APlayer.min", "deps/js/Meting.min"]) %>
 	</head>
 
-	<body>
+	<%
+		var pagePath = String(page.path || page.source || page.permalink || "");
+		var isToolPage = /^tools\//.test(pagePath) || /\/tools\//.test(pagePath);
+	%>
+	<body class="<%= isToolPage ? 'kira-tools-page' : '' %>">
 		<div
 			class="kira-background"
 			style="background-image: url('<%= theme.background.path %>')"
@@ -76,7 +80,9 @@
 					<%- body %>
 				</div>
 			</div>
-			<%- include("components/right-column") %>
+			<% if (!isToolPage) { %>
+				<%- include("components/right-column") %>
+			<% } %>
 		</div>
 	</body>
 </html>

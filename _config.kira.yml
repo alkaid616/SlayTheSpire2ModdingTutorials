@@ -334,8 +334,8 @@ docsTree:
                         icon: icon-container,
                     },
                     {
-                        title: 文本与卡框预览器,
-                        path: /tools/text-frame-preview/,
+                        title: 卡框预览器,
+                        path: /tools/card-frame-preview/,
                         icon: icon-container,
                     },
                 ],

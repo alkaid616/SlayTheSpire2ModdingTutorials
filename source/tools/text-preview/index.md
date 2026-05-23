@@ -1,107 +1,28 @@
 ---
-title: 文本与卡框预览器
+title: 文本预览器
 date: 2026-05-23 05:00:00
-permalink: tools/text-frame-preview/
+permalink: tools/text-preview/
 comments: false
 reprinted: true
 hide_meta: true
 ---
 
 <style>
-@import url("./text-frame-preview.css?v=20260523-style9");
+@import url("../preview-assets/preview-tools.css?v=20260523-cardfit1");
 </style>
 
-<div class="text-frame-preview-tool" data-text-frame-preview-tool>
+<div class="preview-tool" data-text-preview-tool>
 <header class="app-header">
 <div class="logo-mark" aria-hidden="true"></div>
 <div>
-<h1>文本与卡框预览器</h1>
-<div class="subtitle">卡牌框 HSV 着色器 · BBCode 文本预览 · 颜色代码转换</div>
+<h1>文本预览器</h1>
+<div class="subtitle">BBCode 文本预览 · 颜色代码转换 · 游戏命名颜色</div>
 </div>
 <div class="spacer"></div>
 <div class="kbd-hint">
 <kbd>C</kbd> 复制 HEX &nbsp;·&nbsp; <kbd>S</kbd> 保存到最近
 </div>
 </header>
-
-<section class="section">
-<div class="grid-hero">
-<div class="panel-flush">
-<div class="frame-stage">
-<span class="frame-stage-info" id="frameStageInfo">SKILL — h:0 s:0 v:1.2 a:1</span>
-<canvas id="frameCanvas" width="598" height="844"></canvas>
-</div>
-<div class="chip-row" style="padding: 10px 4px 4px;">
-<button class="chip active" data-frame="skill">Skill</button>
-<button class="chip" data-frame="attack">Attack</button>
-<button class="chip" data-frame="power">Power</button>
-<button class="chip" data-frame="quest">Quest</button>
-<button class="chip" data-frame="ancient">Ancient</button>
-<button class="chip export-chip" id="exportFramePng" type="button">导出 PNG</button>
-</div>
-<div class="chip-row ancient-type-row" id="ancientTypeRow" hidden>
-<button class="chip active" data-ancient-type="attack" type="button">Ancient Attack</button>
-<button class="chip" data-ancient-type="skill" type="button">Ancient Skill</button>
-<button class="chip" data-ancient-type="power" type="button">Ancient Power</button>
-</div>
-</div>
-
-<div class="panel">
-<h2>卡牌框 着色器 (HSV/YIQ)</h2>
-<div class="hint" style="margin-bottom: 12px;">
-来源 <code>shaders/hsv.gdshader</code> 与 <code>card_frame_*_mat.tres</code>。
-H/S/V 参数与游戏 shader_parameter 一一对应；Alpha 通过节点 <code>Modulate</code> 应用。
-</div>
-
-<div class="hsva-grid">
-<div class="hsva-cell">
-<label>H · 0-1</label>
-<input type="number" id="hsvH" value="0.025" min="0" max="1" step="0.001">
-<input type="range" id="hsvHr" min="0" max="1" step="0.001" value="0.025">
-</div>
-<div class="hsva-cell">
-<label>S · 0-5</label>
-<input type="number" id="hsvS" value="0.85" min="0" max="5" step="0.01">
-<input type="range" id="hsvSr" min="0" max="5" step="0.01" value="0.85">
-</div>
-<div class="hsva-cell">
-<label>V · 0-3</label>
-<input type="number" id="hsvV" value="1.0" min="0" max="3" step="0.01">
-<input type="range" id="hsvVr" min="0" max="3" step="0.01" value="1.0">
-</div>
-<div class="hsva-cell">
-<label>A · 0-1</label>
-<input type="number" id="hsvA" value="1" min="0" max="1" step="0.01">
-<input type="range" id="hsvAr" min="0" max="1" step="0.01" value="1">
-</div>
-</div>
-
-<h2 style="margin-top:16px;">原版材质 / Vanilla Materials</h2>
-<div class="vanilla-grid" id="vanillaGrid"></div>
-
-<h2 style="margin-top:16px;">代码 & 输出</h2>
-<div class="tabs">
-<button class="tab active" data-tab="frame-tres">.tres material</button>
-<button class="tab" data-tab="frame-cs">C# 应用</button>
-<button class="tab" data-tab="frame-conv">数值</button>
-</div>
-<div class="tab-panel active" id="tab-frame-tres">
-<pre class="code"><button class="copy kira-codeblock-copy-wrapper" type="button" data-target="codeTres" aria-label="复制代码" title="复制代码"></button><code id="codeTres" data-lang="tres"></code></pre>
-</div>
-<div class="tab-panel" id="tab-frame-cs">
-<pre class="code"><button class="copy kira-codeblock-copy-wrapper" type="button" data-target="codeApply" aria-label="复制代码" title="复制代码"></button><code id="codeApply" data-lang="csharp"></code></pre>
-</div>
-<div class="tab-panel" id="tab-frame-conv">
-<table class="conv">
-<tr><td>HSV (shader)</td><td id="cvHsv"></td></tr>
-<tr><td>Hue ° (度)</td><td id="cvHueDeg"></td></tr>
-<tr><td>白像素 → RGB</td><td id="cvWhiteOut"></td></tr>
-<tr><td>白像素 → HEX</td><td id="cvWhiteHex"></td></tr>
-</table>
-</div>
-</div>
-</div>
-</section>
 
 <section class="section">
 <div class="grid-2">
@@ -243,5 +164,4 @@ H/S/V 参数与游戏 shader_parameter 一一对应；Alpha 通过节点 <code>M
 <div class="toast" id="toast"></div>
 </div>
 
-<script src="./text-frame-assets.js?v=20260523-fullsize1"></script>
-<script src="./text-frame-preview.js?v=20260523-fxframe4"></script>
+<script src="../preview-assets/preview-tools.js?v=20260523-cardfit1"></script>

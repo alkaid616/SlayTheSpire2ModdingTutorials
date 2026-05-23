@@ -703,6 +703,9 @@ function tryReverseParse(s) {
 //
 // === Event wiring ===
 //
+function initTextPreview() {
+if (!picker || !hexInput || !swatchLarge || !previewText || !previewRender || !reverseInput) return;
+
 buildPresets();
 bindAutoResizeTextareas();
 
@@ -867,6 +870,8 @@ reverseInput.addEventListener('input', e => {
     out.innerHTML = `<span style="color:var(--red)">未能识别颜色格式</span>`;
   }
 });
+}
+initTextPreview();
 
 // Tab switching (works for any .tabs / .tab-panel block)
 document.querySelectorAll('.tabs').forEach(group => {
@@ -905,6 +910,7 @@ document.querySelectorAll('.copy').forEach(btn => {
 const toastEl = $('toast');
 let toastTimer = 0;
 function showToast(msg) {
+  if (!toastEl) return;
   toastEl.textContent = msg;
   toastEl.classList.add('show');
   clearTimeout(toastTimer);
@@ -916,6 +922,9 @@ async function copyText(txt) {
 }
 
 // Click large swatch to copy current HEX
+function initTextPreviewUx() {
+if (!swatchLarge || !picker || !$('recentSwatches') || !$('recentEmpty')) return;
+
 swatchLarge.addEventListener('click', async () => {
   const hex = state.a === 255 ? rgbToHex(state, false) : rgbToHex(state, true);
   const ok = await copyText(hex);
@@ -931,7 +940,7 @@ swatchLarge.addEventListener('click', async () => {
 });
 
 // Recent colors via localStorage (cap 12)
-const RECENT_KEY = 'sts2-text-frame-preview-recent';
+const RECENT_KEY = 'sts2-text-preview-recent';
 function loadRecent() {
   try { return JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); }
   catch (_) { return []; }
@@ -981,12 +990,18 @@ renderRecent();
 
 // Initial render
 renderAll('init');
+}
+initTextPreviewUx();
 
 //
 // ============================================================
 // CARD FRAME PREVIEW — replicates res://shaders/hsv.gdshader
 // ============================================================
 //
+function initCardFramePreview() {
+const frameCanvas = $('frameCanvas');
+if (!frameCanvas) return;
+
 const VANILLA_MATS = [
   { name: 'Ironclad Red',     h: 0.025, s: 0.85, v: 1.0,  swatch: '#c44a3a' },
   { name: 'Silent Green',     h: 0.32,  s: 0.45, v: 1.2,  swatch: '#a6e89a' },
@@ -1010,7 +1025,6 @@ const ANCIENT_NODES = {
   textBg: { left: -133, top: -22, right: 131, bottom: 181, stretch: 'contain', modulate: [0, 0, 0, 0.66] },
   banner: { left: -163, top: -207, right: 164, bottom: -124, stretch: 'cover' },
 };
-const frameCanvas = $('frameCanvas');
 const ancientCanvas = document.createElement('canvas');
 ancientCanvas.id = 'ancientFrameCanvas';
 ancientCanvas.width = ANCIENT_FRAME_SIZE.w;
@@ -1573,4 +1587,6 @@ async function initFramePreview() {
   setHsv(0.025, 0.85, 1.0, 'preset');
 }
 initFramePreview();
+}
+initCardFramePreview();
 })();
