@@ -21,7 +21,7 @@
   }
 
   function buildRitsuLibEntryId(modIdValue, modelTypeValue, idValue) {
-    return `${normalizePublicStem(modIdValue)}_${modelTypeValue.trim().toUpperCase()}_${normalizeSegment(idValue)}`;
+    return `${normalizePublicStem(modIdValue)}_${normalizePublicStem(modelTypeValue)}_${normalizePublicStem(idValue)}`;
   }
 
   function normalizePublicStem(value) {

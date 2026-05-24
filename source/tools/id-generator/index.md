@@ -168,7 +168,9 @@ hide_meta: true
 
   .entry-id-tool input,
   .entry-id-tool select {
+    display: block;
     width: 100%;
+    min-width: 100%;
     min-height: 40px;
     border: 1px solid var(--entry-border);
     border-radius: 6px;
@@ -186,6 +188,8 @@ hide_meta: true
   }
 
   .entry-id-tool option {
+    width: 100%;
+    min-width: 100%;
     background: #151b23;
     color: var(--entry-text);
   }
@@ -266,6 +270,8 @@ hide_meta: true
       return;
     }
 
+    const storageKey = "sts2modding:id-generator:state";
+
     const modelTypes = [
       "afflicition",
       "card",
@@ -295,9 +301,11 @@ hide_meta: true
       return option;
     }));
 
+    restoreState();
+
     [library, namespaceInput, baseId, modId, modelType, ritsuId].forEach((control) => {
-      control.addEventListener("input", render);
-      control.addEventListener("change", render);
+      control.addEventListener("input", update);
+      control.addEventListener("change", update);
     });
 
     copy.addEventListener("click", async () => {
@@ -317,6 +325,48 @@ hide_meta: true
     });
 
     render();
+
+    function update() {
+      saveState();
+      render();
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify({
+          library: library.value,
+          namespace: namespaceInput.value,
+          baseId: baseId.value,
+          modId: modId.value,
+          modelType: modelType.value,
+          ritsuId: ritsuId.value,
+        }));
+      } catch (ex) {}
+    }
+
+    function restoreState() {
+      try {
+        const raw = localStorage.getItem(storageKey);
+        if (!raw) return;
+
+        const state = JSON.parse(raw);
+        setControlValue(library, state.library);
+        setControlValue(namespaceInput, state.namespace);
+        setControlValue(baseId, state.baseId);
+        setControlValue(modId, state.modId);
+        setControlValue(modelType, state.modelType);
+        setControlValue(ritsuId, state.ritsuId);
+      } catch (ex) {}
+    }
+
+    function setControlValue(control, value) {
+      if (typeof value !== "string") return;
+      if (control.tagName === "SELECT") {
+        const hasOption = Array.prototype.some.call(control.options, (option) => option.value === value);
+        if (!hasOption) return;
+      }
+      control.value = value;
+    }
 
     function render() {
       const isBaseLib = library.value === "baselib";
