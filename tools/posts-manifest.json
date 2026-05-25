@@ -502,6 +502,18 @@
             "author": "alkaid616"
           }
         ]
+      },
+      {
+        "id": "special-integrations",
+        "articles": [
+          {
+            "source": "RitsuLib/06 - 专项集成/01 - 遗物专项集成/README.md",
+            "post": "04-ritsulib/04-46-relic-special-integrations.md",
+            "permalink": "docs/04-ritsulib/04-46-relic-special-integrations/",
+            "title": "遗物专项集成",
+            "author": "alkaid616"
+          }
+        ]
       }
     ]
   },
