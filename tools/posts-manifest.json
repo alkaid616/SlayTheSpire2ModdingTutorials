@@ -397,6 +397,13 @@
             "permalink": "docs/04-ritsulib/04-31-extra-content-types/",
             "title": "额外内容类型",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/04 - 内容进阶/06 - 自定义奖励与目标/README.md",
+            "post": "04-ritsulib/04-32-custom-rewards-and-targets.md",
+            "permalink": "docs/04-ritsulib/04-32-custom-rewards-and-targets/",
+            "title": "自定义奖励与目标",
+            "author": "alkaid616"
           }
         ]
       }
