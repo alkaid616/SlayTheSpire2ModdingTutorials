@@ -430,6 +430,13 @@
             "permalink": "docs/04-ritsulib/04-35-localization-and-smartformat/",
             "title": "本地化与 SmartFormat",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/05 - 运行时 API/02 - LocString 占位符/README.md",
+            "post": "04-ritsulib/04-36-locstring-placeholders.md",
+            "permalink": "docs/04-ritsulib/04-36-locstring-placeholders/",
+            "title": "LocString 占位符",
+            "author": "alkaid616"
           }
         ]
       }

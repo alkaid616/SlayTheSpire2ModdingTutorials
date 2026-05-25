@@ -2,6 +2,6 @@
 
 | | |
 | - | - |
-| [01 - 本地化与 SmartFormat](01%20-%20本地化与%20SmartFormat/README.md) | |
+| [01 - 本地化与 SmartFormat](01%20-%20本地化与%20SmartFormat/README.md) | [02 - LocString 占位符](02%20-%20LocString%20占位符/README.md) |
 
 [← 返回 RitsuLib 目录](../README.md)
