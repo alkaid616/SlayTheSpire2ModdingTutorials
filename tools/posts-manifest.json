@@ -376,6 +376,13 @@
             "permalink": "docs/04-ritsulib/04-28-asset-profiles-and-fallbacks/",
             "title": "资源配置与回退",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/04 - 内容进阶/03 - Godot 场景编写/README.md",
+            "post": "04-ritsulib/04-29-godot-scene-authoring.md",
+            "permalink": "docs/04-ritsulib/04-29-godot-scene-authoring/",
+            "title": "Godot 场景编写",
+            "author": "alkaid616"
           }
         ]
       }
