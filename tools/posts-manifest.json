@@ -451,6 +451,13 @@
             "permalink": "docs/04-ritsulib/04-38-shell-theme/",
             "title": "Shell 主题",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/05 - 运行时 API/05 - 更新检查/README.md",
+            "post": "04-ritsulib/04-39-update-checks.md",
+            "permalink": "docs/04-ritsulib/04-39-update-checks/",
+            "title": "更新检查",
+            "author": "alkaid616"
           }
         ]
       }
