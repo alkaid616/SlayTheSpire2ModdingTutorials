@@ -420,6 +420,18 @@
             "author": "alkaid616"
           }
         ]
+      },
+      {
+        "id": "runtime-api",
+        "articles": [
+          {
+            "source": "RitsuLib/05 - 运行时 API/01 - 本地化与 SmartFormat/README.md",
+            "post": "04-ritsulib/04-35-localization-and-smartformat.md",
+            "permalink": "docs/04-ritsulib/04-35-localization-and-smartformat/",
+            "title": "本地化与 SmartFormat",
+            "author": "alkaid616"
+          }
+        ]
       }
     ]
   },
