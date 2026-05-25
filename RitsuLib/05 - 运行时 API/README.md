@@ -6,5 +6,6 @@
 | [03 - Mod 设置页](03%20-%20Mod%20设置页/README.md) | [04 - Shell 主题](04%20-%20Shell%20主题/README.md) |
 | [05 - 更新检查](05%20-%20更新检查/README.md) | [06 - 诊断与导出](06%20-%20诊断与导出/README.md) |
 | [07 - 跨 Mod Interop](07%20-%20跨%20Mod%20Interop/README.md) | [08 - 跑局数据进阶](08%20-%20跑局数据进阶/README.md) |
+| [09 - 遥测](09%20-%20遥测/README.md) | |
 
 [← 返回 RitsuLib 目录](../README.md)
