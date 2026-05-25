@@ -383,6 +383,13 @@
             "permalink": "docs/04-ritsulib/04-29-godot-scene-authoring/",
             "title": "Godot 场景编写",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/04 - 内容进阶/04 - 生物视觉与动画/README.md",
+            "post": "04-ritsulib/04-30-creature-visuals-and-animation.md",
+            "permalink": "docs/04-ritsulib/04-30-creature-visuals-and-animation/",
+            "title": "生物视觉与动画",
+            "author": "alkaid616"
           }
         ]
       }
