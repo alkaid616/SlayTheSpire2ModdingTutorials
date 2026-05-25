@@ -437,6 +437,13 @@
             "permalink": "docs/04-ritsulib/04-36-locstring-placeholders/",
             "title": "LocString 占位符",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/05 - 运行时 API/03 - Mod 设置页/README.md",
+            "post": "04-ritsulib/04-37-mod-settings-page.md",
+            "permalink": "docs/04-ritsulib/04-37-mod-settings-page/",
+            "title": "Mod 设置页",
+            "author": "alkaid616"
           }
         ]
       }
