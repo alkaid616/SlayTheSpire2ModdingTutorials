@@ -404,6 +404,13 @@
             "permalink": "docs/04-ritsulib/04-32-custom-rewards-and-targets/",
             "title": "自定义奖励与目标",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/04 - 内容进阶/07 - 战斗 UI 数值扩展/README.md",
+            "post": "04-ritsulib/04-33-combat-ui-number-extensions.md",
+            "permalink": "docs/04-ritsulib/04-33-combat-ui-number-extensions/",
+            "title": "战斗 UI 数值扩展",
+            "author": "alkaid616"
           }
         ]
       }
