@@ -472,6 +472,13 @@
             "permalink": "docs/04-ritsulib/04-41-cross-mod-interop/",
             "title": "跨 Mod Interop",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/05 - 运行时 API/08 - 跑局数据进阶/README.md",
+            "post": "04-ritsulib/04-42-run-data-advanced.md",
+            "permalink": "docs/04-ritsulib/04-42-run-data-advanced/",
+            "title": "跑局数据进阶",
+            "author": "alkaid616"
           }
         ]
       }
