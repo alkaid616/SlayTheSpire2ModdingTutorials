@@ -390,6 +390,13 @@
             "permalink": "docs/04-ritsulib/04-30-creature-visuals-and-animation/",
             "title": "生物视觉与动画",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/04 - 内容进阶/05 - 额外内容类型/README.md",
+            "post": "04-ritsulib/04-31-extra-content-types.md",
+            "permalink": "docs/04-ritsulib/04-31-extra-content-types/",
+            "title": "额外内容类型",
+            "author": "alkaid616"
           }
         ]
       }
