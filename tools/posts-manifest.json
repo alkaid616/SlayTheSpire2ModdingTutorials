@@ -486,6 +486,13 @@
             "permalink": "docs/04-ritsulib/04-43-telemetry/",
             "title": "遥测",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/05 - 运行时 API/10 - Sidecar 联机通信/README.md",
+            "post": "04-ritsulib/04-44-sidecar-networking.md",
+            "permalink": "docs/04-ritsulib/04-44-sidecar-networking/",
+            "title": "Sidecar 联机通信",
+            "author": "alkaid616"
           }
         ]
       }
