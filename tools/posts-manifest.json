@@ -444,6 +444,13 @@
             "permalink": "docs/04-ritsulib/04-37-mod-settings-page/",
             "title": "Mod 设置页",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/05 - 运行时 API/04 - Shell 主题/README.md",
+            "post": "04-ritsulib/04-38-shell-theme.md",
+            "permalink": "docs/04-ritsulib/04-38-shell-theme/",
+            "title": "Shell 主题",
+            "author": "alkaid616"
           }
         ]
       }
