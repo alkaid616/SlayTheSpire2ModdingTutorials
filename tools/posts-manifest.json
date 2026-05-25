@@ -411,6 +411,13 @@
             "permalink": "docs/04-ritsulib/04-33-combat-ui-number-extensions/",
             "title": "战斗 UI 数值扩展",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/04 - 内容进阶/08 - 节点附加/README.md",
+            "post": "04-ritsulib/04-34-node-attachments.md",
+            "permalink": "docs/04-ritsulib/04-34-node-attachments/",
+            "title": "节点附加",
+            "author": "alkaid616"
           }
         ]
       }
