@@ -493,6 +493,13 @@
             "permalink": "docs/04-ritsulib/04-44-sidecar-networking/",
             "title": "Sidecar 联机通信",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/05 - 运行时 API/11 - 常用工具类/README.md",
+            "post": "04-ritsulib/04-45-common-utilities.md",
+            "permalink": "docs/04-ritsulib/04-45-common-utilities/",
+            "title": "常用工具类",
+            "author": "alkaid616"
           }
         ]
       }
