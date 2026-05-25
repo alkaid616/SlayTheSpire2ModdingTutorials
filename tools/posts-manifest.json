@@ -359,6 +359,18 @@
             "author": "alkaid616"
           }
         ]
+      },
+      {
+        "id": "content-advanced",
+        "articles": [
+          {
+            "source": "RitsuLib/04 - 内容进阶/01 - 内容包与注册器/README.md",
+            "post": "04-ritsulib/04-27-content-packs-and-registries.md",
+            "permalink": "docs/04-ritsulib/04-27-content-packs-and-registries/",
+            "title": "内容包与注册器",
+            "author": "alkaid616"
+          }
+        ]
       }
     ]
   },
