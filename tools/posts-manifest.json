@@ -512,6 +512,13 @@
             "permalink": "docs/04-ritsulib/04-46-relic-special-integrations/",
             "title": "遗物专项集成",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/06 - 专项集成/02 - 时间线进阶/README.md",
+            "post": "04-ritsulib/04-47-timeline-advanced.md",
+            "permalink": "docs/04-ritsulib/04-47-timeline-advanced/",
+            "title": "时间线进阶",
+            "author": "alkaid616"
           }
         ]
       }
