@@ -465,6 +465,13 @@
             "permalink": "docs/04-ritsulib/04-40-diagnostics-and-export/",
             "title": "诊断与导出",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/05 - 运行时 API/07 - 跨 Mod Interop/README.md",
+            "post": "04-ritsulib/04-41-cross-mod-interop.md",
+            "permalink": "docs/04-ritsulib/04-41-cross-mod-interop/",
+            "title": "跨 Mod Interop",
+            "author": "alkaid616"
           }
         ]
       }
