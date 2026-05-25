@@ -369,6 +369,13 @@
             "permalink": "docs/04-ritsulib/04-27-content-packs-and-registries/",
             "title": "内容包与注册器",
             "author": "alkaid616"
+          },
+          {
+            "source": "RitsuLib/04 - 内容进阶/02 - 资源配置与回退/README.md",
+            "post": "04-ritsulib/04-28-asset-profiles-and-fallbacks.md",
+            "permalink": "docs/04-ritsulib/04-28-asset-profiles-and-fallbacks/",
+            "title": "资源配置与回退",
+            "author": "alkaid616"
           }
         ]
       }
